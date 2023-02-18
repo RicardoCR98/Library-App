@@ -4,7 +4,7 @@
  */
 package Vista;
 
-import Logica.Estudiante;
+import Logica.Cliente;
 import Logica.Libro;
 import java.awt.Color;
 import java.util.ArrayList;

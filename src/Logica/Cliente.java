@@ -1,5 +1,5 @@
 package Logica;
-import ConexionBD.ConexionBD;
+import ConexionBD.;
 import Vista.JFBiblioteca;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,37 +11,70 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-public class Estudiante {
-    ConexionBD conexion = new ConexionBD();
-    Connection cn = conexion.conexion();
+public class Cliente {
+    
     private String nombre;
-    private String apellidos;
-    private long codigoEstudiante;
-    public Estudiante() {
+    private String cedula;
+    private String telefono;
+    private String direccion;
+    private String Ubicacion;
+    
+    public Cliente(){
+        
     }
-    public Estudiante(String nombre, String apellidos) {
+
+    public Cliente(String nombre, String cedula, String telefono, String direccion, String Ubicacion) {
         this.nombre = nombre;
-        this.apellidos = apellidos;
+        this.cedula = cedula;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.Ubicacion = Ubicacion;
     }
-        public String getNombre() {
+
+
+    public String getNombre() {
         return nombre;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public String getApellidos() {
-        return apellidos;
+
+    public String getCedula() {
+        return cedula;
     }
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
-    public long getCodigoEstudiante() {
-        return codigoEstudiante;
+
+    public String getTelefono() {
+        return telefono;
     }
-    public void setCodigoEstudiante(int codigoEstudiante) {
-        this.codigoEstudiante = codigoEstudiante;
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
-    public boolean añadirEstudiante(){
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getUbicacion() {
+        return Ubicacion;
+    }
+
+    public void setUbicacion(String Ubicacion) {
+        this.Ubicacion = Ubicacion;
+    }
+    
+    
+   
+    public boolean añadirCliente(){
         boolean flag = false;
         try {
             PreparedStatement pps = cn.prepareStatement("INSERT INTO Estudiante(nombres_e, apellidos_e) VALUES (?,?)"); 
@@ -51,31 +84,31 @@ public class Estudiante {
             pps.executeUpdate ();
             flag = true;
         } catch(SQLException ex) {
-            Logger.getLogger(Estudiante.class.getName()).log(Level. SEVERE, null, ex); 
+            Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, ex); 
             flag = false;     
         }
         return flag;
     }
-    public boolean ActualizarEstudiante(String sql){
+    public boolean ActualizarCliente(String sql){
         boolean flag = false;
         try {
         PreparedStatement pps = cn.prepareStatement(sql);
         pps.executeUpdate();
         flag = true;
      } catch(SQLException ex) {
-            Logger.getLogger(Estudiante.class.getName()).log(Level. SEVERE, null, ex); 
+            Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, ex); 
             JOptionPane.showMessageDialog (null, "Ocurrio un error al Actualizar los datos ");     
         }
         return flag;
     }
-    public boolean EliminarEstudiante(){
+    public boolean EliminarCliente(){
         boolean flag = false;
         try {
             PreparedStatement pps = cn.prepareStatement("DELETE FROM Estudiante WHERE codigo_e="+this.codigoEstudiante); 
             pps.executeUpdate ();
             flag = true;
         } catch(SQLException ex) {
-            Logger.getLogger(Estudiante.class.getName()).log(Level. SEVERE, null, ex); 
+            Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, ex); 
             JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ");     
         }
         return flag;

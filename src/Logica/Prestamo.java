@@ -17,14 +17,14 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 public class Prestamo {
     private long codigoPrestamo;
-    private Estudiante estudiante;
+    private Cliente estudiante;
     private Libro libro;
     ConexionBD conexion = new ConexionBD();
     Connection cn = conexion.conexion();
 
     public Prestamo() {
     }
-    public Prestamo(Estudiante estudiante, Libro libro) {
+    public Prestamo(Cliente estudiante, Libro libro) {
         this.estudiante = estudiante;
         this.libro = libro;
     }
@@ -36,11 +36,11 @@ public class Prestamo {
         this.codigoPrestamo = codigoPrestamo;
     }
 
-    public Estudiante getEstudiante() {
+    public Cliente getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(Estudiante estudiante) {
+    public void setEstudiante(Cliente estudiante) {
         this.estudiante = estudiante;
     }
 

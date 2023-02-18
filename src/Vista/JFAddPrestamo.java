@@ -1,6 +1,6 @@
 package Vista;
 
-import Logica.Estudiante;
+import Logica.Cliente;
 import Logica.Libro;
 import Logica.Prestamo;
 import java.awt.Color;
@@ -13,7 +13,7 @@ public class JFAddPrestamo extends javax.swing.JFrame {
     JTable tabla;
     Prestamo prestamo;
     Libro libro = new Libro();
-    Estudiante estudiante=new Estudiante();  ;
+    Cliente estudiante=new Cliente();  ;
     /**
      * Creates new form JFAddEstudiante
      */

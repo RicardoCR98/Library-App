@@ -16,7 +16,7 @@ public class JFBiblioteca extends javax.swing.JFrame implements Runnable {
     String hora, min, seg;
     Thread hilo;
     JFAddLibro jfaddlibro;
-    JFAddEstudiante jfaddestudiante;
+    JFAddCliente jfaddestudiante;
     JFEditEstudiante jfeditestudiante;
     JFModificarLibro jfmodificarlibro;
     JFAddPrestamo jfaddprestamo;
@@ -34,7 +34,7 @@ public class JFBiblioteca extends javax.swing.JFrame implements Runnable {
         hilo.start();
         setVisible(true);
         jfaddlibro = new JFAddLibro(this.jTLibros);
-        jfaddestudiante = new JFAddEstudiante(this.jTEstudiantes);
+        jfaddestudiante = new JFAddCliente(this.jTEstudiantes);
         jfeditestudiante = new JFEditEstudiante(this.jTEstudiantes);
         jfmodificarlibro = new JFModificarLibro(this.jTLibros);
         jfaddprestamo = new JFAddPrestamo(this.jTPrestamos);
@@ -62,7 +62,7 @@ public class JFBiblioteca extends javax.swing.JFrame implements Runnable {
             Hora();
             lblHora.setText(hora + ":" + min + ":" + seg);
             Libro libro = new Libro();
-            Estudiante estudiante = new Estudiante();
+            Cliente estudiante = new Cliente();
             libro.actualizarTabla(jTLibros);
             estudiante.actualizarTabla(jTEstudiantes);
             contarEstud();

@@ -1,27 +1,27 @@
 package Vista;
 
-import Logica.Estudiante;
+import Logica.Cliente;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 
-public class JFAddEstudiante extends javax.swing.JFrame {
+public class JFAddCliente extends javax.swing.JFrame {
     JTable tabla;
-    Estudiante estudiante;
+    Cliente estudiante;
     /**
      * Creates new form JFAddEstudiante
      */
-    public JFAddEstudiante(JTable tabla) {
+    public JFAddCliente(JTable tabla) {
         initComponents();
 //        this.setAlwaysOnTop(true);
         this.setLocationRelativeTo(null);
         this.tabla = tabla;
-        this.estudiante = new Estudiante();
+        this.estudiante = new Cliente();
         estudiante.actualizarTabla(tabla);
     }
 
-    private JFAddEstudiante() {
+    private JFAddCliente() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -43,6 +43,10 @@ public class JFAddEstudiante extends javax.swing.JFrame {
         jTFApellidos = new javax.swing.JTextField();
         btnCancelarStud = new javax.swing.JButton();
         btnAceptaEstud = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jtxtDireccion = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jcbxUbicacion = new javax.swing.JComboBox<>();
 
         setTitle("Añadir Estudiante");
 
@@ -50,17 +54,16 @@ public class JFAddEstudiante extends javax.swing.JFrame {
         jLabel4.setText("AÑADIENDO ESTUDIANTE");
 
         jLabel1.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel1.setText("Código");
+        jLabel1.setText("Cédula: ");
 
         jTFCodigo.setEditable(false);
 
         jLabel2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel2.setText("Nombres");
+        jLabel2.setText("Nombre: ");
 
         jLabel3.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel3.setText("Apellidos");
+        jLabel3.setText("Teléfono: ");
 
-        btnCancelarStud.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelarStud.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnCancelarStud.setText("Cancelar");
         btnCancelarStud.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -77,7 +80,6 @@ public class JFAddEstudiante extends javax.swing.JFrame {
             }
         });
 
-        btnAceptaEstud.setBackground(new java.awt.Color(255, 255, 255));
         btnAceptaEstud.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnAceptaEstud.setText("Aceptar");
         btnAceptaEstud.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -94,23 +96,44 @@ public class JFAddEstudiante extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel5.setText("Dirección: ");
+
+        jLabel6.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel6.setText("Ubicación: ");
+
+        jcbxUbicacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Cuenca", "Quito" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTFApellidos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                        .addComponent(jTFNombres, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(115, 115, 115))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(2, 2, 2)
+                        .addComponent(jTFNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTFApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtxtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jcbxUbicacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(109, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -129,11 +152,15 @@ public class JFAddEstudiante extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel5)
+                    .addComponent(jtxtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel6)
+                    .addComponent(jcbxUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,8 +176,8 @@ public class JFAddEstudiante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptaEstudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptaEstudActionPerformed
-        estudiante = new Estudiante(this.jTFNombres.getText(), this.jTFApellidos.getText());
-        boolean flag = estudiante.añadirEstudiante();
+        estudiante = new Cliente(this.jTFNombres.getText(), this.jTFApellidos.getText());
+        boolean flag = estudiante.añadirCliente();
         if(flag){
                JOptionPane.showMessageDialog(null, "Datos Guardados correctamente.");
             tabla = estudiante.actualizarTabla(tabla);
@@ -202,20 +229,21 @@ public class JFAddEstudiante extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFAddEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFAddCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFAddEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFAddCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFAddEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFAddCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFAddEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFAddCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFAddEstudiante().setVisible(true);
+                new JFAddCliente().setVisible(true);
             }
         });
     }
@@ -227,9 +255,13 @@ public class JFAddEstudiante extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTFApellidos;
     private javax.swing.JTextField jTFCodigo;
     private javax.swing.JTextField jTFNombres;
+    private javax.swing.JComboBox<String> jcbxUbicacion;
+    private javax.swing.JTextField jtxtDireccion;
     // End of variables declaration//GEN-END:variables
     
     public void comewth(){

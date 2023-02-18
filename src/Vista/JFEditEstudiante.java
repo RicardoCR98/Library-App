@@ -4,7 +4,7 @@
  */
 package Vista;
 import java.sql.*;
-import Logica.Estudiante;
+import Logica.Cliente;
 import static Logica.Login.cn;
 import java.awt.Color;
 import java.lang.System.Logger;
@@ -22,12 +22,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class JFEditEstudiante extends javax.swing.JFrame {
 JTable tabla;
-Estudiante estudiante;
+Cliente estudiante;
     public JFEditEstudiante(JTable tabla) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.tabla = tabla;
-        this.estudiante = new Estudiante();
+        this.estudiante = new Cliente();
         estudiante.actualizarTabla(tabla);
     }
 
@@ -323,7 +323,7 @@ Estudiante estudiante;
         
         String sql = "UPDATE Estudiante SET "+ consulta + " WHERE codigo_e " + " LIKE "+condicion;
 
-        if(estudiante.ActualizarEstudiante(sql))
+        if(estudiante.ActualizarCliente(sql))
             JOptionPane.showMessageDialog(null, "Datos Actualizados correctamente. ");
         else{
             JOptionPane.showMessageDialog (null, "Ocurrio un error al Actualizar los datos ");  
@@ -347,7 +347,7 @@ Estudiante estudiante;
         if(0==JOptionPane.showConfirmDialog(null, "¿Esta seguro de borrar "+jTFNombresEstudianteActualizar.getText()+" ?","Advertencia",JOptionPane.INFORMATION_MESSAGE)){
             estudiante.setCodigoEstudiante(Integer.parseInt(jTFCodigoEstudianteActualizar.getText()));
     
-        if(estudiante.EliminarEstudiante())
+        if(estudiante.EliminarCliente())
             JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
         else{
             JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ");
