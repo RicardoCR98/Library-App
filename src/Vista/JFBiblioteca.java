@@ -43,7 +43,7 @@ public class JFBiblioteca extends javax.swing.JFrame implements Runnable {
         this.PLibros.setVisible(false);
         this.PPrestamos.setVisible(false);
         this.PAboutUs.setVisible(false);
-        lblUsers.setText(log.getUser());
+//        lblUsers.setText(log.getUser());
         lblUsers.setForeground(Color.white);
     }
     public void Hora() {

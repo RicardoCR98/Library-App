@@ -17,6 +17,8 @@ public class Login {
 //        Login.user = user;
 //    }
 //    //METODO PARA EL LOGIN
+    
+    
     public boolean loginUsers(String usuario, String password) {
 //        //buscamos si los datos ingresados estan en la tabla
 //        String SQL = "SELECT *FROM base_biblioteca.usuarios WHERE nombre_u='" + usuario + "' and contraseña_u='" + password + "'";
@@ -41,8 +43,8 @@ public class Login {
 //            System.out.println(ex.toString());
 //        }
 //        return false;
-        String user = null;
-        String pass = null;
+        String user = usuario;
+        String pass = password;
         if(user.equalsIgnoreCase("Admin") && pass.equalsIgnoreCase("12345")){
              return true;
         }

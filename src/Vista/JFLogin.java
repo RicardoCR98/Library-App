@@ -9,14 +9,14 @@ import javax.swing.JOptionPane;
 
 public class JFLogin extends javax.swing.JFrame {
 //    ConexionBD con = new ConexionBD();
-//    Login logi = new Login();
-    JFCrearUsuario jfcrearusuario;
+      Login logi = new Login();
+//    JFCrearUsuario jfcrearusuario;
     
     public JFLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
         scaleImage();
-        this.jfcrearusuario = new JFCrearUsuario();
+//        this.jfcrearusuario = new JFCrearUsuario();
     }
     //Escalar imagenes
     public void scaleImage() {
@@ -291,18 +291,18 @@ public class JFLogin extends javax.swing.JFrame {
     private void btnLogintxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogintxtMouseClicked
          String pass = String.valueOf(this.txtPassword.getPassword());
         //el metodo loginuser devuelve null
-        //boolean x = logi.loginUsers(this.txtUsername.getText(), pass);
+        boolean x = logi.loginUsers(this.txtUsername.getText(), pass);
         
-        //if(x == true ){
-           // System.out.println("Ingreso a la plataforma: "+x);
+        if(x == true ){
+           System.out.println("Ingreso a la plataforma: "+x);
             JFBiblioteca jfs = new JFBiblioteca();
             jfs.setVisible(true);
             this.dispose();
             
-        //}else{
-            //System.out.println("Ingreso a la plataforma: "+x);
-           // JOptionPane.showMessageDialog(null, "Correo o contraseña invalida");
-        //} 
+        }else{
+            System.out.println("Ingreso a la plataforma: "+x);
+           JOptionPane.showMessageDialog(null, "Correo o contraseña invalida");
+        } 
     }//GEN-LAST:event_btnLogintxtMouseClicked
 
     private void txtUsernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameKeyTyped
