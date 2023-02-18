@@ -5,7 +5,6 @@
 package Vista;
 import java.sql.*;
 import Logica.Cliente;
-import static Logica.Login.cn;
 import java.awt.Color;
 import java.lang.System.Logger;
 //import java.lang.System.Logger.Level;
