@@ -1,6 +1,7 @@
 
 package Logica;
 
+import Paneles.Home;
 import Vista.JFBiblioteca;
 import Vista.JFLogin;
 
@@ -12,6 +13,8 @@ public class Principal {
         jflogin.setVisible(true);
 //        JFBiblioteca jfbiblio = new JFBiblioteca();
 //        jfbiblio.setVisible(true);
+
+
     }
     
 }

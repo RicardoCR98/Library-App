@@ -53,8 +53,6 @@ public class JFLogin extends javax.swing.JFrame {
         iconoPass = new javax.swing.JLabel();
         btnLogin = new javax.swing.JPanel();
         btnLogintxt = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        lblSignUp = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -139,25 +137,6 @@ public class JFLogin extends javax.swing.JFrame {
             .addComponent(btnLogintxt, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
         );
 
-        jLabel3.setFont(new java.awt.Font("Roboto Medium", 0, 10)); // NOI18N
-        jLabel3.setText("Not Account?");
-
-        lblSignUp.setFont(new java.awt.Font("Roboto Medium", 0, 10)); // NOI18N
-        lblSignUp.setForeground(new java.awt.Color(0, 0, 255));
-        lblSignUp.setText("Sign Up");
-        lblSignUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblSignUp.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblSignUpMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblSignUpMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblSignUpMouseExited(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -183,15 +162,8 @@ public class JFLogin extends javax.swing.JFrame {
                         .addComponent(iconLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(114, 114, 114))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblSignUp)))
+                .addGap(61, 61, 61)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -217,11 +189,7 @@ public class JFLogin extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(lblSignUp))
-                .addGap(22, 22, 22))
+                .addGap(42, 42, 42))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -290,7 +258,6 @@ public class JFLogin extends javax.swing.JFrame {
 
     private void btnLogintxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogintxtMouseClicked
          String pass = String.valueOf(this.txtPassword.getPassword());
-        //el metodo loginuser devuelve null
         boolean x = logi.loginUsers(this.txtUsername.getText(), pass);
         
         if(x == true ){
@@ -309,19 +276,6 @@ public class JFLogin extends javax.swing.JFrame {
         txtPassword.setText("");
         this.txtPassword.setForeground(Color.black);
     }//GEN-LAST:event_txtUsernameKeyTyped
-
-    private void lblSignUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSignUpMouseClicked
-       JFCrearUsuario jfcrear = new JFCrearUsuario();
-       jfcrear.setVisible(true);
-    }//GEN-LAST:event_lblSignUpMouseClicked
-
-    private void lblSignUpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSignUpMouseEntered
-       lblSignUp.setForeground(Color.red);
-    }//GEN-LAST:event_lblSignUpMouseEntered
-
-    private void lblSignUpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSignUpMouseExited
-       lblSignUp.setForeground(Color.BLUE);
-    }//GEN-LAST:event_lblSignUpMouseExited
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -363,11 +317,9 @@ public class JFLogin extends javax.swing.JFrame {
     private javax.swing.JLabel iconoUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lblSignUp;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables

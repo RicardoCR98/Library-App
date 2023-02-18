@@ -62,7 +62,7 @@
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="TopBar" min="-2" pref="1186" max="-2" attributes="0"/>
+                  <Component id="TopBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -98,9 +98,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="iconoLogoEpn" min="-2" pref="44" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Component id="iconoLibriMundi" pref="146" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="EPN" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="TolBar" min="-2" max="-2" attributes="0"/>
@@ -111,7 +111,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="iconoLogoEpn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="iconoLibriMundi" alignment="0" max="32767" attributes="0"/>
                           <Component id="EPN" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="TolBar" min="-2" max="-2" attributes="0"/>
@@ -235,7 +235,10 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel1" alignment="0" pref="245" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="106" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -254,12 +257,12 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="ESCUELA POLIT&#xc9;CNICA NACIONAL"/>
+                    <Property name="text" type="java.lang.String" value="LIBRIMUNDI"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="iconoLogoEpn">
+            <Component class="javax.swing.JLabel" name="iconoLibriMundi">
             </Component>
           </SubComponents>
         </Container>
@@ -400,13 +403,13 @@
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Component id="iconoEstud" min="-2" pref="24" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnEstudTxt" min="-2" pref="236" max="-2" attributes="0"/>
+                          <Component id="btnCliente" min="-2" pref="236" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnEstudTxt" max="32767" attributes="0"/>
+                      <Component id="btnCliente" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="iconoEstud" min="-2" pref="24" max="-2" attributes="0"/>
@@ -416,7 +419,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="btnEstudTxt">
+                <Component class="javax.swing.JLabel" name="btnCliente">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Roboto Medium" size="14" style="0"/>
@@ -424,15 +427,15 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Registro de Estudiantes"/>
+                    <Property name="text" type="java.lang.String" value="Registro de Clientes"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEstudTxtMouseClicked"/>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEstudTxtMouseEntered"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEstudTxtMouseExited"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnClienteMouseClicked"/>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnClienteMouseEntered"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnClienteMouseExited"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="iconoEstud">
@@ -487,7 +490,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Registro Libros y Catalogos"/>
+                    <Property name="text" type="java.lang.String" value="Registro Libros "/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>
@@ -552,7 +555,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Prestamos y Multas"/>
+                    <Property name="text" type="java.lang.String" value="Facturas"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>
@@ -580,10 +583,6 @@
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="SobreNosotrosMouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="SobreNosotrosMouseExited"/>
-              </Events>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -591,14 +590,12 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Component id="iconoSobreNosotros" min="-2" pref="24" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnSobreUsTxt" min="-2" pref="238" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="256" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnSobreUsTxt" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="iconoSobreNosotros" min="-2" pref="24" max="-2" attributes="0"/>
@@ -608,31 +605,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="btnSobreUsTxt">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Roboto Medium" size="14" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Sobre Nosotros"/>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSobreUsTxtMouseClicked"/>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSobreUsTxtMouseEntered"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSobreUsTxtMouseExited"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JLabel" name="iconoSobreNosotros">
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconoSobreNosotrosMouseClicked"/>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconoSobreNosotrosMouseEntered"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconoSobreNosotrosMouseExited"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -644,7 +617,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Copyright &#xa9;2022"/>
+                <Property name="text" type="java.lang.String" value="Copyright &#xa9;2023"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -667,7 +640,7 @@
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="PEstudiantes" min="-2" pref="895" max="-2" attributes="0"/>
+                          <Component id="PClientes" min="-2" pref="895" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="52" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -679,13 +652,7 @@
                   </Group>
                   <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="PAboutUs" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="53" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="PPrestamos" min="-2" max="-2" attributes="0"/>
+                          <Component id="PFacturas" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="50" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -696,7 +663,7 @@
                   <Component id="PInicio" min="-2" max="-2" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="PEstudiantes" min="-2" pref="606" max="-2" attributes="0"/>
+                          <Component id="PClientes" min="-2" pref="606" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -708,13 +675,7 @@
                   </Group>
                   <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="PAboutUs" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="PPrestamos" min="-2" max="-2" attributes="0"/>
+                          <Component id="PFacturas" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -722,113 +683,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="PInicio">
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Component id="iconoAdmin0" min="-2" pref="166" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel4" min="-2" pref="461" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="111" max="32767" attributes="0"/>
-                          <Component id="IMAGEBOOK" min="-2" pref="694" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Component id="iconoAdmin0" min="-2" pref="142" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="75" max="32767" attributes="0"/>
-                          <Component id="IMAGEBOOK" min="-2" pref="233" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel3">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Roboto Medium" size="10" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="99" green="99" red="99" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="ADMMINISTRACION DE USUARIOS"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel2">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Roboto Medium" size="24" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="SISTEMA BIBLIOTECARIO EPN"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel4">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Roboto Medium" size="12" style="0"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="BIENVENIDO AL SISTEMA BIBLIOTECARIO DE LA EPN, ESTA SECCION ES PARA"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel7">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value=" REGISTRAR NUEVOS  BIBLIOTECARIOS LLENANDO EL SIGUIENTE FOMRULARIO"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="iconoAdmin0">
-                  <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                        <MatteColorBorder/>
-                      </Border>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="IMAGEBOOK">
-                </Component>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JPanel" name="PEstudiantes">
+            <Container class="javax.swing.JPanel" name="PClientes">
               <Properties>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[947, 706]"/>
@@ -936,10 +791,12 @@
                     <Component class="javax.swing.JTable" name="jTEstudiantes">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="3" rowCount="0">
-                            <Column editable="true" title="C&#xf3;digo del estudiante" type="java.lang.Object"/>
-                            <Column editable="true" title="Nombres" type="java.lang.Object"/>
-                            <Column editable="true" title="Apellidos" type="java.lang.Object"/>
+                          <Table columnCount="5" rowCount="0">
+                            <Column editable="true" title="Cedula" type="java.lang.Object"/>
+                            <Column editable="true" title="Nombre" type="java.lang.Object"/>
+                            <Column editable="true" title="Telefono" type="java.lang.Object"/>
+                            <Column editable="true" title="Direccion" type="java.lang.Object"/>
+                            <Column editable="true" title="Ubicacion" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -976,7 +833,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Roboto Medium" size="24" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="REGISTRO Y MODIFICACION DE ESTUDIANTES"/>
+                    <Property name="text" type="java.lang.String" value="REGISTRO Y MODIFICACION DE CLIENTES"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel9">
@@ -995,7 +852,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="99" red="99" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="/ Estudiantes"/>
+                    <Property name="text" type="java.lang.String" value="/ Clientes"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="EtxtBusqueda">
@@ -1069,7 +926,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Roboto Medium" size="14" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="A&#xf1;adir Estudiante"/>
+                        <Property name="text" type="java.lang.String" value="A&#xf1;adir Cliente"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="EiconoA&#xf1;adir">
@@ -1121,7 +978,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Roboto Medium" size="14" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Modificar/Eliminar Estudiante"/>
+                        <Property name="text" type="java.lang.String" value="Modificar/Eliminar Cliente"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="EiconoModificar">
@@ -1133,7 +990,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Roboto Medium" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Estudiantes Registrados: "/>
+                    <Property name="text" type="java.lang.String" value="Clientes Registrados: "/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblCountEstud">
@@ -1255,7 +1112,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="99" red="99" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="/ Libros y Cat&#xe1;logos"/>
+                    <Property name="text" type="java.lang.String" value="/ Libros"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="LtxtBusqueda">
@@ -1353,11 +1210,16 @@
                         <Component class="javax.swing.JTable" name="jTLibros">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="4" rowCount="0">
-                                <Column editable="false" title="C&#xf3;digo" type="java.lang.Integer"/>
-                                <Column editable="false" title="Cantidad" type="java.lang.Integer"/>
-                                <Column editable="false" title="Nombre" type="java.lang.String"/>
+                              <Table columnCount="9" rowCount="0">
+                                <Column editable="false" title="ISBN" type="java.lang.Integer"/>
+                                <Column editable="false" title="Titulo" type="java.lang.Integer"/>
+                                <Column editable="false" title="A&#xf1;o" type="java.lang.String"/>
                                 <Column editable="false" title="G&#xe9;nero" type="java.lang.String"/>
+                                <Column editable="true" title="Precio" type="java.lang.Object"/>
+                                <Column editable="true" title="Editorial" type="java.lang.Object"/>
+                                <Column editable="true" title="Autor" type="java.lang.Object"/>
+                                <Column editable="true" title="Cantidad" type="java.lang.Object"/>
+                                <Column editable="true" title="Ubicaci&#xf3;n" type="java.lang.Object"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -1464,7 +1326,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="PPrestamos">
+            <Container class="javax.swing.JPanel" name="PFacturas">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -1791,217 +1653,68 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="PAboutUs">
+            <Container class="javax.swing.JPanel" name="PInicio">
+              <Properties>
+                <Property name="requestFocusEnabled" type="boolean" value="false"/>
+              </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="723" max="32767" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="100" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="254" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
-                                          <Component id="iconoAngel" min="-2" pref="128" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
-                                          <Component id="iconoGary" min="-2" pref="128" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
-                                          <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
-                                          <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                  <Component id="iconoPaul" min="-2" pref="128" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
-                                  <Component id="iconoWilliam" min="-2" pref="128" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="iconoJohan" min="-2" pref="128" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                                  <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
-                                  <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="iconMinimal" min="-2" pref="694" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="iconoPaul" min="-2" pref="99" max="-2" attributes="0"/>
-                                      <Component id="iconoWilliam" min="-2" pref="99" max="-2" attributes="0"/>
-                                      <Component id="iconoJohan" min="-2" pref="99" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="154" pref="259" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="iconoGary" min="-2" pref="99" max="-2" attributes="0"/>
-                                      <Component id="iconoAngel" min="-2" pref="99" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
-                              </Group>
+                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                          <Component id="iconMinimal" min="-2" pref="233" max="-2" attributes="0"/>
+                          <EmptySpace pref="227" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel5">
+                <Component class="javax.swing.JLabel" name="jLabel3">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Roboto Medium" size="10" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="99" green="99" red="99" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Escritorio"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel2">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Roboto Medium" size="24" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="ESTOS SOMOS NOSOTROS"/>
+                    <Property name="text" type="java.lang.String" value="HOME"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="iconoPaul">
+                <Component class="javax.swing.JLabel" name="iconMinimal">
                   <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                        <LineBorder/>
-                      </Border>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Imagenes/iconMinimal.jpg"/>
                     </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="iconoWilliam">
-                  <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                        <LineBorder/>
-                      </Border>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="iconoJohan">
-                  <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                        <LineBorder/>
-                      </Border>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="iconoAngel">
-                  <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                        <LineBorder/>
-                      </Border>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="iconoGary">
-                  <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                        <LineBorder/>
-                      </Border>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel22">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Roboto Medium" size="14" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Somos Estudiantes de la Escuela Polit&#xe9;cnica Nacional , creamos el siguiente programa como parte de proyecto final para"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel23">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Roboto Medium" size="14" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="la materia de Programaci&#xf3;n 2."/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel24">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Roboto Medium" size="14" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Paul Rom&#xe1;n"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel25">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Roboto Medium" size="14" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="William Moyano"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel26">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Roboto Medium" size="14" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Johan Illicachi"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel27">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Roboto Medium" size="14" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="&#xc1;ngel Cabezas"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel28">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Roboto Medium" size="14" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Gary Campa&#xf1;a"/>
                   </Properties>
                 </Component>
               </SubComponents>
