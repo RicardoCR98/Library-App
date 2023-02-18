@@ -8,7 +8,7 @@ import javax.swing.border.LineBorder;
 
 public class JFAddCliente extends javax.swing.JFrame {
     JTable tabla;
-    Cliente estudiante;
+    Cliente cliente;
     /**
      * Creates new form JFAddEstudiante
      */
@@ -17,8 +17,8 @@ public class JFAddCliente extends javax.swing.JFrame {
 //        this.setAlwaysOnTop(true);
         this.setLocationRelativeTo(null);
         this.tabla = tabla;
-        this.estudiante = new Cliente();
-        estudiante.actualizarTabla(tabla);
+        this.cliente = new Cliente();
+        cliente.actualizarTabla(tabla);
     }
 
     private JFAddCliente() {
@@ -176,11 +176,11 @@ public class JFAddCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptaEstudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptaEstudActionPerformed
-        estudiante = new Cliente(this.jTFNombres.getText(), this.jTFApellidos.getText());
-        boolean flag = estudiante.añadirCliente();
+        cliente = new Cliente(this.jTFNombres.getText(), this.jTFApellidos.getText());
+        boolean flag = cliente.añadirCliente();
         if(flag){
                JOptionPane.showMessageDialog(null, "Datos Guardados correctamente.");
-            tabla = estudiante.actualizarTabla(tabla);
+            tabla = cliente.actualizarTabla(tabla);
             comewth();
         }else{
             JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");   

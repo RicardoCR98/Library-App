@@ -1,5 +1,5 @@
 package Logica;
-import ConexionBD.;
+import ConexionBD.ConexionBD;
 import Vista.JFBiblioteca;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +23,7 @@ public class Cliente {
         
     }
 
-    public Cliente(String nombre, String cedula, String telefono, String direccion, String Ubicacion) {
+    public Cliente(String nombre, String cedula) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.telefono = telefono;
