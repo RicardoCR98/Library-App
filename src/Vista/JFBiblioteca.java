@@ -12,9 +12,8 @@ import java.util.GregorianCalendar;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
-public class JFBiblioteca extends javax.swing.JFrame implements Runnable {
-    String hora, min, seg;
-    Thread hilo;
+public class JFBiblioteca extends javax.swing.JFrame{
+    
     JFAddLibro jfaddlibro;
     JFAddCliente jfaddcliente;
     JFEditCliente jfeditcliente;
@@ -27,10 +26,7 @@ public class JFBiblioteca extends javax.swing.JFrame implements Runnable {
         initComponents();
         this.setLocationRelativeTo(null);
         scaleImage();
-        getFechaHora();
         showPanel();
-        hilo = new Thread(this);
-        hilo.start();
         setVisible(true);
         jfaddlibro = new JFAddLibro(this.jTLibros);
         jfaddcliente = new JFAddCliente(this.jTEstudiantes);
@@ -46,38 +42,10 @@ public class JFBiblioteca extends javax.swing.JFrame implements Runnable {
 //        lblUsers.setText(log.getUser());
         lblUsers.setForeground(Color.white);
     }
-    public void Hora() {
-        Calendar calendario = new GregorianCalendar();
-        Date horaActual = new Date();
-        calendario.setTime(horaActual);
-        hora = calendario.get(Calendar.HOUR_OF_DAY) > 9 ? "" + calendario.get(Calendar.HOUR_OF_DAY) : "0" + calendario.get(Calendar.HOUR_OF_DAY);
-        min = calendario.get(Calendar.MINUTE) > 9 ? "" + calendario.get(Calendar.MINUTE) : "0" + calendario.get(Calendar.MINUTE);
-        seg = calendario.get(Calendar.SECOND) > 9 ? "" + calendario.get(Calendar.SECOND) : "0" + calendario.get(Calendar.SECOND);
-    }
-    public void run() {
-        Thread current = Thread.currentThread();
-        while (current == hilo) {
-            Hora();
-            lblHora.setText(hora + ":" + min + ":" + seg);
-            Libro libro = new Libro();
-            Cliente cliente = new Cliente();
-            libro.actualizarTabla(jTLibros);
-            cliente.actualizarTabla(jTEstudiantes);
-            contarEstud();
-            contarLib();
-            contarMult();
-        }
-    }
+
+    
     //Obtener Fecha y Hora
-    public void getFechaHora() {
-        //Hora actual
-        LocalTime HoraActual = LocalTime.now();
-        //Fecha Actual
-        LocalDate FechaActual = LocalDate.now();
-        //Hora y fecha Actual
-        LocalDateTime fechaHora = LocalDateTime.now();
-        this.lblFechaHora.setText("" + FechaActual);
-    }
+   
     //Escalar imagenes del inicio
     public void scaleImage() {
         //Bibliotecario
