@@ -16,11 +16,10 @@ public class JFBiblioteca extends javax.swing.JFrame implements Runnable {
     String hora, min, seg;
     Thread hilo;
     JFAddLibro jfaddlibro;
-    JFAddCLiente jfaddestudiante;
-    JFEditEstudiante jfeditestudiante;
+    JFAddCliente jfaddcliente;
+    JFEditCliente jfeditcliente;
     JFModificarLibro jfmodificarlibro;
-    JFAddPrestamo jfaddprestamo;
-    JFElimPrestamo jfelimprestamo;
+
     Login log = new Login();
     public JFBiblioteca() {
         Prestamo prestamo = new Prestamo();
@@ -34,11 +33,10 @@ public class JFBiblioteca extends javax.swing.JFrame implements Runnable {
         hilo.start();
         setVisible(true);
         jfaddlibro = new JFAddLibro(this.jTLibros);
-        jfaddestudiante = new JFAddEstudiante(this.jTEstudiantes);
-        jfeditestudiante = new JFEditEstudiante(this.jTEstudiantes);
+        jfaddcliente = new JFAddCliente(this.jTEstudiantes);
+        jfeditcliente = new JFEditCliente(this.jTEstudiantes);
         jfmodificarlibro = new JFModificarLibro(this.jTLibros);
-        jfaddprestamo = new JFAddPrestamo(this.jTPrestamos);
-        jfelimprestamo = new JFElimPrestamo(this.jTPrestamos);
+
     }
     public void showPanel() {
         this.PEstudiantes.setVisible(false);
@@ -62,9 +60,9 @@ public class JFBiblioteca extends javax.swing.JFrame implements Runnable {
             Hora();
             lblHora.setText(hora + ":" + min + ":" + seg);
             Libro libro = new Libro();
-            Estudiante estudiante = new Estudiante();
+            Cliente cliente = new Cliente();
             libro.actualizarTabla(jTLibros);
-            estudiante.actualizarTabla(jTEstudiantes);
+            cliente.actualizarTabla(jTEstudiantes);
             contarEstud();
             contarLib();
             contarMult();
@@ -1910,11 +1908,11 @@ public class JFBiblioteca extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_LPanelElimiLibMouseExited
 
     private void EPanelAñadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EPanelAñadirMouseClicked
-        jfaddestudiante.setVisible(true);
+        jfaddcliente.setVisible(true);
     }//GEN-LAST:event_EPanelAñadirMouseClicked
 
     private void EPanelModifMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EPanelModifMouseClicked
-        jfeditestudiante.setVisible(true);
+        jfeditcliente.setVisible(true);
     }//GEN-LAST:event_EPanelModifMouseClicked
 
     private void LPanelAñadirLibMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LPanelAñadirLibMouseClicked
@@ -1955,7 +1953,7 @@ public class JFBiblioteca extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_PPEliminarPrestamoMouseEntered
 
     private void PPEliminarPrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PPEliminarPrestamoMouseClicked
-        jfelimprestamo.setVisible(true);
+        
     }//GEN-LAST:event_PPEliminarPrestamoMouseClicked
 
     private void PPanelPrestamoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PPanelPrestamoMouseExited
@@ -1969,7 +1967,7 @@ public class JFBiblioteca extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_PPanelPrestamoMouseEntered
 
     private void PPanelPrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PPanelPrestamoMouseClicked
-        jfaddprestamo.setVisible(true);
+        
     }//GEN-LAST:event_PPanelPrestamoMouseClicked
 
     private void btnModificarLibrTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarLibrTxtMouseClicked
