@@ -20,15 +20,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author PC
  */
-public class JFEditEstudiante extends javax.swing.JFrame {
+public class JFEditCliente extends javax.swing.JFrame {
 JTable tabla;
-Cliente estudiante;
-    public JFEditEstudiante(JTable tabla) {
+Cliente cliente;
+    public JFEditCliente(JTable tabla) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.tabla = tabla;
-        this.estudiante = new Cliente();
-        estudiante.actualizarTabla(tabla);
+        this.cliente = new Cliente();
+        cliente.actualizarTabla(tabla);
     }
 
     /**
@@ -197,7 +197,6 @@ Cliente estudiante;
                 .addGap(23, 23, 23))
         );
 
-        btnActualizarEstud.setBackground(new java.awt.Color(255, 255, 255));
         btnActualizarEstud.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnActualizarEstud.setText("Actualizar");
         btnActualizarEstud.setPreferredSize(new java.awt.Dimension(107, 51));
@@ -215,7 +214,6 @@ Cliente estudiante;
             }
         });
 
-        btnEliminarEstud.setBackground(new java.awt.Color(255, 255, 255));
         btnEliminarEstud.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnEliminarEstud.setText("Eliminar");
         btnEliminarEstud.setPreferredSize(new java.awt.Dimension(107, 51));
@@ -233,7 +231,6 @@ Cliente estudiante;
             }
         });
 
-        btnCancelatStud2.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelatStud2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnCancelatStud2.setText("Cancelar");
         btnCancelatStud2.setPreferredSize(new java.awt.Dimension(62, 25));
@@ -286,7 +283,7 @@ Cliente estudiante;
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 175, Short.MAX_VALUE))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelatStud2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -323,14 +320,14 @@ Cliente estudiante;
         
         String sql = "UPDATE Estudiante SET "+ consulta + " WHERE codigo_e " + " LIKE "+condicion;
 
-        if(estudiante.ActualizarCliente(sql))
+        if(cliente.ActualizarCliente(sql))
             JOptionPane.showMessageDialog(null, "Datos Actualizados correctamente. ");
         else{
             JOptionPane.showMessageDialog (null, "Ocurrio un error al Actualizar los datos ");  
         }
 
-        estudiante.actualizarTabla(tabla);      
-        estudiante.actualizarTablaBusqueda(jTEstudiantesBusqueda, getConsulta());
+        cliente.actualizarTabla(tabla);      
+        cliente.actualizarTablaBusqueda(jTEstudiantesBusqueda, getConsulta());
 
     }//GEN-LAST:event_btnActualizarEstudActionPerformed
 
@@ -345,9 +342,9 @@ Cliente estudiante;
 
     private void btnEliminarEstudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEstudActionPerformed
         if(0==JOptionPane.showConfirmDialog(null, "¿Esta seguro de borrar "+jTFNombresEstudianteActualizar.getText()+" ?","Advertencia",JOptionPane.INFORMATION_MESSAGE)){
-            estudiante.setCodigoEstudiante(Integer.parseInt(jTFCodigoEstudianteActualizar.getText()));
+            cliente.setCedula(jTFCodigoEstudianteActualizar.getText());
     
-        if(estudiante.EliminarCliente())
+        if(cliente.EliminarCliente())
             JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
         else{
             JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ");
@@ -355,7 +352,7 @@ Cliente estudiante;
             jTFCodigoEstudianteActualizar.setText("");
             jTFNombresEstudianteActualizar.setText("");
             jTFApellidosEstudianteActualizar.setText("");       
-            estudiante.actualizarTabla(tabla);
+            cliente.actualizarTabla(tabla);
         }
     }//GEN-LAST:event_btnEliminarEstudActionPerformed
 
@@ -364,7 +361,7 @@ Cliente estudiante;
     }//GEN-LAST:event_btnCancelatStud2ActionPerformed
 
     private void jTFBusquedaEstudianteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBusquedaEstudianteKeyReleased
-        estudiante.actualizarTablaBusqueda(jTEstudiantesBusqueda, getConsulta());
+        cliente.actualizarTablaBusqueda(jTEstudiantesBusqueda, getConsulta());
     }//GEN-LAST:event_jTFBusquedaEstudianteKeyReleased
 
     private void btnActualizarEstudMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarEstudMouseEntered

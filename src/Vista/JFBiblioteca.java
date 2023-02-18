@@ -16,7 +16,7 @@ public class JFBiblioteca extends javax.swing.JFrame implements Runnable {
     String hora, min, seg;
     Thread hilo;
     JFAddLibro jfaddlibro;
-    JFAddCliente jfaddestudiante;
+    JFAddCLiente jfaddestudiante;
     JFEditEstudiante jfeditestudiante;
     JFModificarLibro jfmodificarlibro;
     JFAddPrestamo jfaddprestamo;
@@ -34,7 +34,7 @@ public class JFBiblioteca extends javax.swing.JFrame implements Runnable {
         hilo.start();
         setVisible(true);
         jfaddlibro = new JFAddLibro(this.jTLibros);
-        jfaddestudiante = new JFAddCliente(this.jTEstudiantes);
+        jfaddestudiante = new JFAddEstudiante(this.jTEstudiantes);
         jfeditestudiante = new JFEditEstudiante(this.jTEstudiantes);
         jfmodificarlibro = new JFModificarLibro(this.jTLibros);
         jfaddprestamo = new JFAddPrestamo(this.jTPrestamos);
@@ -62,7 +62,7 @@ public class JFBiblioteca extends javax.swing.JFrame implements Runnable {
             Hora();
             lblHora.setText(hora + ":" + min + ":" + seg);
             Libro libro = new Libro();
-            Cliente estudiante = new Cliente();
+            Estudiante estudiante = new Estudiante();
             libro.actualizarTabla(jTLibros);
             estudiante.actualizarTabla(jTEstudiantes);
             contarEstud();
@@ -2029,6 +2029,8 @@ public class JFBiblioteca extends javax.swing.JFrame implements Runnable {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(JFBiblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

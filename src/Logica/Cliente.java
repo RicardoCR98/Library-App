@@ -75,79 +75,89 @@ public class Cliente {
     
    
     public boolean añadirCliente(){
-        boolean flag = false;
-        try {
-            PreparedStatement pps = cn.prepareStatement("INSERT INTO Estudiante(nombres_e, apellidos_e) VALUES (?,?)"); 
+//        boolean flag = false;
+//        try {
+//            PreparedStatement pps = cn.prepareStatement("INSERT INTO Estudiante(nombres_e, apellidos_e) VALUES (?,?)"); 
 //            pps.setLong(1, this.codigoEstudiante);
-            pps.setString(1, this.nombre);
-            pps.setString (2, this.apellidos);
-            pps.executeUpdate ();
-            flag = true;
-        } catch(SQLException ex) {
-            Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, ex); 
-            flag = false;     
-        }
-        return flag;
+//            pps.setString(1, this.cedula);
+//            pps.setString(2, this.nombre);
+//            pps.setString(3, this.telefono);
+//            pps.setString(4,this.direccion);
+//            pps.setString(5, this.Ubicacion);
+//
+//           
+//            pps.executeUpdate ();
+//            flag = true;
+//        } catch(SQLException ex) {
+//            Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, ex); 
+//            flag = false;     
+//        }
+//        return flag;
+return true;
     }
     public boolean ActualizarCliente(String sql){
-        boolean flag = false;
-        try {
-        PreparedStatement pps = cn.prepareStatement(sql);
-        pps.executeUpdate();
-        flag = true;
-     } catch(SQLException ex) {
-            Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, ex); 
-            JOptionPane.showMessageDialog (null, "Ocurrio un error al Actualizar los datos ");     
-        }
-        return flag;
+//        boolean flag = false;
+//        try {
+//        PreparedStatement pps = cn.prepareStatement(sql);
+//        pps.executeUpdate();
+//        flag = true;
+//     } catch(SQLException ex) {
+//            Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, ex); 
+//            JOptionPane.showMessageDialog (null, "Ocurrio un error al Actualizar los datos ");     
+//        }
+//        return flag;
+return true;
     }
     public boolean EliminarCliente(){
-        boolean flag = false;
-        try {
-            PreparedStatement pps = cn.prepareStatement("DELETE FROM Estudiante WHERE codigo_e="+this.codigoEstudiante); 
-            pps.executeUpdate ();
-            flag = true;
-        } catch(SQLException ex) {
-            Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, ex); 
-            JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ");     
-        }
-        return flag;
+//        boolean flag = false;
+//        try {
+//            PreparedStatement pps = cn.prepareStatement("DELETE FROM Estudiante WHERE codigo_e="+this.codigoEstudiante); 
+//            pps.executeUpdate ();
+//            flag = true;
+//        } catch(SQLException ex) {
+//            Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, ex); 
+//            JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ");     
+//        }
+//        return flag;
+return true;
         
     }
     public JTable actualizarTabla(JTable tabla1){
-    Statement st;
-    ResultSet rs=null; 
     JTable tabla = tabla1;
-    try {   
-        st = cn.createStatement();
-        rs = st.executeQuery("SELECT * FROM Estudiante"); 
-        DefaultTableModel dfm = new DefaultTableModel();
-        tabla.setModel(dfm);
-        dfm.setColumnIdentifiers(new Object[]{"Código","Nombres","Apellidos"});
-        while(rs.next()){
-            dfm.addRow(new Object[]{rs.getInt("codigo_e"), rs.getString("nombres_e"), rs.getString("apellidos_e")});
-        }
-    }catch(SQLException ex) {
-        Logger.getLogger(JFBiblioteca.class.getName()).log(Level. SEVERE, null, ex); 
-    }        
-        return tabla;
+//    Statement st;
+//    ResultSet rs=null; 
+//    try {   
+//        st = cn.createStatement();
+//        rs = st.executeQuery("SELECT * FROM Estudiante"); 
+//        DefaultTableModel dfm = new DefaultTableModel();
+//        tabla.setModel(dfm);
+//        dfm.setColumnIdentifiers(new Object[]{"Código","Nombres","Apellidos"});
+//        while(rs.next()){
+//            dfm.addRow(new Object[]{rs.getInt("codigo_e"), rs.getString("nombres_e"), rs.getString("apellidos_e")});
+//        }
+//    }catch(SQLException ex) {
+//        Logger.getLogger(JFBiblioteca.class.getName()).log(Level. SEVERE, null, ex); 
+//    }        
+//        return tabla;
+return tabla;
     }
     public void actualizarTablaBusqueda(JTable tabla1, String consulta){
-    Statement st;
-    ResultSet rs=null;    
-    try {   
-        st = cn.createStatement();       
-        rs = st.executeQuery("SELECT * FROM Estudiante WHERE "+consulta); 
-        DefaultTableModel dfm = new DefaultTableModel();
-        tabla1.setModel(dfm);
-        dfm.setColumnIdentifiers(new Object[]{"Código","Nombre","Apellido"});
-        while(rs.next()){
-            dfm.addRow(new Object[]{rs.getInt("codigo_e"), rs.getString("nombres_e"), rs.getString("apellidos_e")});
-        }
-        
-        }catch(SQLException ex) {
-        //Logger.getLogger(JFBibliotecaDB.class.getName()).log(Level. SEVERE, null, ex); 
-        //JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");     
-    }
-    }
+//    Statement st;
+//    ResultSet rs=null;    
+//    try {   
+//        st = cn.createStatement();       
+//        rs = st.executeQuery("SELECT * FROM Estudiante WHERE "+consulta); 
+//        DefaultTableModel dfm = new DefaultTableModel();
+//        tabla1.setModel(dfm);
+//        dfm.setColumnIdentifiers(new Object[]{"Código","Nombre","Apellido"});
+//        while(rs.next()){
+//            dfm.addRow(new Object[]{rs.getInt("codigo_e"), rs.getString("nombres_e"), rs.getString("apellidos_e")});
+//        }
+//        
+//        }catch(SQLException ex) {
+//        //Logger.getLogger(JFBibliotecaDB.class.getName()).log(Level. SEVERE, null, ex); 
+//        //JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");     
+//    }
+   }
 }
+   
