@@ -4,12 +4,6 @@ import Logica.*;
 import Paneles.Home;
 import java.awt.Color;
 import java.awt.Image;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
@@ -55,10 +49,10 @@ public class JFBiblioteca extends javax.swing.JFrame{
     //Escalar imagenes del inicio
     public void scaleImage() {
         //Bibliotecario
-        ImageIcon iconBiblio = new ImageIcon(getClass().getResource("/Imagenes/bibliotecario.png"));
-        Image imageBilio = (iconBiblio).getImage().getScaledInstance(this.iconoAdmin0.getWidth(), iconoAdmin0.getHeight(), Image.SCALE_SMOOTH);
-        iconBiblio = new ImageIcon(imageBilio);
-        iconoAdmin0.setIcon(iconBiblio);
+//        ImageIcon iconBiblio = new ImageIcon(getClass().getResource("/Imagenes/bibliotecario.png"));
+//        Image imageBilio = (iconBiblio).getImage().getScaledInstance(this.iconoAdmin0.getWidth(), iconoAdmin0.getHeight(), Image.SCALE_SMOOTH);
+//        iconBiblio = new ImageIcon(imageBilio);
+//        iconoAdmin0.setIcon(iconBiblio);
         //Logo Librimundo
         ImageIcon icon = new ImageIcon(getClass().getResource("/Imagenes/LogoLibri.jpg"));
         Image image = (icon).getImage().getScaledInstance(this.iconoLibriMundi.getWidth(), iconoLibriMundi.getHeight(), Image.SCALE_SMOOTH);
@@ -151,10 +145,10 @@ public class JFBiblioteca extends javax.swing.JFrame{
         
 
         //BOOKS
-        ImageIcon iconMinimal = new ImageIcon(getClass().getResource("/Imagenes/iconMinimal.jpg"));
-        Image imageBK = (iconMinimal).getImage().getScaledInstance(this.iconMinimal.getWidth(), this.iconMinimal.getHeight(), Image.SCALE_SMOOTH);
-        iconMinimal = new ImageIcon(iconMinimal);
-        this.iconMinimal.setIcon(iconMinimal);
+//        ImageIcon iconMinimal = new ImageIcon(getClass().getResource("/Imagenes/iconMinimal.jpg"));
+//        Image imageBK = (iconMinimal).getImage().getScaledInstance(this.iconMinimal.getWidth(), this.iconMinimal.getHeight(), Image.SCALE_SMOOTH);
+//        this.iconMinimal = new ImageIcon(iconMinimal);
+//        iconMinimal.setIcon(iconMinimal);
     }
 
     @SuppressWarnings("unchecked")
