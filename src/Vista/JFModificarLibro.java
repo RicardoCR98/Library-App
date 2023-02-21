@@ -382,7 +382,7 @@ JTable tabla;
     private void btnEliminarLibActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarLibActionPerformed
 
         if(0==JOptionPane.showConfirmDialog(null, "¿Esta seguro de borrar "+jTFNombreLibroActualizar.getText()+" ?","Advertencia",JOptionPane.INFORMATION_MESSAGE)){
-            libro.setCodigoLibro(Integer.parseInt(jTFCodigoLibroActualizar.getText()));
+            libro.setCodigoLibro(jTFCodigoLibroActualizar.getText());
             if(libro.eliminarLibro()){
                 JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
             }else{

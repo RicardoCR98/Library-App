@@ -1,22 +1,20 @@
 package Vista;
 
 import Logica.*;
-import Paneles.Home;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
-public class JFBiblioteca extends javax.swing.JFrame{
+public class JFLibreria extends javax.swing.JFrame{
    
     JFAddCliente jfaddcliente;
     JFEditCliente jfeditcliente;
     JFAddLibro jfaddlibro;
     JFModificarLibro jfmodificarlibro;
-    Home home;
 
     Login log = new Login();
-    public JFBiblioteca() {
+    public JFLibreria() {
         Prestamo prestamo = new Prestamo();
         prestamo.setMultas();
         initComponents();
@@ -28,10 +26,8 @@ public class JFBiblioteca extends javax.swing.JFrame{
         jfaddcliente = new JFAddCliente(this.jTEstudiantes);
         jfeditcliente = new JFEditCliente(this.jTEstudiantes);
         jfmodificarlibro = new JFModificarLibro(this.jTLibros);
-        home= new Home();
-        home.setVisible(true);
-
     }
+    
     public void showPanel() {
         this.PClientes.setVisible(false);
         this.PLibros.setVisible(false);
@@ -48,17 +44,16 @@ public class JFBiblioteca extends javax.swing.JFrame{
    
     //Escalar imagenes del inicio
     public void scaleImage() {
-        //Bibliotecario
-//        ImageIcon iconBiblio = new ImageIcon(getClass().getResource("/Imagenes/bibliotecario.png"));
-//        Image imageBilio = (iconBiblio).getImage().getScaledInstance(this.iconoAdmin0.getWidth(), iconoAdmin0.getHeight(), Image.SCALE_SMOOTH);
-//        iconBiblio = new ImageIcon(imageBilio);
-//        iconoAdmin0.setIcon(iconBiblio);
-        //Logo Librimundo
-        ImageIcon icon = new ImageIcon(getClass().getResource("/Imagenes/LogoLibri.jpg"));
+        //Logo Librimundi
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Imagenes/iconMinimal.jpg"));
         Image image = (icon).getImage().getScaledInstance(this.iconoLibriMundi.getWidth(), iconoLibriMundi.getHeight(), Image.SCALE_SMOOTH);
         icon = new ImageIcon(image);
         iconoLibriMundi.setIcon(icon);
-       
+        //Inicio
+        ImageIcon iconoMinimal = new ImageIcon(getClass().getResource("/Imagenes/LogoLibri.jpg"));
+        Image imagenFondo = (iconoMinimal).getImage().getScaledInstance(this.PiconMinimal.getWidth(), this.PiconMinimal.getHeight(), Image.SCALE_SMOOTH);
+        iconoMinimal = new ImageIcon(imagenFondo);
+        PiconMinimal.setIcon(iconoMinimal);
         //Admin
         ImageIcon iconoAdminis = new ImageIcon(getClass().getResource("/Imagenes/admin.png"));
         Image imageAdmin = (iconoAdminis).getImage().getScaledInstance(this.iconoAdmin.getWidth(), iconoAdmin.getHeight(), Image.SCALE_SMOOTH);
@@ -80,10 +75,10 @@ public class JFBiblioteca extends javax.swing.JFrame{
         iconRegis = new ImageIcon(imageEstu);
         iconoEstud.setIcon(iconRegis);
         //AñadirLibro
-        ImageIcon iconoLibro = new ImageIcon(getClass().getResource("/Imagenes/AñadirLib.png"));
-        Image imageLib = (iconoLibro).getImage().getScaledInstance(this.iconLib.getWidth(), iconLib.getHeight(), Image.SCALE_SMOOTH);
-        iconoLibro = new ImageIcon(imageLib);
-        iconLib.setIcon(iconoLibro);
+        ImageIcon iconodLibro = new ImageIcon(getClass().getResource("/Imagenes/AñadirLib.png"));
+        Image imageLib = (iconodLibro).getImage().getScaledInstance(this.iconLib.getWidth(), iconLib.getHeight(), Image.SCALE_SMOOTH);
+        iconodLibro = new ImageIcon(imageLib);
+        iconLib.setIcon(iconodLibro);
         //Prestamos y multas
         ImageIcon iconPrestamo = new ImageIcon(getClass().getResource("/Imagenes/prestamo.png"));
         Image imagePrest = (iconPrestamo).getImage().getScaledInstance(this.iconoPrestamo.getWidth(), iconoPrestamo.getHeight(), Image.SCALE_SMOOTH);
@@ -140,15 +135,7 @@ public class JFBiblioteca extends javax.swing.JFrame{
         ImageIcon iconoEliPres = new ImageIcon(getClass().getResource("/Imagenes/EliminarMulta.png"));
         Image imageEliPrest = (iconoEliPres).getImage().getScaledInstance(this.PiconoElimiPrest.getWidth(), PiconoElimiPrest.getHeight(), Image.SCALE_SMOOTH);
         iconoEliPres = new ImageIcon(imageEliPrest);
-        PiconoElimiPrest.setIcon(iconoEliPres);
-
-        
-
-        //BOOKS
-//        ImageIcon iconMinimal = new ImageIcon(getClass().getResource("/Imagenes/iconMinimal.jpg"));
-//        Image imageBK = (iconMinimal).getImage().getScaledInstance(this.iconMinimal.getWidth(), this.iconMinimal.getHeight(), Image.SCALE_SMOOTH);
-//        this.iconMinimal = new ImageIcon(iconMinimal);
-//        iconMinimal.setIcon(iconMinimal);
+        PiconoElimiPrest.setIcon(iconoEliPres);     
     }
 
     @SuppressWarnings("unchecked")
@@ -165,7 +152,7 @@ public class JFBiblioteca extends javax.swing.JFrame{
         iconoAdmin = new javax.swing.JLabel();
         lblUsers = new javax.swing.JLabel();
         iconoCerrarSesion = new javax.swing.JLabel();
-        EPN = new javax.swing.JPanel();
+        pnlLib = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         iconoLibriMundi = new javax.swing.JLabel();
         Opciones = new javax.swing.JPanel();
@@ -238,7 +225,7 @@ public class JFBiblioteca extends javax.swing.JFrame{
         PInicio = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        iconMinimal = new javax.swing.JLabel();
+        PiconMinimal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Bibliotecario");
@@ -276,7 +263,7 @@ public class JFBiblioteca extends javax.swing.JFrame{
                 .addComponent(iconoAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 468, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 500, Short.MAX_VALUE)
                 .addComponent(iconoCalendarioHora, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblFechaHora, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -303,24 +290,30 @@ public class JFBiblioteca extends javax.swing.JFrame{
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        EPN.setBackground(new java.awt.Color(255, 0, 0));
+        pnlLib.setBackground(new java.awt.Color(255, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("LIBRIMUNDI");
+        jLabel1.setAlignmentX(0.5F);
+        jLabel1.setAlignmentY(0.8F);
 
-        javax.swing.GroupLayout EPNLayout = new javax.swing.GroupLayout(EPN);
-        EPN.setLayout(EPNLayout);
-        EPNLayout.setHorizontalGroup(
-            EPNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EPNLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout pnlLibLayout = new javax.swing.GroupLayout(pnlLib);
+        pnlLib.setLayout(pnlLibLayout);
+        pnlLibLayout.setHorizontalGroup(
+            pnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLibLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        EPNLayout.setVerticalGroup(
-            EPNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+        pnlLibLayout.setVerticalGroup(
+            pnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLibLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout TopBarLayout = new javax.swing.GroupLayout(TopBar);
@@ -328,23 +321,22 @@ public class JFBiblioteca extends javax.swing.JFrame{
         TopBarLayout.setHorizontalGroup(
             TopBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TopBarLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(iconoLibriMundi, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(EPN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(iconoLibriMundi, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(pnlLib, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(TolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         TopBarLayout.setVerticalGroup(
             TopBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TopBarLayout.createSequentialGroup()
-                .addGroup(TopBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(TopBarLayout.createSequentialGroup()
+                .addGroup(TopBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(iconoLibriMundi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(EPN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, TopBarLayout.createSequentialGroup()
-                        .addComponent(TolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(pnlLib, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TolBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         Opciones.setBackground(new java.awt.Color(37, 40, 80));
@@ -641,7 +633,15 @@ public class JFBiblioteca extends javax.swing.JFrame{
             new String [] {
                 "Cedula", "Nombre", "Telefono", "Direccion", "Ubicacion"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jTEstudiantes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTEstudiantesMouseClicked(evt);
@@ -812,7 +812,7 @@ public class JFBiblioteca extends javax.swing.JFrame{
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel10)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PClientesLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                                 .addComponent(EPanelModif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(PClientesLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -910,14 +910,14 @@ public class JFBiblioteca extends javax.swing.JFrame{
 
             },
             new String [] {
-                "ISBN", "Titulo", "Año", "Género", "Precio", "Editorial", "Autor", "Cantidad", "Ubicación"
+                "ISBN", "Titulo", "Autor", "Género", "Año", "Editorial", "Cantidad", "Precio", "Ubicación"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true, true, true, true
+                false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1034,18 +1034,18 @@ public class JFBiblioteca extends javax.swing.JFrame{
                 .addGroup(PLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(lblCountLib))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         jLabel19.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
-        jLabel19.setText("PRESTAMOS Y MULTAS");
+        jLabel19.setText("Facturas");
 
         jLabel20.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel20.setText("Escritorio");
 
         jLabel21.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel21.setText("/ Prestamos y multas");
+        jLabel21.setText("/ Facturas");
 
         PPanelPrestamo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PPanelPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1061,7 +1061,7 @@ public class JFBiblioteca extends javax.swing.JFrame{
         });
 
         btnPrestamoLibTxt.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        btnPrestamoLibTxt.setText("Solicitar Préstamo");
+        btnPrestamoLibTxt.setText("Agregar Factura");
 
         javax.swing.GroupLayout PPanelPrestamoLayout = new javax.swing.GroupLayout(PPanelPrestamo);
         PPanelPrestamo.setLayout(PPanelPrestamoLayout);
@@ -1132,11 +1132,11 @@ public class JFBiblioteca extends javax.swing.JFrame{
 
             },
             new String [] {
-                "Código", "Cantidad", "Nombre", "Género"
+                "Código", "ISBN", "Cantidad", "Precio Total"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -1173,7 +1173,7 @@ public class JFBiblioteca extends javax.swing.JFrame{
         });
 
         jLabel12.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel12.setText("Prestamos Registrados:");
+        jLabel12.setText("Facturas Registradas:");
 
         lblCountMult.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblCountMult.setText("...");
@@ -1210,7 +1210,7 @@ public class JFBiblioteca extends javax.swing.JFrame{
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblCountMult)))
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addContainerGap(333, Short.MAX_VALUE))
             .addGroup(PFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFacturasLayout.createSequentialGroup()
                     .addContainerGap(84, Short.MAX_VALUE)
@@ -1257,7 +1257,7 @@ public class JFBiblioteca extends javax.swing.JFrame{
         jLabel2.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
         jLabel2.setText("HOME");
 
-        iconMinimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconMinimal.jpg"))); // NOI18N
+        PiconMinimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconMinimal.jpg"))); // NOI18N
 
         javax.swing.GroupLayout PInicioLayout = new javax.swing.GroupLayout(PInicio);
         PInicio.setLayout(PInicioLayout);
@@ -1268,22 +1268,17 @@ public class JFBiblioteca extends javax.swing.JFrame{
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addContainerGap(723, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PInicioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(iconMinimal, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(PiconMinimal, javax.swing.GroupLayout.DEFAULT_SIZE, 895, Short.MAX_VALUE)
         );
         PInicioLayout.setVerticalGroup(
             PInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PInicioLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(PInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(PInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
-                .addGap(79, 79, 79)
-                .addComponent(iconMinimal, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PiconMinimal, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE))
         );
 
         Contenido.setLayer(PClientes, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -1304,8 +1299,8 @@ public class JFBiblioteca extends javax.swing.JFrame{
                     .addGap(0, 52, Short.MAX_VALUE)))
             .addGroup(ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ContenidoLayout.createSequentialGroup()
-                    .addComponent(PLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 897, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 50, Short.MAX_VALUE)))
+                    .addComponent(PLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 887, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 61, Short.MAX_VALUE)))
             .addGroup(ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ContenidoLayout.createSequentialGroup()
                     .addComponent(PFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1321,7 +1316,7 @@ public class JFBiblioteca extends javax.swing.JFrame{
             .addGroup(ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ContenidoLayout.createSequentialGroup()
                     .addComponent(PLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 3, Short.MAX_VALUE)))
+                    .addGap(0, 12, Short.MAX_VALUE)))
             .addGroup(ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ContenidoLayout.createSequentialGroup()
                     .addComponent(PFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1334,18 +1329,17 @@ public class JFBiblioteca extends javax.swing.JFrame{
             ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ContainerLayout.createSequentialGroup()
                 .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContainerLayout.createSequentialGroup()
-                        .addComponent(iconoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContainerLayout.createSequentialGroup()
-                        .addComponent(Opciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)))
-                .addComponent(Contenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(ContainerLayout.createSequentialGroup()
+                        .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContainerLayout.createSequentialGroup()
+                                .addComponent(iconoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(19, 19, 19))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContainerLayout.createSequentialGroup()
+                                .addComponent(Opciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)))
+                        .addComponent(Contenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TopBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(ContainerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(TopBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ContainerLayout.setVerticalGroup(
             ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1370,7 +1364,7 @@ public class JFBiblioteca extends javax.swing.JFrame{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Container, javax.swing.GroupLayout.PREFERRED_SIZE, 1191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1381,242 +1375,6 @@ public class JFBiblioteca extends javax.swing.JFrame{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void PrestamoMultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrestamoMultaMouseClicked
-
-    }//GEN-LAST:event_PrestamoMultaMouseClicked
-
-    private void btnIniciotxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciotxtMouseEntered
-        this.Inicio.setBackground(Color.red);
-    }//GEN-LAST:event_btnIniciotxtMouseEntered
-
-    private void btnIniciotxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciotxtMouseExited
-        this.Inicio.setBackground(new Color(37, 40, 80));
-    }//GEN-LAST:event_btnIniciotxtMouseExited
-
-    private void iconHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconHomeMouseEntered
-        this.Inicio.setBackground(Color.red);
-    }//GEN-LAST:event_iconHomeMouseEntered
-
-    private void iconHomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconHomeMouseExited
-        this.Inicio.setBackground(new Color(37, 40, 80));
-    }//GEN-LAST:event_iconHomeMouseExited
-
-    private void InicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InicioMouseEntered
-        this.Inicio.setBackground(Color.red);
-    }//GEN-LAST:event_InicioMouseEntered
-
-    private void InicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InicioMouseExited
-        this.Inicio.setBackground(new Color(37, 40, 80));
-    }//GEN-LAST:event_InicioMouseExited
-
-    private void RegistroEstudianteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistroEstudianteMouseEntered
-        this.RegistroEstudiante.setBackground(Color.red);
-    }//GEN-LAST:event_RegistroEstudianteMouseEntered
-
-    private void RegistroEstudianteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistroEstudianteMouseExited
-        this.RegistroEstudiante.setBackground(new Color(37, 40, 80));
-    }//GEN-LAST:event_RegistroEstudianteMouseExited
-
-    private void btnClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseEntered
-        this.RegistroEstudiante.setBackground(Color.red);
-    }//GEN-LAST:event_btnClienteMouseEntered
-
-    private void btnClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseExited
-        this.RegistroEstudiante.setBackground(new Color(37, 40, 80));
-    }//GEN-LAST:event_btnClienteMouseExited
-
-    private void iconoEstudMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoEstudMouseEntered
-        this.RegistroEstudiante.setBackground(Color.red);
-    }//GEN-LAST:event_iconoEstudMouseEntered
-
-    private void iconoEstudMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoEstudMouseExited
-        this.RegistroEstudiante.setBackground(new Color(37, 40, 80));
-    }//GEN-LAST:event_iconoEstudMouseExited
-
-    private void RegistroLibroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistroLibroMouseEntered
-        this.RegistroLibro.setBackground(Color.red);
-    }//GEN-LAST:event_RegistroLibroMouseEntered
-
-    private void RegistroLibroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistroLibroMouseExited
-        this.RegistroLibro.setBackground(new Color(37, 40, 80));
-    }//GEN-LAST:event_RegistroLibroMouseExited
-
-    private void btnLibTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLibTxtMouseEntered
-        this.RegistroLibro.setBackground(Color.red);
-    }//GEN-LAST:event_btnLibTxtMouseEntered
-
-    private void btnLibTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLibTxtMouseExited
-        this.RegistroLibro.setBackground(new Color(37, 40, 80));
-    }//GEN-LAST:event_btnLibTxtMouseExited
-
-    private void iconLibMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLibMouseEntered
-        this.RegistroLibro.setBackground(Color.red);
-    }//GEN-LAST:event_iconLibMouseEntered
-
-    private void iconLibMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLibMouseExited
-        this.RegistroLibro.setBackground(new Color(37, 40, 80));
-    }//GEN-LAST:event_iconLibMouseExited
-
-    private void PrestamoMultaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrestamoMultaMouseEntered
-        this.PrestamoMulta.setBackground(Color.red);
-    }//GEN-LAST:event_PrestamoMultaMouseEntered
-
-    private void PrestamoMultaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrestamoMultaMouseExited
-        this.PrestamoMulta.setBackground(new Color(37, 40, 80));
-    }//GEN-LAST:event_PrestamoMultaMouseExited
-
-    private void btnPrestamoTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrestamoTxtMouseEntered
-        this.PrestamoMulta.setBackground(Color.red);
-    }//GEN-LAST:event_btnPrestamoTxtMouseEntered
-
-    private void btnPrestamoTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrestamoTxtMouseExited
-        this.PrestamoMulta.setBackground(new Color(37, 40, 80));
-    }//GEN-LAST:event_btnPrestamoTxtMouseExited
-
-    private void iconoPrestamoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoPrestamoMouseEntered
-        this.PrestamoMulta.setBackground(Color.red);
-    }//GEN-LAST:event_iconoPrestamoMouseEntered
-
-    private void iconoPrestamoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoPrestamoMouseExited
-        this.PrestamoMulta.setBackground(new Color(37, 40, 80));
-    }//GEN-LAST:event_iconoPrestamoMouseExited
-
-    private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
-        this.PClientes.setVisible(true);
-        this.PInicio.setVisible(false);
-        this.PLibros.setVisible(false);
-        this.PFacturas.setVisible(false);
-    }//GEN-LAST:event_btnClienteMouseClicked
-
-    private void btnIniciotxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciotxtMouseClicked
-        this.PInicio.setVisible(true);
-        this.PClientes.setVisible(false);
-        this.PLibros.setVisible(false);
-        this.PFacturas.setVisible(false);
-    }//GEN-LAST:event_btnIniciotxtMouseClicked
-
-    private void btnLibTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLibTxtMouseClicked
-        this.PLibros.setVisible(true);
-        this.PClientes.setVisible(false);
-        this.PInicio.setVisible(false);
-        this.PFacturas.setVisible(false);
-    }//GEN-LAST:event_btnLibTxtMouseClicked
-
-    private void btnPrestamoTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrestamoTxtMouseClicked
-        this.PFacturas.setVisible(true);
-        this.PClientes.setVisible(false);
-        this.PInicio.setVisible(false);
-        this.PLibros.setVisible(false);
-    }//GEN-LAST:event_btnPrestamoTxtMouseClicked
-
-    private void jTEstudiantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTEstudiantesMouseClicked
-//        int fila = this.jTEstudiantes.getSelectedRow();
-//        if (fila == -1) {
-//            JOptionPane.showMessageDialog(null, "Ninguna fila a sido seleccionada");
-//        } else {
-//            
-//            jfeditestudiante.setVisible(true);
-//
-//        }
-    }//GEN-LAST:event_jTEstudiantesMouseClicked
-
-    private void EtxtBusquedaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EtxtBusquedaMouseEntered
-
-    }//GEN-LAST:event_EtxtBusquedaMouseEntered
-
-    private void EtxtBusquedaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EtxtBusquedaMousePressed
-        if (this.EtxtBusqueda.getText().equals("Busqueda")) {
-            this.EtxtBusqueda.setText("");
-            this.EtxtBusqueda.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_EtxtBusquedaMousePressed
-
-    private void EtxtBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EtxtBusquedaMouseClicked
-
-    }//GEN-LAST:event_EtxtBusquedaMouseClicked
-
-    private void EtxtBusquedaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EtxtBusquedaMouseExited
-
-    }//GEN-LAST:event_EtxtBusquedaMouseExited
-
-    private void EPanelAñadirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EPanelAñadirMouseEntered
-        this.EPanelAñadir.setBorder(new LineBorder(Color.red));
-        this.btnAñadirEstuxt.setForeground(Color.red);
-
-    }//GEN-LAST:event_EPanelAñadirMouseEntered
-
-    private void EPanelAñadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EPanelAñadirMouseExited
-//        this.EPanelAñadir.setBorder(new LineBorder(Color.black));
-        this.EPanelAñadir.setBorder(null);
-        this.btnAñadirEstuxt.setForeground(Color.black);
-    }//GEN-LAST:event_EPanelAñadirMouseExited
-
-    private void EPanelModifMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EPanelModifMouseEntered
-        this.EPanelModif.setBorder(new LineBorder(Color.red));
-        this.btnModificarEstuTxt.setForeground(Color.red);
-    }//GEN-LAST:event_EPanelModifMouseEntered
-
-    private void EPanelModifMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EPanelModifMouseExited
-        this.EPanelModif.setBorder(null);
-        this.btnModificarEstuTxt.setForeground(Color.black);
-    }//GEN-LAST:event_EPanelModifMouseExited
-
-    private void LtxtBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LtxtBusquedaMouseClicked
-        if (this.LtxtBusqueda.getText().equals("Busqueda")) {
-            this.LtxtBusqueda.setText("");
-            this.LtxtBusqueda.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_LtxtBusquedaMouseClicked
-
-    private void LtxtBusquedaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LtxtBusquedaMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LtxtBusquedaMouseEntered
-
-    private void LtxtBusquedaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LtxtBusquedaMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LtxtBusquedaMouseExited
-
-    private void LtxtBusquedaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LtxtBusquedaMousePressed
-
-    }//GEN-LAST:event_LtxtBusquedaMousePressed
-
-    private void LPanelAñadirLibMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LPanelAñadirLibMouseEntered
-        this.LPanelAñadirLib.setBorder(new LineBorder(Color.red));
-        this.btnAñadirLibTxt.setForeground(Color.red);
-
-    }//GEN-LAST:event_LPanelAñadirLibMouseEntered
-
-    private void LPanelAñadirLibMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LPanelAñadirLibMouseExited
-        this.LPanelAñadirLib.setBorder(null);
-        this.btnAñadirLibTxt.setForeground(Color.black);
-    }//GEN-LAST:event_LPanelAñadirLibMouseExited
-
-    private void LPanelElimiLibMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LPanelElimiLibMouseEntered
-        this.LPanelElimiLib.setBorder(new LineBorder(Color.red));
-        this.btnModificarLibrTxt.setForeground(Color.red);
-    }//GEN-LAST:event_LPanelElimiLibMouseEntered
-
-    private void LPanelElimiLibMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LPanelElimiLibMouseExited
-        this.LPanelElimiLib.setBorder(null);
-        this.btnModificarLibrTxt.setForeground(Color.black);
-    }//GEN-LAST:event_LPanelElimiLibMouseExited
-
-    private void EPanelAñadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EPanelAñadirMouseClicked
-        jfaddcliente.setVisible(true);
-    }//GEN-LAST:event_EPanelAñadirMouseClicked
-
-    private void EPanelModifMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EPanelModifMouseClicked
-        jfeditcliente.setVisible(true);
-    }//GEN-LAST:event_EPanelModifMouseClicked
-
-    private void LPanelAñadirLibMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LPanelAñadirLibMouseClicked
-        jfaddlibro.setVisible(true);
-    }//GEN-LAST:event_LPanelAñadirLibMouseClicked
-
-    private void LPanelElimiLibMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LPanelElimiLibMouseClicked
-        jfmodificarlibro.setVisible(true);
-    }//GEN-LAST:event_LPanelElimiLibMouseClicked
 
     private void LtxtBusquedaPrestamosMultasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LtxtBusquedaPrestamosMultasMousePressed
         if (this.LtxtBusquedaPrestamosMultas.getText().equals("Busqueda")) {
@@ -1648,7 +1406,7 @@ public class JFBiblioteca extends javax.swing.JFrame{
     }//GEN-LAST:event_PPEliminarPrestamoMouseEntered
 
     private void PPEliminarPrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PPEliminarPrestamoMouseClicked
-        
+
     }//GEN-LAST:event_PPEliminarPrestamoMouseClicked
 
     private void PPanelPrestamoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PPanelPrestamoMouseExited
@@ -1662,12 +1420,246 @@ public class JFBiblioteca extends javax.swing.JFrame{
     }//GEN-LAST:event_PPanelPrestamoMouseEntered
 
     private void PPanelPrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PPanelPrestamoMouseClicked
-        
+
     }//GEN-LAST:event_PPanelPrestamoMouseClicked
+
+    private void LPanelAñadirLibMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LPanelAñadirLibMouseExited
+        this.LPanelAñadirLib.setBorder(null);
+        this.btnAñadirLibTxt.setForeground(Color.black);
+    }//GEN-LAST:event_LPanelAñadirLibMouseExited
+
+    private void LPanelAñadirLibMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LPanelAñadirLibMouseEntered
+        this.LPanelAñadirLib.setBorder(new LineBorder(Color.red));
+        this.btnAñadirLibTxt.setForeground(Color.red);
+    }//GEN-LAST:event_LPanelAñadirLibMouseEntered
+
+    private void LPanelAñadirLibMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LPanelAñadirLibMouseClicked
+        jfaddlibro.setVisible(true);
+    }//GEN-LAST:event_LPanelAñadirLibMouseClicked
+
+    private void LPanelElimiLibMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LPanelElimiLibMouseExited
+        this.LPanelElimiLib.setBorder(null);
+        this.btnModificarLibrTxt.setForeground(Color.black);
+    }//GEN-LAST:event_LPanelElimiLibMouseExited
+
+    private void LPanelElimiLibMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LPanelElimiLibMouseEntered
+        this.LPanelElimiLib.setBorder(new LineBorder(Color.red));
+        this.btnModificarLibrTxt.setForeground(Color.red);
+    }//GEN-LAST:event_LPanelElimiLibMouseEntered
+
+    private void LPanelElimiLibMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LPanelElimiLibMouseClicked
+        jfmodificarlibro.setVisible(true);
+    }//GEN-LAST:event_LPanelElimiLibMouseClicked
 
     private void btnModificarLibrTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarLibrTxtMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnModificarLibrTxtMouseClicked
+
+    private void LtxtBusquedaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LtxtBusquedaMousePressed
+
+    }//GEN-LAST:event_LtxtBusquedaMousePressed
+
+    private void LtxtBusquedaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LtxtBusquedaMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LtxtBusquedaMouseExited
+
+    private void LtxtBusquedaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LtxtBusquedaMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LtxtBusquedaMouseEntered
+
+    private void LtxtBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LtxtBusquedaMouseClicked
+        if (this.LtxtBusqueda.getText().equals("Busqueda")) {
+            this.LtxtBusqueda.setText("");
+            this.LtxtBusqueda.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_LtxtBusquedaMouseClicked
+
+    private void EPanelModifMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EPanelModifMouseExited
+        this.EPanelModif.setBorder(null);
+        this.btnModificarEstuTxt.setForeground(Color.black);
+    }//GEN-LAST:event_EPanelModifMouseExited
+
+    private void EPanelModifMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EPanelModifMouseEntered
+        this.EPanelModif.setBorder(new LineBorder(Color.red));
+        this.btnModificarEstuTxt.setForeground(Color.red);
+    }//GEN-LAST:event_EPanelModifMouseEntered
+
+    private void EPanelModifMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EPanelModifMouseClicked
+        jfeditcliente.setVisible(true);
+    }//GEN-LAST:event_EPanelModifMouseClicked
+
+    private void EPanelAñadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EPanelAñadirMouseExited
+        //        this.EPanelAñadir.setBorder(new LineBorder(Color.black));
+        this.EPanelAñadir.setBorder(null);
+        this.btnAñadirEstuxt.setForeground(Color.black);
+    }//GEN-LAST:event_EPanelAñadirMouseExited
+
+    private void EPanelAñadirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EPanelAñadirMouseEntered
+        this.EPanelAñadir.setBorder(new LineBorder(Color.red));
+        this.btnAñadirEstuxt.setForeground(Color.red);
+    }//GEN-LAST:event_EPanelAñadirMouseEntered
+
+    private void EPanelAñadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EPanelAñadirMouseClicked
+        jfaddcliente.setVisible(true);
+    }//GEN-LAST:event_EPanelAñadirMouseClicked
+
+    private void EtxtBusquedaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EtxtBusquedaMousePressed
+        if (this.EtxtBusqueda.getText().equals("Busqueda")) {
+            this.EtxtBusqueda.setText("");
+            this.EtxtBusqueda.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_EtxtBusquedaMousePressed
+
+    private void EtxtBusquedaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EtxtBusquedaMouseExited
+
+    }//GEN-LAST:event_EtxtBusquedaMouseExited
+
+    private void EtxtBusquedaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EtxtBusquedaMouseEntered
+
+    }//GEN-LAST:event_EtxtBusquedaMouseEntered
+
+    private void EtxtBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EtxtBusquedaMouseClicked
+
+    }//GEN-LAST:event_EtxtBusquedaMouseClicked
+
+    private void jTEstudiantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTEstudiantesMouseClicked
+        //        int fila = this.jTEstudiantes.getSelectedRow();
+        //        if (fila == -1) {
+            //            JOptionPane.showMessageDialog(null, "Ninguna fila a sido seleccionada");
+            //        } else {
+            //
+            //            jfeditestudiante.setVisible(true);
+            //
+            //        }
+    }//GEN-LAST:event_jTEstudiantesMouseClicked
+
+    private void PrestamoMultaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrestamoMultaMouseExited
+        this.PrestamoMulta.setBackground(new Color(37, 40, 80));
+    }//GEN-LAST:event_PrestamoMultaMouseExited
+
+    private void PrestamoMultaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrestamoMultaMouseEntered
+        this.PrestamoMulta.setBackground(Color.red);
+    }//GEN-LAST:event_PrestamoMultaMouseEntered
+
+    private void PrestamoMultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrestamoMultaMouseClicked
+
+    }//GEN-LAST:event_PrestamoMultaMouseClicked
+
+    private void iconoPrestamoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoPrestamoMouseExited
+        this.PrestamoMulta.setBackground(new Color(37, 40, 80));
+    }//GEN-LAST:event_iconoPrestamoMouseExited
+
+    private void iconoPrestamoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoPrestamoMouseEntered
+        this.PrestamoMulta.setBackground(Color.red);
+    }//GEN-LAST:event_iconoPrestamoMouseEntered
+
+    private void btnPrestamoTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrestamoTxtMouseExited
+        this.PrestamoMulta.setBackground(new Color(37, 40, 80));
+    }//GEN-LAST:event_btnPrestamoTxtMouseExited
+
+    private void btnPrestamoTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrestamoTxtMouseEntered
+        this.PrestamoMulta.setBackground(Color.red);
+    }//GEN-LAST:event_btnPrestamoTxtMouseEntered
+
+    private void btnPrestamoTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrestamoTxtMouseClicked
+        this.PFacturas.setVisible(true);
+        this.PClientes.setVisible(false);
+        this.PInicio.setVisible(false);
+        this.PLibros.setVisible(false);
+    }//GEN-LAST:event_btnPrestamoTxtMouseClicked
+
+    private void RegistroLibroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistroLibroMouseExited
+        this.RegistroLibro.setBackground(new Color(37, 40, 80));
+    }//GEN-LAST:event_RegistroLibroMouseExited
+
+    private void RegistroLibroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistroLibroMouseEntered
+        this.RegistroLibro.setBackground(Color.red);
+    }//GEN-LAST:event_RegistroLibroMouseEntered
+
+    private void iconLibMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLibMouseExited
+        this.RegistroLibro.setBackground(new Color(37, 40, 80));
+    }//GEN-LAST:event_iconLibMouseExited
+
+    private void iconLibMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLibMouseEntered
+        this.RegistroLibro.setBackground(Color.red);
+    }//GEN-LAST:event_iconLibMouseEntered
+
+    private void btnLibTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLibTxtMouseExited
+        this.RegistroLibro.setBackground(new Color(37, 40, 80));
+    }//GEN-LAST:event_btnLibTxtMouseExited
+
+    private void btnLibTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLibTxtMouseEntered
+        this.RegistroLibro.setBackground(Color.red);
+    }//GEN-LAST:event_btnLibTxtMouseEntered
+
+    private void btnLibTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLibTxtMouseClicked
+        this.PLibros.setVisible(true);
+        this.PClientes.setVisible(false);
+        this.PInicio.setVisible(false);
+        this.PFacturas.setVisible(false);
+    }//GEN-LAST:event_btnLibTxtMouseClicked
+
+    private void RegistroEstudianteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistroEstudianteMouseExited
+        this.RegistroEstudiante.setBackground(new Color(37, 40, 80));
+    }//GEN-LAST:event_RegistroEstudianteMouseExited
+
+    private void RegistroEstudianteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistroEstudianteMouseEntered
+        this.RegistroEstudiante.setBackground(Color.red);
+    }//GEN-LAST:event_RegistroEstudianteMouseEntered
+
+    private void iconoEstudMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoEstudMouseExited
+        this.RegistroEstudiante.setBackground(new Color(37, 40, 80));
+    }//GEN-LAST:event_iconoEstudMouseExited
+
+    private void iconoEstudMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoEstudMouseEntered
+        this.RegistroEstudiante.setBackground(Color.red);
+    }//GEN-LAST:event_iconoEstudMouseEntered
+
+    private void btnClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseExited
+        this.RegistroEstudiante.setBackground(new Color(37, 40, 80));
+    }//GEN-LAST:event_btnClienteMouseExited
+
+    private void btnClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseEntered
+        this.RegistroEstudiante.setBackground(Color.red);
+    }//GEN-LAST:event_btnClienteMouseEntered
+
+    private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
+        this.PClientes.setVisible(true);
+        this.PInicio.setVisible(false);
+        this.PLibros.setVisible(false);
+        this.PFacturas.setVisible(false);
+    }//GEN-LAST:event_btnClienteMouseClicked
+
+    private void InicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InicioMouseExited
+        this.Inicio.setBackground(new Color(37, 40, 80));
+    }//GEN-LAST:event_InicioMouseExited
+
+    private void InicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InicioMouseEntered
+        this.Inicio.setBackground(Color.red);
+    }//GEN-LAST:event_InicioMouseEntered
+
+    private void iconHomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconHomeMouseExited
+        this.Inicio.setBackground(new Color(37, 40, 80));
+    }//GEN-LAST:event_iconHomeMouseExited
+
+    private void iconHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconHomeMouseEntered
+        this.Inicio.setBackground(Color.red);
+    }//GEN-LAST:event_iconHomeMouseEntered
+
+    private void btnIniciotxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciotxtMouseExited
+        this.Inicio.setBackground(new Color(37, 40, 80));
+    }//GEN-LAST:event_btnIniciotxtMouseExited
+
+    private void btnIniciotxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciotxtMouseEntered
+        this.Inicio.setBackground(Color.red);
+    }//GEN-LAST:event_btnIniciotxtMouseEntered
+
+    private void btnIniciotxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciotxtMouseClicked
+        this.PInicio.setVisible(true);
+        this.PClientes.setVisible(false);
+        this.PLibros.setVisible(false);
+        this.PFacturas.setVisible(false);
+    }//GEN-LAST:event_btnIniciotxtMouseClicked
 
     private void iconoCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoCerrarSesionMouseClicked
 
@@ -1713,14 +1705,18 @@ public class JFBiblioteca extends javax.swing.JFrame{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFBiblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFLibreria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFBiblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFLibreria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFBiblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFLibreria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFBiblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFLibreria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -1729,7 +1725,7 @@ public class JFBiblioteca extends javax.swing.JFrame{
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFBiblioteca().setVisible(true);
+                new JFLibreria().setVisible(true);
             }
         });
     }
@@ -1737,7 +1733,6 @@ public class JFBiblioteca extends javax.swing.JFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Container;
     private javax.swing.JLayeredPane Contenido;
-    private javax.swing.JPanel EPN;
     private javax.swing.JPanel EPanelAñadir;
     private javax.swing.JPanel EPanelModif;
     private javax.swing.JLabel EiconoAñadir;
@@ -1760,6 +1755,7 @@ public class JFBiblioteca extends javax.swing.JFrame{
     private javax.swing.JLabel PMiconoLupa;
     private javax.swing.JPanel PPEliminarPrestamo;
     private javax.swing.JPanel PPanelPrestamo;
+    private javax.swing.JLabel PiconMinimal;
     private javax.swing.JLabel PiconoElimiPrest;
     private javax.swing.JLabel PiconoPrestamo;
     private javax.swing.JPanel PrestamoMulta;
@@ -1780,7 +1776,6 @@ public class JFBiblioteca extends javax.swing.JFrame{
     private javax.swing.JLabel btnPrestamoTxt;
     private javax.swing.JLabel iconHome;
     private javax.swing.JLabel iconLib;
-    private javax.swing.JLabel iconMinimal;
     private javax.swing.JLabel iconoAdmin;
     private javax.swing.JLabel iconoCalendarioHora;
     private javax.swing.JLabel iconoCerrarSesion;
@@ -1819,5 +1814,6 @@ public class JFBiblioteca extends javax.swing.JFrame{
     private javax.swing.JLabel lblFechaHora;
     private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblUsers;
+    private javax.swing.JPanel pnlLib;
     // End of variables declaration//GEN-END:variables
 }

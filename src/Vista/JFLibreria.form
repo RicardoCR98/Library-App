@@ -27,7 +27,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="Container" min="-2" pref="1191" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -46,24 +46,24 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="iconoLibro" min="-2" pref="229" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="iconoLibro" min="-2" pref="229" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="Opciones" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="Contenido" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="Opciones" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="TopBar" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="Contenido" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="TopBar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -98,27 +98,25 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="iconoLibriMundi" pref="146" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="EPN" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Component id="iconoLibriMundi" pref="152" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Component id="pnlLib" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="TolBar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="iconoLibriMundi" alignment="0" max="32767" attributes="0"/>
-                          <Component id="EPN" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="TolBar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="pnlLib" alignment="0" max="32767" attributes="0"/>
+                          <Component id="TolBar" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="17" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -140,7 +138,7 @@
                           <Component id="iconoAdmin" min="-2" pref="24" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="lblUsers" min="-2" pref="39" max="-2" attributes="0"/>
-                          <EmptySpace pref="468" max="32767" attributes="0"/>
+                          <EmptySpace pref="500" max="32767" attributes="0"/>
                           <Component id="iconoCalendarioHora" min="-2" pref="25" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="lblFechaHora" min="-2" pref="107" max="-2" attributes="0"/>
@@ -225,7 +223,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="EPN">
+            <Container class="javax.swing.JPanel" name="pnlLib">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -236,14 +234,19 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="106" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel1" pref="115" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel1" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -258,6 +261,8 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="LIBRIMUNDI"/>
+                    <Property name="alignmentX" type="float" value="0.5"/>
+                    <Property name="alignmentY" type="float" value="0.8"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -646,8 +651,8 @@
                   </Group>
                   <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="PLibros" min="-2" pref="897" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="50" max="32767" attributes="0"/>
+                          <Component id="PLibros" min="-2" pref="887" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="61" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
@@ -670,7 +675,7 @@
                   <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="PLibros" min="-2" pref="603" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
@@ -753,7 +758,7 @@
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace pref="173" max="32767" attributes="0"/>
+                                          <EmptySpace pref="166" max="32767" attributes="0"/>
                                           <Component id="EPanelModif" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -792,11 +797,11 @@
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="5" rowCount="0">
-                            <Column editable="true" title="Cedula" type="java.lang.Object"/>
-                            <Column editable="true" title="Nombre" type="java.lang.Object"/>
-                            <Column editable="true" title="Telefono" type="java.lang.Object"/>
-                            <Column editable="true" title="Direccion" type="java.lang.Object"/>
-                            <Column editable="true" title="Ubicacion" type="java.lang.Object"/>
+                            <Column editable="true" title="Cedula" type="java.lang.String"/>
+                            <Column editable="true" title="Nombre" type="java.lang.String"/>
+                            <Column editable="true" title="Telefono" type="java.lang.String"/>
+                            <Column editable="true" title="Direccion" type="java.lang.String"/>
+                            <Column editable="true" title="Ubicacion" type="java.lang.String"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -1079,10 +1084,10 @@
                           <Component id="jScrollPane4" min="-2" pref="254" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblCountLib" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCountLib" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="126" max="32767" attributes="0"/>
+                          <EmptySpace pref="117" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1211,15 +1216,15 @@
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="9" rowCount="0">
-                                <Column editable="false" title="ISBN" type="java.lang.Integer"/>
-                                <Column editable="false" title="Titulo" type="java.lang.Integer"/>
-                                <Column editable="false" title="A&#xf1;o" type="java.lang.String"/>
+                                <Column editable="false" title="ISBN" type="java.lang.String"/>
+                                <Column editable="false" title="Titulo" type="java.lang.String"/>
+                                <Column editable="false" title="Autor" type="java.lang.String"/>
                                 <Column editable="false" title="G&#xe9;nero" type="java.lang.String"/>
-                                <Column editable="true" title="Precio" type="java.lang.Object"/>
-                                <Column editable="true" title="Editorial" type="java.lang.Object"/>
-                                <Column editable="true" title="Autor" type="java.lang.Object"/>
-                                <Column editable="true" title="Cantidad" type="java.lang.Object"/>
-                                <Column editable="true" title="Ubicaci&#xf3;n" type="java.lang.Object"/>
+                                <Column editable="false" title="A&#xf1;o" type="java.lang.String"/>
+                                <Column editable="false" title="Editorial" type="java.lang.String"/>
+                                <Column editable="false" title="Cantidad" type="java.lang.Integer"/>
+                                <Column editable="false" title="Precio" type="java.lang.Float"/>
+                                <Column editable="false" title="Ubicaci&#xf3;n" type="java.lang.String"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -1368,7 +1373,7 @@
                                   <Component id="lblCountMult" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="259" max="32767" attributes="0"/>
+                          <EmptySpace pref="333" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
@@ -1426,7 +1431,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Roboto Medium" size="24" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="PRESTAMOS Y MULTAS"/>
+                    <Property name="text" type="java.lang.String" value="Facturas"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel20">
@@ -1445,7 +1450,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="99" red="99" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="/ Prestamos y multas"/>
+                    <Property name="text" type="java.lang.String" value="/ Facturas"/>
                   </Properties>
                 </Component>
                 <Container class="javax.swing.JPanel" name="PPanelPrestamo">
@@ -1496,7 +1501,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Roboto Medium" size="14" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Solicitar Pr&#xe9;stamo"/>
+                        <Property name="text" type="java.lang.String" value="Agregar Factura"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="PiconoPrestamo">
@@ -1573,10 +1578,10 @@
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="0">
-                                <Column editable="false" title="C&#xf3;digo" type="java.lang.Integer"/>
+                                <Column editable="false" title="C&#xf3;digo" type="java.lang.String"/>
+                                <Column editable="false" title="ISBN" type="java.lang.String"/>
                                 <Column editable="false" title="Cantidad" type="java.lang.Integer"/>
-                                <Column editable="false" title="Nombre" type="java.lang.String"/>
-                                <Column editable="false" title="G&#xe9;nero" type="java.lang.String"/>
+                                <Column editable="false" title="Precio Total" type="java.lang.Float"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -1640,7 +1645,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Roboto Medium" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Prestamos Registrados:"/>
+                    <Property name="text" type="java.lang.String" value="Facturas Registradas:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblCountMult">
@@ -1666,26 +1671,20 @@
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="723" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="iconMinimal" min="-2" pref="694" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="PiconMinimal" alignment="0" pref="895" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-                          <Component id="iconMinimal" min="-2" pref="233" max="-2" attributes="0"/>
-                          <EmptySpace pref="227" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="PiconMinimal" pref="569" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1710,7 +1709,7 @@
                     <Property name="text" type="java.lang.String" value="HOME"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="iconMinimal">
+                <Component class="javax.swing.JLabel" name="PiconMinimal">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Imagenes/iconMinimal.jpg"/>

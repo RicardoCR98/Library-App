@@ -147,7 +147,7 @@ public class JFCrearUsuario extends javax.swing.JFrame {
             this.dispose();
             comewth();
         } catch(SQLException ex) {
-            Logger.getLogger(JFBiblioteca.class.getName()).log(Level. SEVERE, null, ex); 
+            Logger.getLogger(JFLibreria.class.getName()).log(Level. SEVERE, null, ex); 
             JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");     
         }      
     }//GEN-LAST:event_btnCrearUsuarioActionPerformed

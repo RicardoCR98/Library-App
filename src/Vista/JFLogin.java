@@ -262,8 +262,9 @@ public class JFLogin extends javax.swing.JFrame {
         
         if(x == true ){
            System.out.println("Ingreso a la plataforma: "+x);
-            JFBiblioteca jfs = new JFBiblioteca();
+            JFLibreria jfs = new JFLibreria();
             jfs.setVisible(true);
+            this.setVisible(false);
             this.dispose();
             
         }else{
@@ -302,10 +303,8 @@ public class JFLogin extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JFLogin().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new JFLogin().setVisible(true);
         });
     }
 

@@ -6,9 +6,6 @@ public class Login {
 
         String user = usuario;
         String pass = password;
-        if(user.equalsIgnoreCase("Admin") && pass.equalsIgnoreCase("12345")){
-             return true;
-        }
-        return false;
+        return user.equalsIgnoreCase("Admin") && pass.equalsIgnoreCase("12345");
     }
 }

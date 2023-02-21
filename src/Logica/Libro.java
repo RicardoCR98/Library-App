@@ -1,6 +1,6 @@
 package Logica;
 import ConexionBD.ConexionBD;
-import Vista.JFBiblioteca;
+import Vista.JFLibreria;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,11 +11,12 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
 public class Libro {
     private String tituloLibro;
     private String genero;
     private int NLibro;
-    private long codigoLibro;
+    private String codigoLibro;
     ConexionBD conexion = new ConexionBD();
     Connection cn = conexion.conexion();
     public Libro() {
@@ -43,10 +44,10 @@ public class Libro {
     public void setNLibro(int NLibro) {
         this.NLibro = NLibro;
     }
-    public long getCodigoLibro() {
+    public String getCodigoLibro() {
         return codigoLibro;
     }
-    public void setCodigoLibro(long codigoLibro) {
+    public void setCodigoLibro(String codigoLibro) {
         this.codigoLibro = codigoLibro;
     }
     public boolean añadirLibro(){
@@ -111,7 +112,7 @@ public class Libro {
     }
     
     
-    public int obtenerCantidadLibro(long codigo){
+    public int obtenerCantidadLibro(String codigo){
     int cantidad = 0;
     Statement st;
     ResultSet rs = null;
@@ -155,7 +156,7 @@ public class Libro {
             dfm.addRow(new Object[]{rs.getInt("codigo_l"), rs.getInt("cantidad"), rs.getString("nombre"), rs.getString("genero")});
         }
     }catch(SQLException ex) {
-        Logger.getLogger(JFBiblioteca.class.getName()).log(Level. SEVERE, null, ex); 
+        Logger.getLogger(JFLibreria.class.getName()).log(Level. SEVERE, null, ex); 
         JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");     
     }
         return tabla;
@@ -188,7 +189,7 @@ public class Libro {
         pps.executeUpdate();
             
     } catch(SQLException ex) {
-        Logger.getLogger(JFBiblioteca.class.getName()).log(Level. SEVERE, null, ex); 
+        Logger.getLogger(JFLibreria.class.getName()).log(Level. SEVERE, null, ex); 
         JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");     
     }
 }

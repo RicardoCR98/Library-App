@@ -1,6 +1,6 @@
 package Logica;
 import ConexionBD.ConexionBD;
-import Vista.JFBiblioteca;
+import Vista.JFLibreria;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
