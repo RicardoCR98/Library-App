@@ -84,11 +84,6 @@ public class JFLibreria extends javax.swing.JFrame{
         Image imagePrest = (iconPrestamo).getImage().getScaledInstance(this.iconoPrestamo.getWidth(), iconoPrestamo.getHeight(), Image.SCALE_SMOOTH);
         iconPrestamo = new ImageIcon(imagePrest);
         iconoPrestamo.setIcon(iconPrestamo);
-        //SobreNosotros
-        ImageIcon iconSobre = new ImageIcon(getClass().getResource("/Imagenes/AboutUs.png"));
-        Image imageSobre = (iconSobre).getImage().getScaledInstance(this.iconoSobreNosotros.getWidth(), iconoSobreNosotros.getHeight(), Image.SCALE_SMOOTH);
-        iconSobre = new ImageIcon(imageSobre);
-        iconoSobreNosotros.setIcon(iconSobre);
         //Añadir Estudiante
         ImageIcon iconEstud = new ImageIcon(getClass().getResource("/Imagenes/AñadirEstud.png"));
         Image imageAñadir = (iconEstud).getImage().getScaledInstance(this.EiconoAñadir.getWidth(), EiconoAñadir.getHeight(), Image.SCALE_SMOOTH);
@@ -168,8 +163,6 @@ public class JFLibreria extends javax.swing.JFrame{
         PrestamoMulta = new javax.swing.JPanel();
         btnPrestamoTxt = new javax.swing.JLabel();
         iconoPrestamo = new javax.swing.JLabel();
-        SobreNosotros = new javax.swing.JPanel();
-        iconoSobreNosotros = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         Contenido = new javax.swing.JLayeredPane();
         PClientes = new javax.swing.JPanel();
@@ -567,26 +560,6 @@ public class JFLibreria extends javax.swing.JFrame{
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        SobreNosotros.setBackground(new java.awt.Color(37, 40, 80));
-        SobreNosotros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        javax.swing.GroupLayout SobreNosotrosLayout = new javax.swing.GroupLayout(SobreNosotros);
-        SobreNosotros.setLayout(SobreNosotrosLayout);
-        SobreNosotrosLayout.setHorizontalGroup(
-            SobreNosotrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SobreNosotrosLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(iconoSobreNosotros, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(256, 256, 256))
-        );
-        SobreNosotrosLayout.setVerticalGroup(
-            SobreNosotrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SobreNosotrosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(iconoSobreNosotros, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         jLabel13.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Copyright ©2023");
@@ -599,7 +572,6 @@ public class JFLibreria extends javax.swing.JFrame{
             .addComponent(RegistroEstudiante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(RegistroLibro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(PrestamoMulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(SobreNosotros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(OpcionesLayout.createSequentialGroup()
                 .addGap(80, 80, 80)
                 .addComponent(jLabel13)
@@ -615,9 +587,7 @@ public class JFLibreria extends javax.swing.JFrame{
                 .addComponent(RegistroLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PrestamoMulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SobreNosotros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(60, 60, 60)
                 .addComponent(jLabel13)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
@@ -910,7 +880,7 @@ public class JFLibreria extends javax.swing.JFrame{
 
             },
             new String [] {
-                "ISBN", "Titulo", "Autor", "Género", "Año", "Editorial", "Cantidad", "Precio", "Ubicación"
+                "ISBN", "Titulo", "Autor", "Género", "Año", "Editorial", "Cantidad", "Precio", "Ubicacion"
             }
         ) {
             Class[] types = new Class [] {
@@ -1031,7 +1001,7 @@ public class JFLibreria extends javax.swing.JFrame{
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(PLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(PLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(lblCountLib))
                 .addContainerGap(117, Short.MAX_VALUE))
@@ -1132,14 +1102,14 @@ public class JFLibreria extends javax.swing.JFrame{
 
             },
             new String [] {
-                "Código", "ISBN", "Cantidad", "Precio Total"
+                "Código", "ISBN", "Cantidad", "Precio Total", "Ubicacion"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1761,7 +1731,6 @@ public class JFLibreria extends javax.swing.JFrame{
     private javax.swing.JPanel PrestamoMulta;
     private javax.swing.JPanel RegistroEstudiante;
     private javax.swing.JPanel RegistroLibro;
-    private javax.swing.JPanel SobreNosotros;
     private javax.swing.JPanel TolBar;
     private javax.swing.JPanel TopBar;
     private javax.swing.JLabel btnAñadirEstuxt;
@@ -1783,7 +1752,6 @@ public class JFLibreria extends javax.swing.JFrame{
     private javax.swing.JLabel iconoLibriMundi;
     private javax.swing.JLabel iconoLibro;
     private javax.swing.JLabel iconoPrestamo;
-    private javax.swing.JLabel iconoSobreNosotros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
