@@ -1,17 +1,16 @@
 package ConexionBD;
 
 import java.sql.*;
-import javax.swing.JOptionPane;
 
 public class ConexionBD {
     private Connection conexion;
     private String user = "sa";
     private String password = "P@ssw0rd";
-    private String nombreBD = "universidad";
+    private String nombreBD = "LibreriaSedeQuito";
 
     public Connection conexion() {
        try{
-            String urlBD = "jdbc:sqlserver://DESKTOP-F9LU0H9:1433;"+"databaseName="+nombreBD;
+            String urlBD = "jdbc:sqlserver://WIN-4R1HIUKML3V:1433;"+"databaseName="+nombreBD;
             conexion = DriverManager.getConnection(urlBD, user, password);
             System.out.println("Conexion exitosa con la BD " + nombreBD);
             return conexion;
