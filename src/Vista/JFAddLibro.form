@@ -59,14 +59,14 @@
                               </Group>
                               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTFCantidad3" max="32767" attributes="0"/>
-                                  <Component id="jTFCantidad1" max="32767" attributes="0"/>
-                                  <Component id="jTFGenero" max="32767" attributes="0"/>
-                                  <Component id="jTFCodigo" max="32767" attributes="0"/>
-                                  <Component id="jTFCantidad" max="32767" attributes="0"/>
-                                  <Component id="jTFNombre" max="32767" attributes="0"/>
-                                  <Component id="jTFCantidad4" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTFCantidad5" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jTFAutor" max="32767" attributes="0"/>
+                                  <Component id="jTFPrecio" max="32767" attributes="0"/>
+                                  <Component id="jTFAnio" max="32767" attributes="0"/>
+                                  <Component id="jTFISBN" max="32767" attributes="0"/>
+                                  <Component id="jTFFGenero" max="32767" attributes="0"/>
+                                  <Component id="jTFTitulo" max="32767" attributes="0"/>
+                                  <Component id="jTFEditorial" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTFCantidad" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -79,14 +79,14 @@
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jComboBox1" min="-2" pref="108" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                                       <Component id="btnCancelarLib" min="-2" pref="107" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="64" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                      <Component id="jTFUbicacion" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -112,47 +112,47 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTFCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTFISBN" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jTFNombre" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTFTitulo" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTFGenero" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTFAnio" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTFCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTFFGenero" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTFCantidad1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTFPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTFCantidad4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTFEditorial" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTFCantidad3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTFAutor" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTFCantidad5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTFCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTFUbicacion" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -181,7 +181,7 @@
         <Property name="text" type="java.lang.String" value="ISBN"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTFCodigo">
+    <Component class="javax.swing.JTextField" name="jTFISBN">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -191,7 +191,7 @@
         <Property name="text" type="java.lang.String" value="Titulo Libro"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTFNombre">
+    <Component class="javax.swing.JTextField" name="jTFTitulo">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -201,7 +201,7 @@
         <Property name="text" type="java.lang.String" value="A&#xf1;o Publicaci&#xf3;n"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTFGenero">
+    <Component class="javax.swing.JTextField" name="jTFAnio">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -211,7 +211,7 @@
         <Property name="text" type="java.lang.String" value="Genero"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTFCantidad">
+    <Component class="javax.swing.JTextField" name="jTFFGenero">
     </Component>
     <Component class="javax.swing.JButton" name="btnCancelarLib">
       <Properties>
@@ -244,7 +244,7 @@
         <Property name="text" type="java.lang.String" value="Precio"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTFCantidad1">
+    <Component class="javax.swing.JTextField" name="jTFPrecio">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
@@ -254,7 +254,7 @@
         <Property name="text" type="java.lang.String" value="Autor"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="jTFUbicacion">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
@@ -268,7 +268,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTFCantidad3">
+    <Component class="javax.swing.JTextField" name="jTFAutor">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
@@ -286,7 +286,7 @@
         <Property name="text" type="java.lang.String" value="Nombre Editorial"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTFCantidad4">
+    <Component class="javax.swing.JTextField" name="jTFEditorial">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
@@ -296,7 +296,7 @@
         <Property name="text" type="java.lang.String" value="Cantidad"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTFCantidad5">
+    <Component class="javax.swing.JTextField" name="jTFCantidad">
     </Component>
   </SubComponents>
 </Form>

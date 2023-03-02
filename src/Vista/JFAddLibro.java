@@ -38,25 +38,25 @@ public class JFAddLibro extends javax.swing.JFrame {
         jTFCantidad2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTFCodigo = new javax.swing.JTextField();
+        jTFISBN = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTFNombre = new javax.swing.JTextField();
+        jTFTitulo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTFGenero = new javax.swing.JTextField();
+        jTFAnio = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTFCantidad = new javax.swing.JTextField();
+        jTFFGenero = new javax.swing.JTextField();
         btnCancelarLib = new javax.swing.JButton();
         btnAceptarLib = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jTFCantidad1 = new javax.swing.JTextField();
+        jTFPrecio = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTFCantidad3 = new javax.swing.JTextField();
+        jTFUbicacion = new javax.swing.JComboBox<>();
+        jTFAutor = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jTFCantidad4 = new javax.swing.JTextField();
+        jTFEditorial = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTFCantidad5 = new javax.swing.JTextField();
+        jTFCantidad = new javax.swing.JTextField();
 
         jLabel7.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel7.setText("Precio");
@@ -115,8 +115,8 @@ public class JFAddLibro extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel8.setText("Autor");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quito", "Cuenca" }));
-        jComboBox1.setSelectedIndex(-1);
+        jTFUbicacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quito", "Cuenca" }));
+        jTFUbicacion.setSelectedIndex(-1);
 
         jLabel9.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel9.setText("Ubicación");
@@ -152,14 +152,14 @@ public class JFAddLibro extends javax.swing.JFrame {
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(46, 46, 46)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTFCantidad3)
-                                    .addComponent(jTFCantidad1)
-                                    .addComponent(jTFGenero)
-                                    .addComponent(jTFCodigo)
-                                    .addComponent(jTFCantidad)
-                                    .addComponent(jTFNombre)
-                                    .addComponent(jTFCantidad4)
-                                    .addComponent(jTFCantidad5, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addComponent(jTFAutor)
+                                    .addComponent(jTFPrecio)
+                                    .addComponent(jTFAnio)
+                                    .addComponent(jTFISBN)
+                                    .addComponent(jTFFGenero)
+                                    .addComponent(jTFTitulo)
+                                    .addComponent(jTFEditorial)
+                                    .addComponent(jTFCantidad, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
@@ -168,13 +168,13 @@ public class JFAddLibro extends javax.swing.JFrame {
                                         .addComponent(btnAceptarLib, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(52, 52, 52))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addGap(65, 65, 65)
                                         .addComponent(btnCancelarLib, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 64, Short.MAX_VALUE)))))
+                                        .addGap(0, 64, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(13, 13, 13)
+                                        .addComponent(jTFUbicacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(52, 52, 52)))))
                         .addGap(39, 39, 39))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,39 +190,39 @@ public class JFAddLibro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTFGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTFCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFFGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTFCantidad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTFCantidad4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTFCantidad3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jTFCantidad5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptarLib, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,7 +234,16 @@ public class JFAddLibro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarLibActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarLibActionPerformed
-        libro = new Libro(this.jTFNombre.getText(), this.jTFGenero.getText(), Integer.parseInt(this.jTFCantidad.getText()));
+        String ubicacion = this.jTFUbicacion.getSelectedItem().toString();
+        String codigoSede;
+        if (ubicacion.equalsIgnoreCase("Quito")){
+            codigoSede = "01";
+        }else{
+            codigoSede = "02";
+        }
+        
+        libro = new Libro(this.jTFISBN.getText(), this.jTFTitulo.getText(),this.jTFAutor.getText(),this.jTFFGenero.getText(),this.jTFAnio.getText(),this.jTFEditorial.getText(),this.jTFCantidad.getText(),
+                this.jTFPrecio.getText(),ubicacion,codigoSede);
         boolean flag = libro.añadirLibro();
         if(flag){
             JOptionPane.showMessageDialog(null, "Datos Guardados correctamente.");
@@ -311,7 +320,6 @@ public class JFAddLibro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarLib;
     private javax.swing.JButton btnCancelarLib;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -323,21 +331,22 @@ public class JFAddLibro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jTFAnio;
+    private javax.swing.JTextField jTFAutor;
     private javax.swing.JTextField jTFCantidad;
-    private javax.swing.JTextField jTFCantidad1;
     private javax.swing.JTextField jTFCantidad2;
-    private javax.swing.JTextField jTFCantidad3;
-    private javax.swing.JTextField jTFCantidad4;
-    private javax.swing.JTextField jTFCantidad5;
-    private javax.swing.JTextField jTFCodigo;
-    private javax.swing.JTextField jTFGenero;
-    private javax.swing.JTextField jTFNombre;
+    private javax.swing.JTextField jTFEditorial;
+    private javax.swing.JTextField jTFFGenero;
+    private javax.swing.JTextField jTFISBN;
+    private javax.swing.JTextField jTFPrecio;
+    private javax.swing.JTextField jTFTitulo;
+    private javax.swing.JComboBox<String> jTFUbicacion;
     // End of variables declaration//GEN-END:variables
 
     public void comewth(){
-        this.jTFCodigo.setText("");
-        this.jTFNombre.setText("");
-        this.jTFCantidad.setText("");
-        this.jTFGenero.setText("");
+        this.jTFISBN.setText("");
+        this.jTFTitulo.setText("");
+        this.jTFFGenero.setText("");
+        this.jTFAnio.setText("");
     }
 }

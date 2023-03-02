@@ -1184,8 +1184,8 @@
                                 <Column editable="false" title="G&#xe9;nero" type="java.lang.String"/>
                                 <Column editable="false" title="A&#xf1;o" type="java.lang.String"/>
                                 <Column editable="false" title="Editorial" type="java.lang.String"/>
-                                <Column editable="false" title="Cantidad" type="java.lang.Integer"/>
-                                <Column editable="false" title="Precio" type="java.lang.Float"/>
+                                <Column editable="false" title="Cantidad" type="java.lang.String"/>
+                                <Column editable="false" title="Precio" type="java.lang.String"/>
                                 <Column editable="false" title="Ubicacion" type="java.lang.String"/>
                               </Table>
                             </Property>

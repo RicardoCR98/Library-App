@@ -13,51 +13,125 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Libro {
+    private String ISBN;
     private String tituloLibro;
+    private String nAutor;
     private String genero;
-    private int NLibro;
-    private String codigoLibro;
+    private String anio_P;
+    private String editorial;
+    private String numEjemplar;
+    private String precio;
+    private String ubicacion;
+    private String codSede;
+
     ConexionBD conexion = new ConexionBD();
     Connection cn = conexion.conexion();
     public Libro() {
     }
-    public Libro(String tituloLibro, String genero, int nLibro) {
+
+    public Libro(String ISBN, String tituloLibro, String nAutor, String genero, 
+            String anio_P, String editorial, String numEjemplar, String precio, 
+            String ubicacion, String codigoSede) {
+        this.ISBN = ISBN;
         this.tituloLibro = tituloLibro;
+        this.nAutor = nAutor;
         this.genero = genero;
-        this.NLibro = nLibro;
+        this.anio_P = anio_P;
+        this.editorial = editorial;
+        this.numEjemplar = numEjemplar;
+        this.precio = precio;
+        this.ubicacion = ubicacion;
+        this.codSede = codigoSede;
     }
-        public String getTituloLibro() {
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public String getTituloLibro() {
         return tituloLibro;
     }
+
     public void setTituloLibro(String tituloLibro) {
         this.tituloLibro = tituloLibro;
     }
+
+    public String getnAutor() {
+        return nAutor;
+    }
+
+    public void setnAutor(String nAutor) {
+        this.nAutor = nAutor;
+    }
+
     public String getGenero() {
         return genero;
     }
+
     public void setGenero(String genero) {
         this.genero = genero;
     }
-    public int getNLibro() {
-        return NLibro;
+
+    public String getAnio_P() {
+        return anio_P;
     }
-    public void setNLibro(int NLibro) {
-        this.NLibro = NLibro;
+
+    public void setAnio_P(String anio_P) {
+        this.anio_P = anio_P;
     }
-    public String getCodigoLibro() {
-        return codigoLibro;
+
+    public String getEditorial() {
+        return editorial;
     }
-    public void setCodigoLibro(String codigoLibro) {
-        this.codigoLibro = codigoLibro;
+
+    public void setEditorial(String editorial) {
+        this.editorial = editorial;
     }
+
+    public String getNumEjemplar() {
+        return numEjemplar;
+    }
+
+    public void setNumEjemplar(String numEjemplar) {
+        this.numEjemplar = numEjemplar;
+    }
+
+    public String getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    public String getCodSede() {
+        return codSede;
+    }
+
+    public void setCodSede(String codSede) {
+        this.codSede = codSede;
+    }
+    
     public boolean añadirLibro(){
         boolean flag = false;
         try {
-            PreparedStatement pps = cn.prepareStatement("INSERT INTO Libro(cantidad,nombre,genero) VALUES (?,?,?)"); 
-//            pps.setLong(1, this.codigoLibro);
-            pps.setInt(1, this.NLibro);
-            pps.setString (2, this.tituloLibro);
-            pps.setString(3, this.genero);
+            PreparedStatement pps = cn.prepareStatement("INSERT INTO V_Ejemplar VALUES (?,?,?,?)"); 
+            pps.setString (1, this.ISBN);
+            pps.setString (2, this.codSede);
+            pps.setString (3, this.numEjemplar);
+            pps.setString(4, this.ubicacion);
             pps.executeUpdate ();
             flag = true;
         } catch(SQLException ex) {
@@ -65,6 +139,7 @@ public class Libro {
         }
         return flag;
     }
+    
     public boolean actualizarLibro(String sql){
         boolean flag = false;
         try {
@@ -73,17 +148,6 @@ public class Libro {
             flag = true;
         } catch(SQLException ex) {
             Logger.getLogger(Libro.class.getName()).log(Level. SEVERE, null, ex);    
-        }
-        return flag;
-    }
-    public boolean eliminarLibro(){
-        boolean flag = false;
-        try {
-            PreparedStatement pps = cn.prepareStatement("DELETE FROM Libro WHERE codigo_l="+this.codigoLibro); 
-            pps.executeUpdate ();
-            flag = true;
-        } catch(SQLException ex) {
-            Logger.getLogger(Libro.class.getName()).log(Level. SEVERE, null, ex);
         }
         return flag;
     }
@@ -96,7 +160,7 @@ public class Libro {
     ResultSet rs=null;    
     try {   
         st = cn.createStatement();
-        rs = st.executeQuery("SELECT cantidad FROM Libro WHERE codigo_l = "+ this.codigoLibro); 
+        rs = st.executeQuery("SELECT cantidad FROM V_Libros WHERE ISBN = "+ this.ISBN); 
         while(rs.next()){
             cantidad = rs.getInt("cantidad");
         }
@@ -112,13 +176,13 @@ public class Libro {
     }
     
     
-    public int obtenerCantidadLibro(String codigo){
+    public int obtenerCantidadLibro(String ISBN){
     int cantidad = 0;
     Statement st;
     ResultSet rs = null;
     try{
         st = cn.createStatement();
-        rs = st.executeQuery("SELECT cantidad FROM Libro WHERE codigo_l = "+codigo);
+        rs = st.executeQuery("SELECT cantidad FROM V_Libros WHERE ISBN = "+ISBN);
         while(rs.next()){
             cantidad = rs.getInt("cantidad");
         }
@@ -129,12 +193,12 @@ public class Libro {
     return cantidad;
 }
     public void LibroDisponible(){
-    int cantidad = obtenerCantidadLibro(this.codigoLibro);
+    int cantidad = obtenerCantidadLibro(this.ISBN);
     cantidad++;
     String c = String.valueOf(cantidad);
     System.out.println(c);
     try {   
-        PreparedStatement pps = cn.prepareStatement("UPDATE Libro SET cantidad="+ c +" WHERE codigo_l = " +this.codigoLibro); 
+        PreparedStatement pps = cn.prepareStatement("UPDATE Libro SET cantidad="+ c +" WHERE codigo_l = " +this.ISBN);
         pps.executeUpdate();
             
     } catch(SQLException ex) {
@@ -148,12 +212,15 @@ public class Libro {
         JTable tabla = tabla1;
         try {   
         st = cn.createStatement();
-        rs = st.executeQuery("SELECT * FROM Libro"); 
+        rs = st.executeQuery("SELECT * FROM V_Libros"); 
         DefaultTableModel dfm = new DefaultTableModel();
         tabla.setModel(dfm);
-        dfm.setColumnIdentifiers(new Object[]{"Código","Cantidad","Nombre","Género"});
+        dfm.setColumnIdentifiers(new Object[]{"ISBN","Titulo","Autor","Género","Año","Editorial",
+            "Cantidad","Precio","Ubicacion"});
         while(rs.next()){
-            dfm.addRow(new Object[]{rs.getInt("codigo_l"), rs.getInt("cantidad"), rs.getString("nombre"), rs.getString("genero")});
+            dfm.addRow(new Object[]{rs.getString("ISBN"), rs.getString("TITULOLIBRO"), rs.getString("NOMBREAUTOR"), rs.getString("Genero"),
+            rs.getString("Anio_publicacion"), rs.getString("NombreEditorial"), rs.getString("NumEjemplar"),rs.getString("Precio"),
+            rs.getString("Ubicacion")});
         }
     }catch(SQLException ex) {
         Logger.getLogger(JFLibreria.class.getName()).log(Level. SEVERE, null, ex); 
@@ -161,31 +228,34 @@ public class Libro {
     }
         return tabla;
     } 
+    
     public void ActualizarTablaLibrosBusqueda(JTable tabla, String consulta){
     Statement st;
     ResultSet rs=null;    
     try {   
         st = cn.createStatement();      
-        rs = st.executeQuery("SELECT * FROM Libro WHERE "+consulta); 
+        rs = st.executeQuery("SELECT * FROM V_Libros WHERE "+consulta); 
         DefaultTableModel dfm = new DefaultTableModel();
         tabla.setModel(dfm);
-        dfm.setColumnIdentifiers(new Object[]{"Código","Cantidad","Nombre","Género"});
+        dfm.setColumnIdentifiers(new Object[]{"ISBN","Titulo","Autor","Género","Año","Editorial",
+            "Cantidad","Precio","Ubicacion"});
         while(rs.next()){
-            dfm.addRow(new Object[]{rs.getInt("codigo_l"), rs.getInt("cantidad"), rs.getString("nombre"), rs.getString("genero")});
-        }
-        
+            dfm.addRow(new Object[]{rs.getString("ISBN"), rs.getString("TITULOLIBRO"), rs.getString("NOMBREAUTOR"), rs.getString("Genero"),
+            rs.getString("Anio_publicacion"), rs.getString("NombreEditorial"), rs.getString("NumEjemplar"),rs.getString("Precio"),
+            rs.getString("Ubicacion")});
+        }    
         }catch(SQLException ex) {
         //Logger.getLogger(JFBibliotecaDB.class.getName()).log(Level. SEVERE, null, ex); 
         //JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");     
     }
 }
     public void LibroOcupado(){
-    int cantidad = obtenerCantidadLibro(this.codigoLibro);
+    int cantidad = obtenerCantidadLibro(this.ISBN);
     cantidad--;
     String c = String.valueOf(cantidad);
     System.out.println(c);
     try {
-        PreparedStatement pps = cn.prepareStatement("UPDATE Libro SET cantidad="+c+" WHERE codigo_l="+this.codigoLibro); 
+        PreparedStatement pps = cn.prepareStatement("UPDATE V_Ejemplar SET cantidad="+c+" WHERE ISBN="+this.ISBN); 
         pps.executeUpdate();
             
     } catch(SQLException ex) {
