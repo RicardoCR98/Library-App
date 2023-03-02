@@ -257,7 +257,7 @@ public class JFLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordMousePressed
 
     private void btnLogintxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogintxtMouseClicked
-         String pass = String.valueOf(this.txtPassword.getPassword());
+        String pass = String.valueOf(this.txtPassword.getPassword());
         boolean x = logi.loginUsers(this.txtUsername.getText(), pass);
         
         if(x == true ){

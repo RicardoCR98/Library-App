@@ -4,18 +4,21 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 
 public class ConexionBD {
-
-    Connection cn;
+    private Connection conexion;
+    private String user = "sa";
+    private String password = "P@ssw0rd";
+    private String nombreBD = "universidad";
 
     public Connection conexion() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/base_biblioteca", "root", "root");
-//            JOptionPane.showMessageDialog(null, "Coneccion Exitosa");
-        } catch (ClassNotFoundException | SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se pudo realizar la coneccion");
-//            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+       try{
+            String urlBD = "jdbc:sqlserver://DESKTOP-F9LU0H9:1433;"+"databaseName="+nombreBD;
+            conexion = DriverManager.getConnection(urlBD, user, password);
+            System.out.println("Conexion exitosa con la BD " + nombreBD);
+            return conexion;
+        }catch(Exception e){
+            System.out.println(e.toString());
+            System.out.println("Conexion no exitosa");
         }
-        return cn;
+            return null;
     }
 }
