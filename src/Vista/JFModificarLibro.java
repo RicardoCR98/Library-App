@@ -291,7 +291,7 @@ Libro libro;
         String consulta = "";
         atributosActualizar.add("ISBN="+jTFISBNLibroActualizar.getText());
         if (jCPrecio.isSelected()){atributosActualizar.add("precio='"+jTFPrecioLibActu.getText()+"'");}
-        if (jCCantidadLibro.isSelected()){atributosActualizar.add("NUMEJEMPLARES='"+jTFCantidadActualizarLibros.getText()+"'");}
+        if (jCCantidadLibro.isSelected()){atributosActualizar.add("NUMEJEMPLAR='"+jTFCantidadActualizarLibros.getText()+"'");}
 
         Iterator<String> i = atributosActualizar.iterator();
 

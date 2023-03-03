@@ -145,8 +145,7 @@ public class Libro {
             PreparedStatement pps = cn.prepareStatement(sql);
             pps.executeUpdate();
             flag = true;
-        } catch(SQLException ex) {
-            Logger.getLogger(Libro.class.getName()).log(Level. SEVERE, null, ex);    
+        } catch(SQLException ex) {   
         }
         return flag;
     }
@@ -168,7 +167,6 @@ public class Libro {
         }
         
     }catch(SQLException ex) {
-        Logger.getLogger(Libro.class.getName()).log(Level. SEVERE, null, ex); 
         JOptionPane.showMessageDialog (null, "No se sabe si esta disponible el libro ");     
     }
     return resultado;
@@ -185,8 +183,7 @@ public class Libro {
         while(rs.next()){
             cantidad = rs.getInt("cantidad");
         }
-    }catch(SQLException ex) {
-        Logger.getLogger(Libro.class.getName()).log(Level. SEVERE, null, ex); 
+    }catch(SQLException ex) { 
         JOptionPane.showMessageDialog (null, "Error al obtener la cantidad de libros");     
     }
     return cantidad;
@@ -202,7 +199,6 @@ public class Libro {
             pps.executeUpdate();
 
         } catch(SQLException ex) {
-            Logger.getLogger(Libro.class.getName()).log(Level. SEVERE, null, ex); 
             JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");     
         }
     }
