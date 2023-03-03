@@ -42,15 +42,15 @@ Cliente cliente;
         jPanel17 = new javax.swing.JPanel();
         jCNombresEstudiante = new javax.swing.JCheckBox();
         jCApellidosEstudiante = new javax.swing.JCheckBox();
-        jTFCodigoEstudianteActualizar = new javax.swing.JTextField();
-        jTFNombresEstudianteActualizar = new javax.swing.JTextField();
-        jTFApellidosEstudianteActualizar = new javax.swing.JTextField();
+        jTFCedulaClienteActualizar = new javax.swing.JTextField();
+        jTFTelefonoClienteaActualizar = new javax.swing.JTextField();
+        jTFDireccionClienteaActualizar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTEstudiantesBusqueda = new javax.swing.JTable();
-        jCBusquedaEstudiante = new javax.swing.JComboBox<>();
-        jTFBusquedaEstudiante = new javax.swing.JTextField();
+        jtableClientes = new javax.swing.JTable();
+        comboBoxBusquedaCliente = new javax.swing.JComboBox<>();
+        jTFBusquedaCliente = new javax.swing.JTextField();
         btnActualizarEstud = new javax.swing.JButton();
         btnEliminarEstud = new javax.swing.JButton();
         btnCancelatStud2 = new javax.swing.JButton();
@@ -61,16 +61,21 @@ Cliente cliente;
         jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder("Atributos a actualizar"));
 
         jCNombresEstudiante.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jCNombresEstudiante.setText("Nombres");
+        jCNombresEstudiante.setText("Telefono");
         jCNombresEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCNombresEstudiante.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jCNombresEstudianteStateChanged(evt);
             }
         });
+        jCNombresEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCNombresEstudianteActionPerformed(evt);
+            }
+        });
 
         jCApellidosEstudiante.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jCApellidosEstudiante.setText("Apellidos");
+        jCApellidosEstudiante.setText("Direccion");
         jCApellidosEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCApellidosEstudiante.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -78,14 +83,14 @@ Cliente cliente;
             }
         });
 
-        jTFCodigoEstudianteActualizar.setEditable(false);
+        jTFCedulaClienteActualizar.setEditable(false);
 
-        jTFNombresEstudianteActualizar.setEditable(false);
+        jTFTelefonoClienteaActualizar.setEditable(false);
 
-        jTFApellidosEstudianteActualizar.setEditable(false);
+        jTFDireccionClienteaActualizar.setEditable(false);
 
         jLabel3.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel3.setText("Código");
+        jLabel3.setText("Cedula");
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -98,14 +103,14 @@ Cliente cliente;
                     .addComponent(jCNombresEstudiante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFApellidosEstudianteActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFNombresEstudianteActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFDireccionClienteaActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFTelefonoClienteaActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTFCodigoEstudianteActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTFCedulaClienteActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
         jPanel17Layout.setVerticalGroup(
@@ -113,37 +118,37 @@ Cliente cliente;
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFCodigoEstudianteActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFCedulaClienteActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCNombresEstudiante)
-                    .addComponent(jTFNombresEstudianteActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFTelefonoClienteaActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCApellidosEstudiante)
-                    .addComponent(jTFApellidosEstudianteActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addComponent(jTFDireccionClienteaActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Búsqueda"));
 
-        jTEstudiantesBusqueda.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jTEstudiantesBusqueda.setModel(new javax.swing.table.DefaultTableModel(
+        jtableClientes.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jtableClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Cantidad", "Nombre", "Género"
+                "Cedula", "Código Sede", "Nombre", "Telefono", "Dirección", "Ubicación"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -154,19 +159,24 @@ Cliente cliente;
                 return canEdit [columnIndex];
             }
         });
-        jTEstudiantesBusqueda.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtableClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTEstudiantesBusquedaMouseClicked(evt);
+                jtableClientesMouseClicked(evt);
             }
         });
-        jScrollPane9.setViewportView(jTEstudiantesBusqueda);
+        jScrollPane9.setViewportView(jtableClientes);
 
-        jCBusquedaEstudiante.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jCBusquedaEstudiante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "codigo_e", "nombre", "apellidos" }));
+        comboBoxBusquedaCliente.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        comboBoxBusquedaCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "cedula", "nombre", " " }));
+        comboBoxBusquedaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxBusquedaClienteActionPerformed(evt);
+            }
+        });
 
-        jTFBusquedaEstudiante.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTFBusquedaCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTFBusquedaEstudianteKeyReleased(evt);
+                jTFBusquedaClienteKeyReleased(evt);
             }
         });
 
@@ -179,9 +189,9 @@ Cliente cliente;
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jCBusquedaEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboBoxBusquedaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTFBusquedaEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTFBusquedaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -189,8 +199,8 @@ Cliente cliente;
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCBusquedaEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFBusquedaEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBoxBusquedaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFBusquedaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
@@ -248,7 +258,7 @@ Cliente cliente;
         });
 
         jLabel1.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
-        jLabel1.setText("ACTUALIZAR Y ELIMINAR ESTUDIANTE");
+        jLabel1.setText("ACTUALIZAR Y ELIMINAR CLIENTE");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -257,7 +267,7 @@ Cliente cliente;
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -282,7 +292,7 @@ Cliente cliente;
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 175, Short.MAX_VALUE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelatStud2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -294,20 +304,12 @@ Cliente cliente;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCNombresEstudianteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCNombresEstudianteStateChanged
-        Checkboxcambio(jCNombresEstudiante, jTFNombresEstudianteActualizar);
-    }//GEN-LAST:event_jCNombresEstudianteStateChanged
-
-    private void jCApellidosEstudianteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCApellidosEstudianteStateChanged
-        Checkboxcambio(jCApellidosEstudiante, jTFApellidosEstudianteActualizar);
-    }//GEN-LAST:event_jCApellidosEstudianteStateChanged
-
     private void btnActualizarEstudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarEstudActionPerformed
         ArrayList<String> atributosActualizar = new ArrayList<String>();
         String consulta = "";
-        atributosActualizar.add("codigo_e="+jTFCodigoEstudianteActualizar.getText());
-        if (jCNombresEstudiante.isSelected()){atributosActualizar.add("nombres_e='"+jTFNombresEstudianteActualizar.getText()+"'");}
-        if (jCApellidosEstudiante.isSelected()){atributosActualizar.add("apellidos_e='"+jTFApellidosEstudianteActualizar.getText()+"'");}
+        atributosActualizar.add("CEDULACLIENTE="+jTFCedulaClienteActualizar.getText());
+        if (jCNombresEstudiante.isSelected()){atributosActualizar.add("nombres_e='"+jTFTelefonoClienteaActualizar.getText()+"'");}
+        if (jCApellidosEstudiante.isSelected()){atributosActualizar.add("apellidos_e='"+jTFDireccionClienteaActualizar.getText()+"'");}
         
         Iterator<String> i = atributosActualizar.iterator();
         while (i.hasNext()){
@@ -315,42 +317,42 @@ Cliente cliente;
         }
         
         consulta = consulta.substring (0, consulta.length()-1);
-        String condicion = "'" +jTFCodigoEstudianteActualizar.getText() + "'";
+        String condicion = "'" +jTFCedulaClienteActualizar.getText() + "'";
         
-        String sql = "UPDATE Estudiante SET "+ consulta + " WHERE codigo_e " + " LIKE "+condicion;
+        String sql = "UPDATE V_clientes SET "+ consulta + " WHERE codigo_e " + " LIKE "+condicion;
 
-        if(cliente.ActualizarCliente(sql))
+        if(cliente.actualizarCliente(sql))
             JOptionPane.showMessageDialog(null, "Datos Actualizados correctamente. ");
         else{
             JOptionPane.showMessageDialog (null, "Ocurrio un error al Actualizar los datos ");  
         }
 
         cliente.actualizarTabla(tabla);      
-        cliente.actualizarTablaBusqueda(jTEstudiantesBusqueda, getConsulta());
+        cliente.actualizarTablaBusqueda(jtableClientes, getConsulta());
 
     }//GEN-LAST:event_btnActualizarEstudActionPerformed
 
-    private void jTEstudiantesBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTEstudiantesBusquedaMouseClicked
-        int row =jTEstudiantesBusqueda.getSelectedRow();
+    private void jtableClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtableClientesMouseClicked
+        int row =jtableClientes.getSelectedRow();
         if (row !=-1 ){
-            jTFCodigoEstudianteActualizar.setText(Integer.toString((int)jTEstudiantesBusqueda.getValueAt(row, 0)));
-            jTFNombresEstudianteActualizar.setText((String)jTEstudiantesBusqueda.getValueAt(row, 1));
-            jTFApellidosEstudianteActualizar.setText((String)jTEstudiantesBusqueda.getValueAt(row, 2));
+            jTFCedulaClienteActualizar.setText(Integer.toString((int)jtableClientes.getValueAt(row, 0)));
+            jTFTelefonoClienteaActualizar.setText((String)jtableClientes.getValueAt(row, 1));
+            jTFDireccionClienteaActualizar.setText((String)jtableClientes.getValueAt(row, 2));
         }
-    }//GEN-LAST:event_jTEstudiantesBusquedaMouseClicked
+    }//GEN-LAST:event_jtableClientesMouseClicked
 
     private void btnEliminarEstudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEstudActionPerformed
-        if(0==JOptionPane.showConfirmDialog(null, "¿Esta seguro de borrar "+jTFNombresEstudianteActualizar.getText()+" ?","Advertencia",JOptionPane.INFORMATION_MESSAGE)){
-            cliente.setCedula(jTFCodigoEstudianteActualizar.getText());
+        if(0==JOptionPane.showConfirmDialog(null, "¿Esta seguro de borrar "+jTFTelefonoClienteaActualizar.getText()+" ?","Advertencia",JOptionPane.INFORMATION_MESSAGE)){
+            cliente.setCedula(jTFCedulaClienteActualizar.getText());
     
-        if(cliente.EliminarCliente())
+        if(cliente.eliminarCliente())
             JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
         else{
             JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ");
         }     
-            jTFCodigoEstudianteActualizar.setText("");
-            jTFNombresEstudianteActualizar.setText("");
-            jTFApellidosEstudianteActualizar.setText("");       
+            jTFCedulaClienteActualizar.setText("");
+            jTFTelefonoClienteaActualizar.setText("");
+            jTFDireccionClienteaActualizar.setText("");       
             cliente.actualizarTabla(tabla);
         }
     }//GEN-LAST:event_btnEliminarEstudActionPerformed
@@ -359,9 +361,9 @@ Cliente cliente;
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelatStud2ActionPerformed
 
-    private void jTFBusquedaEstudianteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBusquedaEstudianteKeyReleased
-        cliente.actualizarTablaBusqueda(jTEstudiantesBusqueda, getConsulta());
-    }//GEN-LAST:event_jTFBusquedaEstudianteKeyReleased
+    private void jTFBusquedaClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBusquedaClienteKeyReleased
+        cliente.actualizarTablaBusqueda(jtableClientes, getConsulta());
+    }//GEN-LAST:event_jTFBusquedaClienteKeyReleased
 
     private void btnActualizarEstudMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarEstudMouseEntered
         this.btnActualizarEstud.setBorder(new LineBorder(Color.red));
@@ -393,24 +395,40 @@ Cliente cliente;
         this.btnCancelatStud2.setForeground(Color.black);
     }//GEN-LAST:event_btnCancelatStud2MouseExited
 
+    private void comboBoxBusquedaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxBusquedaClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxBusquedaClienteActionPerformed
+
+    private void jCApellidosEstudianteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCApellidosEstudianteStateChanged
+        Checkboxcambio(jCApellidosEstudiante, jTFDireccionClienteaActualizar);
+    }//GEN-LAST:event_jCApellidosEstudianteStateChanged
+
+    private void jCNombresEstudianteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCNombresEstudianteStateChanged
+        Checkboxcambio(jCNombresEstudiante, jTFTelefonoClienteaActualizar);
+    }//GEN-LAST:event_jCNombresEstudianteStateChanged
+
+    private void jCNombresEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCNombresEstudianteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCNombresEstudianteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizarEstud;
     private javax.swing.JButton btnCancelatStud2;
     private javax.swing.JButton btnEliminarEstud;
+    private javax.swing.JComboBox<String> comboBoxBusquedaCliente;
     private javax.swing.JCheckBox jCApellidosEstudiante;
-    private javax.swing.JComboBox<String> jCBusquedaEstudiante;
     private javax.swing.JCheckBox jCNombresEstudiante;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTable jTEstudiantesBusqueda;
-    private javax.swing.JTextField jTFApellidosEstudianteActualizar;
-    private javax.swing.JTextField jTFBusquedaEstudiante;
-    private javax.swing.JTextField jTFCodigoEstudianteActualizar;
-    private javax.swing.JTextField jTFNombresEstudianteActualizar;
+    private javax.swing.JTextField jTFBusquedaCliente;
+    private javax.swing.JTextField jTFCedulaClienteActualizar;
+    private javax.swing.JTextField jTFDireccionClienteaActualizar;
+    private javax.swing.JTextField jTFTelefonoClienteaActualizar;
+    private javax.swing.JTable jtableClientes;
     // End of variables declaration//GEN-END:variables
 
 public void Checkboxcambio(javax.swing.JCheckBox jCheckBox, javax.swing.JTextField jTField ){
@@ -423,17 +441,13 @@ public void Checkboxcambio(javax.swing.JCheckBox jCheckBox, javax.swing.JTextFie
 
 public String getConsulta(){
         String consulta = "";
-        switch(jCBusquedaEstudiante.getSelectedIndex()){
+        switch(comboBoxBusquedaCliente.getSelectedIndex()){
             case 0:
-                consulta="codigo_e="+jTFBusquedaEstudiante.getText(); 
+                consulta="cedula='"+jTFBusquedaCliente.getText(); 
                 break;
             case 1:
-                consulta="nombres_e='"+jTFBusquedaEstudiante.getText()+"'"; 
+                consulta="nombre='"+jTFBusquedaCliente.getText()+"'"; 
                 break;
-            case 2: 
-                consulta="apellidos_e='"+jTFBusquedaEstudiante.getText()+"'";
-                break;
-        
         }
         
         return consulta;
