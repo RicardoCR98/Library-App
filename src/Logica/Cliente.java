@@ -13,31 +13,25 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 public class Cliente {
     
-    private String nombre;
     private String cedula;
+    private String codigoSede;
+    private String nombre;
     private String telefono;
     private String direccion;
-    private String Ubicacion;
+    private String ubicacion;
+    ConexionBD conexion = new ConexionBD();
+    Connection cn = conexion.conexion();
     
     public Cliente(){
         
     }
 
-    public Cliente(String nombre, String cedula) {
-        this.nombre = nombre;
+    public Cliente(String cedula,String nombre, String telefono, String direccion, String ubicacion) {
         this.cedula = cedula;
+        this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
-        this.Ubicacion = Ubicacion;
-    }
-
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.ubicacion = ubicacion;
     }
 
     public String getCedula() {
@@ -46,6 +40,22 @@ public class Cliente {
 
     public void setCedula(String cedula) {
         this.cedula = cedula;
+    }
+
+    public String getCodigoSede() {
+        return codigoSede;
+    }
+
+    public void setCodigoSede(String codigoSede) {
+        this.codigoSede = codigoSede;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getTelefono() {
@@ -65,61 +75,63 @@ public class Cliente {
     }
 
     public String getUbicacion() {
-        return Ubicacion;
+        return ubicacion;
     }
 
-    public void setUbicacion(String Ubicacion) {
-        this.Ubicacion = Ubicacion;
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
     
-    
-   
     public boolean añadirCliente(){
-//        boolean flag = false;
-//        try {
-//            PreparedStatement pps = cn.prepareStatement("INSERT INTO Estudiante(nombres_e, apellidos_e) VALUES (?,?)"); 
-//            pps.setLong(1, this.codigoEstudiante);
-//            pps.setString(1, this.cedula);
-//            pps.setString(2, this.nombre);
-//            pps.setString(3, this.telefono);
-//            pps.setString(4,this.direccion);
-//            pps.setString(5, this.Ubicacion);
-//
-//           
-//            pps.executeUpdate ();
-//            flag = true;
-//        } catch(SQLException ex) {
-//            Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, ex); 
-//            flag = false;     
-//        }
-//        return flag;
-return true;
+            boolean bandera = false;
+            if(this.getUbicacion() == "Quito"){
+                setCodigoSede("01");
+            }else{
+                setCodigoSede("02");
+            }
+            //sf
+            try{
+              PreparedStatement pps = cn.prepareStatement("INSERT INTO V_clientes"
+                                                        + "(CEDULACLIENTE, CODIGOSEDE, NOMBRECLIENTE, TELEFONOCLIENTE, DIRECCIONCLIENTE, UBICACION) VALUES (?,?,?,?,?,?);"); 
+              pps.setString(1, this.cedula);
+              pps.setString(2, this.codigoSede);
+              pps.setString(3, this.nombre);
+              pps.setString(4, this.telefono);
+              pps.setString(5,this.direccion);
+              pps.setString(6, this.ubicacion);
+              pps.executeUpdate();
+              bandera = true;
+            }catch(SQLException e){
+             Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, e); 
+             bandera = false;        
+            }
+            return bandera;
     }
-    public boolean ActualizarCliente(String sql){
-//        boolean flag = false;
-//        try {
-//        PreparedStatement pps = cn.prepareStatement(sql);
-//        pps.executeUpdate();
-//        flag = true;
-//     } catch(SQLException ex) {
-//            Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, ex); 
-//            JOptionPane.showMessageDialog (null, "Ocurrio un error al Actualizar los datos ");     
-//        }
-//        return flag;
-return true;
+    public boolean actualizarCliente(String sql){
+           boolean bandera = false;
+           try{
+            PreparedStatement pps = cn.prepareStatement(sql);
+            pps.executeUpdate();
+            bandera = true;
+           }catch(SQLException e){
+            Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, e); 
+            JOptionPane.showMessageDialog (null, "Ocurrio un error al Actualizar los datos ");     
+            bandera = false;
+           }
+        return bandera;      
     }
-    public boolean EliminarCliente(){
-//        boolean flag = false;
-//        try {
-//            PreparedStatement pps = cn.prepareStatement("DELETE FROM Estudiante WHERE codigo_e="+this.codigoEstudiante); 
-//            pps.executeUpdate ();
-//            flag = true;
-//        } catch(SQLException ex) {
-//            Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, ex); 
-//            JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ");     
-//        }
-//        return flag;
-return true;
+    public boolean eliminarCliente(){
+        boolean bandera = false;
+        try{
+           PreparedStatement pps = cn.prepareStatement("DELETE FROM Estudiante WHERE CEDULACLIENTE="+this.cedula); 
+           pps.executeUpdate ();
+           bandera = true;
+        }catch(SQLException e){
+           Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, e); 
+           JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ");  
+           bandera = false;
+        }
+        return bandera;
         
     }
     public JTable actualizarTabla(JTable tabla1){
@@ -139,7 +151,7 @@ return true;
 //        Logger.getLogger(JFBiblioteca.class.getName()).log(Level. SEVERE, null, ex); 
 //    }        
 //        return tabla;
-return tabla;
+        return tabla1;
     }
     public void actualizarTablaBusqueda(JTable tabla1, String consulta){
 //    Statement st;
