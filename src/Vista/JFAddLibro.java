@@ -49,7 +49,7 @@ public class JFAddLibro extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTFAnio = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTFFGenero = new javax.swing.JTextField();
+        jTFGenero = new javax.swing.JTextField();
         btnCancelarLib = new javax.swing.JButton();
         btnAceptarLib = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -161,7 +161,7 @@ public class JFAddLibro extends javax.swing.JFrame {
                                     .addComponent(jTFPrecio)
                                     .addComponent(jTFAnio)
                                     .addComponent(jTFISBN)
-                                    .addComponent(jTFFGenero)
+                                    .addComponent(jTFGenero)
                                     .addComponent(jTFTitulo)
                                     .addComponent(jTFEditorial)
                                     .addComponent(jTFCantidad, javax.swing.GroupLayout.Alignment.TRAILING)))
@@ -207,7 +207,7 @@ public class JFAddLibro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTFFGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -246,10 +246,8 @@ public class JFAddLibro extends javax.swing.JFrame {
         }else{
             codigoSede = "02";
         }
-        
-        libro = new Libro(this.jTFISBN.getText(), this.jTFTitulo.getText(),this.jTFAutor.getText(),this.jTFFGenero.getText(),this.jTFAnio.getText(),this.jTFEditorial.getText(),this.jTFCantidad.getText(),
-                this.jTFPrecio.getText(),ubicacion,codigoSede);
-        boolean flag = libro.añadirLibro();
+        int cantidad = Integer.parseInt(this.jTFCantidad.getText());
+        boolean flag = libro.añadirLibro(this.jTFISBN.getText(),codigoSede,cantidad,ubicacion);
         if(flag){
             JOptionPane.showMessageDialog(null, "Datos Guardados correctamente.");
             tabla = libro.actualizarTabla(tabla);
@@ -341,7 +339,7 @@ public class JFAddLibro extends javax.swing.JFrame {
     private javax.swing.JTextField jTFCantidad;
     private javax.swing.JTextField jTFCantidad2;
     private javax.swing.JTextField jTFEditorial;
-    private javax.swing.JTextField jTFFGenero;
+    private javax.swing.JTextField jTFGenero;
     private javax.swing.JTextField jTFISBN;
     private javax.swing.JTextField jTFPrecio;
     private javax.swing.JTextField jTFTitulo;
@@ -351,7 +349,7 @@ public class JFAddLibro extends javax.swing.JFrame {
     public void comewth(){
         this.jTFISBN.setText("");
         this.jTFTitulo.setText("");
-        this.jTFFGenero.setText("");
+        this.jTFGenero.setText("");
         this.jTFAnio.setText("");
     }
 }
