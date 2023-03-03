@@ -4,13 +4,12 @@
  */
 package Vista;
 
-import Logica.Cliente;
 import Logica.Libro;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 
 /**
@@ -19,13 +18,11 @@ import javax.swing.border.LineBorder;
  */
 public class JFModificarLibro extends javax.swing.JFrame {
 Libro libro;
-JTable tabla;
-    public JFModificarLibro(JTable tabla) {
+    public JFModificarLibro() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.tabla = tabla;
         this.libro = new Libro();
-        libro.actualizarTabla(tabla);
+        libro.actualizarTabla(jTBusquedaAct);
     }
 
     /**
@@ -87,30 +84,31 @@ JTable tabla;
         });
 
         jLabel2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel2.setText("Código:");
+        jLabel2.setText("ISBN:");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(31, 31, 31)
-                .addComponent(jTFISBNLibroActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-            .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jCPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTFPrecioLibActu, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTFISBNLibroActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jCCantidadLibro)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTFCantidadActualizarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(jCPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTFPrecioLibActu, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(jCCantidadLibro)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTFCantidadActualizarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(39, Short.MAX_VALUE))))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,12 +131,12 @@ JTable tabla;
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Búsqueda"));
 
         jCBusquedaLibro.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jCBusquedaLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ISBN", "nombre", "genero" }));
+        jCBusquedaLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ISBN", "Nombre", "Genero", "Autor" }));
         jCBusquedaLibro.setSelectedIndex(-1);
 
         jTFBusquedaLibro.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTFBusquedaLibroKeyReleased(evt);
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTFBusquedaLibroKeyPressed(evt);
             }
         });
 
@@ -165,6 +163,11 @@ JTable tabla;
                 return canEdit [columnIndex];
             }
         });
+        jTBusquedaAct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTBusquedaActMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTBusquedaAct);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -174,15 +177,12 @@ JTable tabla;
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3)
-                        .addContainerGap())
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 188, Short.MAX_VALUE)
                         .addComponent(jCBusquedaLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(76, 76, 76)
-                        .addComponent(jTFBusquedaLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(126, 126, 126))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTFBusquedaLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,9 +241,9 @@ JTable tabla;
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(429, 429, 429)
+                        .addGap(398, 398, 398)
                         .addComponent(btnActualizarLib, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(102, 102, 102)
+                        .addGap(174, 174, 174)
                         .addComponent(btnCancelarLib, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
@@ -291,7 +291,7 @@ JTable tabla;
         String consulta = "";
         atributosActualizar.add("ISBN="+jTFISBNLibroActualizar.getText());
         if (jCPrecio.isSelected()){atributosActualizar.add("precio='"+jTFPrecioLibActu.getText()+"'");}
-        if (jCCantidadLibro.isSelected()){atributosActualizar.add("cantidad='"+jTFCantidadActualizarLibros.getText()+"'");}
+        if (jCCantidadLibro.isSelected()){atributosActualizar.add("NUMEJEMPLARES='"+jTFCantidadActualizarLibros.getText()+"'");}
 
         Iterator<String> i = atributosActualizar.iterator();
 
@@ -309,13 +309,9 @@ JTable tabla;
             JOptionPane.showMessageDialog (null, "Ocurrio un error al Actualizar los datos ");  
         }
         
-        libro.actualizarTabla(tabla);
+        libro.actualizarTabla(jTBusquedaAct);
         libro.ActualizarTablaLibrosBusqueda(jTBusquedaAct, getConsulta());
     }//GEN-LAST:event_btnActualizarLibActionPerformed
-
-    private void jTFBusquedaLibroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBusquedaLibroKeyReleased
-        libro.ActualizarTablaLibrosBusqueda(jTBusquedaAct, getConsulta());
-    }//GEN-LAST:event_jTFBusquedaLibroKeyReleased
 
     private void btnCancelarLibActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarLibActionPerformed
        this.setVisible(false);
@@ -344,6 +340,41 @@ JTable tabla;
         this.btnActualizarLib.setBorder(new LineBorder(new Color(90,130,191)));
         this.btnActualizarLib.setForeground(Color.black);
     }//GEN-LAST:event_btnActualizarLibMouseExited
+
+    private void jTFBusquedaLibroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBusquedaLibroKeyPressed
+        // TODO add your handling code here:                                      
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            libro.ActualizarTablaLibrosBusqueda(jTBusquedaAct, getConsulta());
+        }
+
+        // Obtener el índice de la columna deseada
+        int indiceColumna = jTBusquedaAct.getColumnModel().getColumnIndex("ISBN");
+        Object valorCelda;
+        int fila = jTBusquedaAct.getSelectedRow();
+        // Obtener el valor de la celda en la fila 0 y la columna correspondiente
+        if(fila == -1){
+            valorCelda = jTBusquedaAct.getModel().getValueAt(0, indiceColumna);
+        }else{
+            valorCelda = jTBusquedaAct.getModel().getValueAt(fila, indiceColumna);
+        }
+        jTFISBNLibroActualizar.setText((String)valorCelda);  
+        if(jTFBusquedaLibro.getText().equalsIgnoreCase("")){
+            libro.actualizarTabla(jTBusquedaAct);
+        }
+    }//GEN-LAST:event_jTFBusquedaLibroKeyPressed
+
+    private void jTBusquedaActMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTBusquedaActMouseClicked
+        // TODO add your handling code here:                                  
+        int indiceColumna = jTBusquedaAct.getColumnModel().getColumnIndex("ISBN");
+        int fila = jTBusquedaAct.getSelectedRow();
+        Object valorCelda;
+        if(fila == -1){
+            valorCelda = jTBusquedaAct.getModel().getValueAt(0, indiceColumna);
+        }else{
+            valorCelda = jTBusquedaAct.getModel().getValueAt(fila, indiceColumna);
+        }
+        jTFISBNLibroActualizar.setText((String)valorCelda); 
+    }//GEN-LAST:event_jTBusquedaActMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -375,13 +406,16 @@ JTable tabla;
      String consulta = "";
         switch(jCBusquedaLibro.getSelectedIndex()){
             case 0:
-                consulta="codigo_l="+jTFBusquedaLibro.getText(); 
+                consulta=jTFBusquedaLibro.getText(); 
                 break;
             case 1:
-                consulta="nombre='"+jTFBusquedaLibro.getText()+"'"; 
+                consulta=jTFBusquedaLibro.getText(); 
                 break;
             case 2: 
-                consulta="genero='"+jTFBusquedaLibro.getText()+"'";
+                consulta=jTFBusquedaLibro.getText();
+                break;
+            case 3:
+                consulta=jTFBusquedaLibro.getText();
                 break;
         
         }

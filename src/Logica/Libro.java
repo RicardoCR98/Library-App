@@ -19,7 +19,7 @@ public class Libro {
     private String genero;
     private String anio_P;
     private String editorial;
-    private String numEjemplar;
+    private int numEjemplar;
     private String precio;
     private String ubicacion;
     private String codSede;
@@ -30,7 +30,7 @@ public class Libro {
     }
 
     public Libro(String ISBN, String tituloLibro, String nAutor, String genero, 
-            String anio_P, String editorial, String numEjemplar, String precio, 
+            String anio_P, String editorial, int numEjemplar, String precio, 
             String ubicacion, String codigoSede) {
         this.ISBN = ISBN;
         this.tituloLibro = tituloLibro;
@@ -92,11 +92,11 @@ public class Libro {
         this.editorial = editorial;
     }
 
-    public String getNumEjemplar() {
+    public int getNumEjemplar() {
         return numEjemplar;
     }
 
-    public void setNumEjemplar(String numEjemplar) {
+    public void setNumEjemplar(int numEjemplar) {
         this.numEjemplar = numEjemplar;
     }
 
@@ -124,18 +124,17 @@ public class Libro {
         this.codSede = codSede;
     }
     
-    public boolean añadirLibro(){
+    public boolean añadirLibro(String ISBN, String codSede, int numEjemplar, String ubicacion){
         boolean flag = false;
         try {
-            PreparedStatement pps = cn.prepareStatement("INSERT INTO V_Ejemplar VALUES (?,?,?,?)"); 
-            pps.setString (1, this.ISBN);
-            pps.setString (2, this.codSede);
-            pps.setString (3, this.numEjemplar);
-            pps.setString(4, this.ubicacion);
+            PreparedStatement pps = cn.prepareStatement("INSERT INTO V_Ejemplar (ISBN, CODIGOSEDE, NUMEJEMPLAR, UBICACION) VALUES (?, ?, ?, ?)"); 
+            pps.setString (1, ISBN);
+            pps.setString (2, codSede);
+            pps.setInt (3, numEjemplar);
+            pps.setString(4, ubicacion);
             pps.executeUpdate ();
             flag = true;
-        } catch(SQLException ex) {
-            Logger.getLogger(Libro.class.getName()).log(Level. SEVERE, null, ex);     
+        } catch(SQLException ex) {   
         }
         return flag;
     }
@@ -192,20 +191,22 @@ public class Libro {
     }
     return cantidad;
 }
+    
     public void LibroDisponible(){
-    int cantidad = obtenerCantidadLibro(this.ISBN);
-    cantidad++;
-    String c = String.valueOf(cantidad);
-    System.out.println(c);
-    try {   
-        PreparedStatement pps = cn.prepareStatement("UPDATE Libro SET cantidad="+ c +" WHERE codigo_l = " +this.ISBN);
-        pps.executeUpdate();
-            
-    } catch(SQLException ex) {
-        Logger.getLogger(Libro.class.getName()).log(Level. SEVERE, null, ex); 
-        JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");     
+        int cantidad = obtenerCantidadLibro(this.ISBN);
+        cantidad++;
+        String c = String.valueOf(cantidad);
+        System.out.println(c);
+        try {   
+            PreparedStatement pps = cn.prepareStatement("UPDATE Libro SET cantidad="+ c +" WHERE ISBN = " +this.ISBN);
+            pps.executeUpdate();
+
+        } catch(SQLException ex) {
+            Logger.getLogger(Libro.class.getName()).log(Level. SEVERE, null, ex); 
+            JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");     
+        }
     }
-}
+    
     public JTable actualizarTabla(JTable tabla1){
         Statement st;
         ResultSet rs=null;
@@ -234,7 +235,8 @@ public class Libro {
     ResultSet rs=null;    
     try {   
         st = cn.createStatement();      
-        rs = st.executeQuery("SELECT * FROM V_Libros WHERE "+consulta); 
+        rs = st.executeQuery("SELECT * FROM V_Libros WHERE ISBN='"+consulta+"' OR NOMBREAUTOR='"+consulta
+        +"' OR GENERO='"+consulta+"'"+" OR TITULOLIBRO='"+consulta+"'"); 
         DefaultTableModel dfm = new DefaultTableModel();
         tabla.setModel(dfm);
         dfm.setColumnIdentifiers(new Object[]{"ISBN","Titulo","Autor","Género","Año","Editorial",
@@ -245,23 +247,8 @@ public class Libro {
             rs.getString("Ubicacion")});
         }    
         }catch(SQLException ex) {
-        //Logger.getLogger(JFBibliotecaDB.class.getName()).log(Level. SEVERE, null, ex); 
-        //JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");     
+            JOptionPane.showMessageDialog (null, "No se encuentra");     
+        }
     }
-}
-    public void LibroOcupado(){
-    int cantidad = obtenerCantidadLibro(this.ISBN);
-    cantidad--;
-    String c = String.valueOf(cantidad);
-    System.out.println(c);
-    try {
-        PreparedStatement pps = cn.prepareStatement("UPDATE V_Ejemplar SET cantidad="+c+" WHERE ISBN="+this.ISBN); 
-        pps.executeUpdate();
-            
-    } catch(SQLException ex) {
-        Logger.getLogger(JFLibreria.class.getName()).log(Level. SEVERE, null, ex); 
-        JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");     
-    }
-}
 
 }

@@ -15,16 +15,16 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-public class Prestamo {
+public class Facturas {
     private long codigoPrestamo;
     private Cliente estudiante;
     private Libro libro;
     ConexionBD conexion = new ConexionBD();
     Connection cn = conexion.conexion();
 
-    public Prestamo() {
+    public Facturas() {
     }
-    public Prestamo(Cliente estudiante, Libro libro) {
+    public Facturas(Cliente estudiante, Libro libro) {
         this.estudiante = estudiante;
         this.libro = libro;
     }
@@ -54,7 +54,7 @@ public class Prestamo {
     public boolean añadirPrestamo(String dateDevolucion){
 //        boolean flag = false;
 //        try {
-//            PreparedStatement pps = cn.prepareStatement("INSERT into Prestamo(codigo_l,codigo_e,fecha_desde,fecha_hasta,multas) VALUES (?,?,?,?,?)"); 
+//            PreparedStatement pps = cn.prepareStatement("INSERT into Facturas(codigo_l,codigo_e,fecha_desde,fecha_hasta,multas) VALUES (?,?,?,?,?)"); 
 ////            pps.setLong(1, this.codigoPrestamo);
 //            pps.setLong(1, this.libro.getCodigoLibro());
 //            pps.setLong (2, this.estudiante.getCodigoEstudiante());
@@ -65,7 +65,7 @@ public class Prestamo {
 //            libro.LibroOcupado();
 //            flag = true;
 //        } catch(SQLException ex) {
-//            Logger.getLogger(Prestamo.class.getName()).log(Level. SEVERE, null, ex); 
+//            Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex); 
 //        }
 //        return flag;
 return true;
@@ -82,7 +82,7 @@ return true;
 //            ResultSet rs = stat.executeQuery("SELECT codigo_le,fecha_hasta FROM prestamo");
 //            
 //            while(rs.next()){  
-//                Prestamo aux = new Prestamo();
+//                Facturas aux = new Facturas();
 //                aux.codigoPrestamo=rs.getInt(1);
 //                String fechaDevuelta = rs.getString(2);
 //                Date fechadevuelta = dateFormat.parse(fechaDevuelta);  
@@ -94,10 +94,10 @@ return true;
 //            }
 //
 //        } catch (SQLException ex) {
-//            Logger.getLogger(Prestamo.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
 //           // JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar los datos ");
 //        } catch (ParseException ex) {
-//            Logger.getLogger(Prestamo.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 
     }
@@ -108,7 +108,7 @@ return true;
             pps.executeUpdate();
             flag = true;
         } catch(SQLException ex) {
-            Logger.getLogger(Prestamo.class.getName()).log(Level. SEVERE, null, ex);    
+            Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex);    
         }
         return flag;
     }
@@ -137,7 +137,7 @@ return true;
             } 
 
         } catch (SQLException ex) {
-            Logger.getLogger(Prestamo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
         }
         return x;
     }
@@ -151,7 +151,7 @@ return true;
             pps.executeUpdate();
             
         } catch (SQLException ex) {
-            Logger.getLogger(Prestamo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     public JTable ActualizarTablaPrestamos(JTable tabla1){
@@ -168,7 +168,7 @@ return true;
             dfm.addRow(new Object[]{rs.getInt("codigo_le"), rs.getInt("codigo_l"), rs.getInt("codigo_e"),rs.getString("fecha_desde"),rs.getString("fecha_hasta"),rs.getInt("multas")});
         }
     }catch(SQLException ex) {
-        Logger.getLogger(Prestamo.class.getName()).log(Level. SEVERE, null, ex); 
+        Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex); 
         JOptionPane.showMessageDialog (null, "Ocurrio un error al mostrar la tabla ");     
     }
     return tabla;
@@ -187,7 +187,7 @@ return true;
             dfm.addRow(new Object[]{rs.getInt("codigo_le"), rs.getInt("codigo_l"), rs.getInt("codigo_e"),rs.getString("fecha_desde"),rs.getString("fecha_hasta"),rs.getInt("multas")});
         }
     }catch(SQLException ex) {
-        Logger.getLogger(Prestamo.class.getName()).log(Level. SEVERE, null, ex); 
+        Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex); 
         //JOptionPane.showMessageDialog (null, "Ocurrio un error al mostrar la tabla ");     
     }
 

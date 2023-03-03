@@ -4,18 +4,18 @@ import Logica.*;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
-public class JFLibreria extends javax.swing.JFrame{
+public final class JFLibreria extends javax.swing.JFrame{
    
     JFAddCliente jfaddcliente;
     JFEditCliente jfeditcliente;
     JFAddLibro jfaddlibro;
     JFModificarLibro jfmodificarlibro;
+    Libro libro;
 
     Login log = new Login();
     public JFLibreria() {
-        Prestamo prestamo = new Prestamo();
+        Facturas prestamo = new Facturas();
         prestamo.setMultas();
         initComponents();
         this.setLocationRelativeTo(null);
@@ -25,23 +25,19 @@ public class JFLibreria extends javax.swing.JFrame{
         jfaddlibro = new JFAddLibro(this.jTLibros);
         jfaddcliente = new JFAddCliente(this.jTEstudiantes);
         jfeditcliente = new JFEditCliente(this.jTEstudiantes);
-        jfmodificarlibro = new JFModificarLibro(this.jTLibros);
+        jfmodificarlibro = new JFModificarLibro();
+        libro = new Libro();
+        jfaddlibro.actualizarTabla();
     }
     
     public void showPanel() {
         this.PClientes.setVisible(false);
-        this.PLibros.setVisible(false);
+        this.PnlLib.setVisible(false);
         this.PFacturas.setVisible(false);
-
-//        lblUsers.setText(log.getUser());
         lblUsers.setForeground(Color.white);
         lblUsers.setText("Admin");
     }
 
-
-    
-    //Obtener Fecha y Hora
-   
     //Escalar imagenes del inicio
     public void scaleImage() {
         //Logo Librimundi
@@ -141,12 +137,8 @@ public class JFLibreria extends javax.swing.JFrame{
         iconoLibro = new javax.swing.JLabel();
         TopBar = new javax.swing.JPanel();
         TolBar = new javax.swing.JPanel();
-        lblFechaHora = new javax.swing.JLabel();
-        lblHora = new javax.swing.JLabel();
-        iconoCalendarioHora = new javax.swing.JLabel();
         iconoAdmin = new javax.swing.JLabel();
         lblUsers = new javax.swing.JLabel();
-        iconoCerrarSesion = new javax.swing.JLabel();
         pnlLib = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         iconoLibriMundi = new javax.swing.JLabel();
@@ -181,7 +173,7 @@ public class JFLibreria extends javax.swing.JFrame{
         EiconoModificar = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         lblCountEstud = new javax.swing.JLabel();
-        PLibros = new javax.swing.JPanel();
+        PnlLib = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -227,25 +219,11 @@ public class JFLibreria extends javax.swing.JFrame{
         TolBar.setBackground(new java.awt.Color(37, 40, 80));
         TolBar.setToolTipText("");
 
-        lblFechaHora.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        lblFechaHora.setForeground(new java.awt.Color(255, 255, 255));
-
-        lblHora.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        lblHora.setForeground(new java.awt.Color(255, 255, 255));
-        lblHora.setToolTipText("");
-
         iconoAdmin.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         lblUsers.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblUsers.setForeground(new java.awt.Color(255, 255, 255));
         lblUsers.setText(": ....");
-
-        iconoCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        iconoCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                iconoCerrarSesionMouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout TolBarLayout = new javax.swing.GroupLayout(TolBar);
         TolBar.setLayout(TolBarLayout);
@@ -256,31 +234,16 @@ public class JFLibreria extends javax.swing.JFrame{
                 .addComponent(iconoAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 500, Short.MAX_VALUE)
-                .addComponent(iconoCalendarioHora, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblFechaHora, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(iconoCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addContainerGap(838, Short.MAX_VALUE))
         );
         TolBarLayout.setVerticalGroup(
             TolBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblFechaHora, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TolBarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(TolBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(iconoCalendarioHora, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUsers, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
                     .addComponent(iconoAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(TolBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(iconoCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         pnlLib.setBackground(new java.awt.Color(255, 0, 0));
@@ -304,7 +267,7 @@ public class JFLibreria extends javax.swing.JFrame{
         pnlLibLayout.setVerticalGroup(
             pnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLibLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
@@ -406,7 +369,7 @@ public class JFLibreria extends javax.swing.JFrame{
 
         btnCliente.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnCliente.setForeground(new java.awt.Color(255, 255, 255));
-        btnCliente.setText("Registro de Clientes");
+        btnCliente.setText("Clientes");
         btnCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -461,7 +424,7 @@ public class JFLibreria extends javax.swing.JFrame{
 
         btnLibTxt.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnLibTxt.setForeground(new java.awt.Color(255, 255, 255));
-        btnLibTxt.setText("Registro Libros ");
+        btnLibTxt.setText("Libros ");
         btnLibTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLibTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -800,7 +763,7 @@ public class JFLibreria extends javax.swing.JFrame{
                 .addGap(36, 36, 36))
         );
 
-        PLibros.setPreferredSize(new java.awt.Dimension(947, 706));
+        PnlLib.setPreferredSize(new java.awt.Dimension(947, 706));
 
         jLabel14.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
         jLabel14.setText("REGISTRO Y MODIFICACION DE LIBROS");
@@ -827,6 +790,28 @@ public class JFLibreria extends javax.swing.JFrame{
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 LtxtBusquedaMousePressed(evt);
+            }
+        });
+        LtxtBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LtxtBusquedaActionPerformed(evt);
+            }
+        });
+
+        LiconoLupa.setDoubleBuffered(true);
+        LiconoLupa.setOpaque(true);
+        LiconoLupa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LiconoLupaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LiconoLupaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LiconoLupaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                LiconoLupaMousePressed(evt);
             }
         });
 
@@ -947,61 +932,61 @@ public class JFLibreria extends javax.swing.JFrame{
         lblCountLib.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblCountLib.setText("...");
 
-        javax.swing.GroupLayout PLibrosLayout = new javax.swing.GroupLayout(PLibros);
-        PLibros.setLayout(PLibrosLayout);
-        PLibrosLayout.setHorizontalGroup(
-            PLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PLibrosLayout.createSequentialGroup()
-                .addGroup(PLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PLibrosLayout.createSequentialGroup()
+        javax.swing.GroupLayout PnlLibLayout = new javax.swing.GroupLayout(PnlLib);
+        PnlLib.setLayout(PnlLibLayout);
+        PnlLibLayout.setHorizontalGroup(
+            PnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PnlLibLayout.createSequentialGroup()
+                .addGroup(PnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PnlLibLayout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addGroup(PLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PLibrosLayout.createSequentialGroup()
+                        .addGroup(PnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PnlLibLayout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel16))
                             .addComponent(jLabel14)
-                            .addGroup(PLibrosLayout.createSequentialGroup()
+                            .addGroup(PnlLibLayout.createSequentialGroup()
                                 .addGap(54, 54, 54)
-                                .addGroup(PLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(PnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(LiconoLupa, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(PLibrosLayout.createSequentialGroup()
+                                    .addGroup(PnlLibLayout.createSequentialGroup()
                                         .addComponent(LPanelAñadirLib, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(125, 125, 125)
                                         .addComponent(LPanelElimiLib, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(LtxtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(PLibrosLayout.createSequentialGroup()
+                    .addGroup(PnlLibLayout.createSequentialGroup()
                         .addGap(63, 63, 63)
-                        .addGroup(PLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(PnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PLibrosLayout.createSequentialGroup()
+                            .addGroup(PnlLibLayout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblCountLib)))))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
-        PLibrosLayout.setVerticalGroup(
-            PLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PLibrosLayout.createSequentialGroup()
+        PnlLibLayout.setVerticalGroup(
+            PnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PnlLibLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jLabel14)
                 .addGap(18, 18, 18)
-                .addGroup(PLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(PnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(jLabel16))
                 .addGap(44, 44, 44)
-                .addGroup(PLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(PnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(LPanelElimiLib, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LPanelAñadirLib, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addGroup(PLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(PnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(LiconoLupa, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LtxtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(PLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(lblCountLib))
                 .addContainerGap(117, Short.MAX_VALUE))
@@ -1252,7 +1237,7 @@ public class JFLibreria extends javax.swing.JFrame{
         );
 
         Contenido.setLayer(PClientes, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        Contenido.setLayer(PLibros, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Contenido.setLayer(PnlLib, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Contenido.setLayer(PFacturas, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Contenido.setLayer(PInicio, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -1269,7 +1254,7 @@ public class JFLibreria extends javax.swing.JFrame{
                     .addGap(0, 52, Short.MAX_VALUE)))
             .addGroup(ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ContenidoLayout.createSequentialGroup()
-                    .addComponent(PLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 887, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PnlLib, javax.swing.GroupLayout.PREFERRED_SIZE, 887, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 61, Short.MAX_VALUE)))
             .addGroup(ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ContenidoLayout.createSequentialGroup()
@@ -1285,7 +1270,7 @@ public class JFLibreria extends javax.swing.JFrame{
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ContenidoLayout.createSequentialGroup()
-                    .addComponent(PLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PnlLib, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 12, Short.MAX_VALUE)))
             .addGroup(ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ContenidoLayout.createSequentialGroup()
@@ -1493,14 +1478,7 @@ public class JFLibreria extends javax.swing.JFrame{
     }//GEN-LAST:event_EtxtBusquedaMouseClicked
 
     private void jTEstudiantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTEstudiantesMouseClicked
-        //        int fila = this.jTEstudiantes.getSelectedRow();
-        //        if (fila == -1) {
-            //            JOptionPane.showMessageDialog(null, "Ninguna fila a sido seleccionada");
-            //        } else {
-            //
-            //            jfeditestudiante.setVisible(true);
-            //
-            //        }
+
     }//GEN-LAST:event_jTEstudiantesMouseClicked
 
     private void PrestamoMultaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrestamoMultaMouseExited
@@ -1535,7 +1513,7 @@ public class JFLibreria extends javax.swing.JFrame{
         this.PFacturas.setVisible(true);
         this.PClientes.setVisible(false);
         this.PInicio.setVisible(false);
-        this.PLibros.setVisible(false);
+        this.PnlLib.setVisible(false);
     }//GEN-LAST:event_btnPrestamoTxtMouseClicked
 
     private void RegistroLibroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistroLibroMouseExited
@@ -1563,7 +1541,7 @@ public class JFLibreria extends javax.swing.JFrame{
     }//GEN-LAST:event_btnLibTxtMouseEntered
 
     private void btnLibTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLibTxtMouseClicked
-        this.PLibros.setVisible(true);
+        this.PnlLib.setVisible(true);
         this.PClientes.setVisible(false);
         this.PInicio.setVisible(false);
         this.PFacturas.setVisible(false);
@@ -1596,7 +1574,7 @@ public class JFLibreria extends javax.swing.JFrame{
     private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
         this.PClientes.setVisible(true);
         this.PInicio.setVisible(false);
-        this.PLibros.setVisible(false);
+        this.PnlLib.setVisible(false);
         this.PFacturas.setVisible(false);
     }//GEN-LAST:event_btnClienteMouseClicked
 
@@ -1627,39 +1605,42 @@ public class JFLibreria extends javax.swing.JFrame{
     private void btnIniciotxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciotxtMouseClicked
         this.PInicio.setVisible(true);
         this.PClientes.setVisible(false);
-        this.PLibros.setVisible(false);
+        this.PnlLib.setVisible(false);
         this.PFacturas.setVisible(false);
     }//GEN-LAST:event_btnIniciotxtMouseClicked
 
-    private void iconoCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoCerrarSesionMouseClicked
+    private void LiconoLupaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LiconoLupaMouseClicked
+        // TODO add your handling code here:
+        String consulta;
+        consulta = LtxtBusqueda.getText();
+        libro.ActualizarTablaLibrosBusqueda(this.jTLibros, consulta);  
+        
+    }//GEN-LAST:event_LiconoLupaMouseClicked
 
-        int x = JOptionPane.showConfirmDialog(null, "¿Está seguro que quiere Cerrar Sesion?");
-        if (x == 0) {
-            this.dispose();
-            JFLogin jflog = new JFLogin();
-            jflog.setVisible(true);
-        } else {
+    private void LiconoLupaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LiconoLupaMouseEntered
+        // TODO add your handling code here:
+        this.LiconoLupa.setBorder(new LineBorder(Color.red));
+        this.LiconoLupa.setForeground(Color.red);
+        String consulta;
+    }//GEN-LAST:event_LiconoLupaMouseEntered
 
-        }
-    }//GEN-LAST:event_iconoCerrarSesionMouseClicked
+    private void LiconoLupaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LiconoLupaMouseExited
+        // TODO add your handling code here:
+        this.LiconoLupa.setBorder(null);
+        this.LiconoLupa.setForeground(Color.black);
+    }//GEN-LAST:event_LiconoLupaMouseExited
 
-    public void contarEstud() {
-        for (int x = 0; x <= jTEstudiantes.getRowCount(); x++) {
-            lblCountEstud.setText("" + x);
-        }
-    }
+    private void LiconoLupaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LiconoLupaMousePressed
 
-    public void contarLib() {
-        for (int x = 0; x <= jTLibros.getRowCount(); x++) {
-            lblCountLib.setText("" + x);
+        
+    }//GEN-LAST:event_LiconoLupaMousePressed
+
+    private void LtxtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LtxtBusquedaActionPerformed
+        // TODO add your handling code here:
+        if(this.LtxtBusqueda.getText().equals("")){
+            libro.actualizarTabla(jTLibros);
         }
-    }
-    
-     public void contarMult() {
-        for (int x = 0; x <= jTPrestamos.getRowCount(); x++) {
-            lblCountMult.setText("" + x);
-        }
-    }
+    }//GEN-LAST:event_LtxtBusquedaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1721,13 +1702,13 @@ public class JFLibreria extends javax.swing.JFrame{
     private javax.swing.JPanel PClientes;
     private javax.swing.JPanel PFacturas;
     private javax.swing.JPanel PInicio;
-    private javax.swing.JPanel PLibros;
     private javax.swing.JLabel PMiconoLupa;
     private javax.swing.JPanel PPEliminarPrestamo;
     private javax.swing.JPanel PPanelPrestamo;
     private javax.swing.JLabel PiconMinimal;
     private javax.swing.JLabel PiconoElimiPrest;
     private javax.swing.JLabel PiconoPrestamo;
+    private javax.swing.JPanel PnlLib;
     private javax.swing.JPanel PrestamoMulta;
     private javax.swing.JPanel RegistroEstudiante;
     private javax.swing.JPanel RegistroLibro;
@@ -1746,8 +1727,6 @@ public class JFLibreria extends javax.swing.JFrame{
     private javax.swing.JLabel iconHome;
     private javax.swing.JLabel iconLib;
     private javax.swing.JLabel iconoAdmin;
-    private javax.swing.JLabel iconoCalendarioHora;
-    private javax.swing.JLabel iconoCerrarSesion;
     private javax.swing.JLabel iconoEstud;
     private javax.swing.JLabel iconoLibriMundi;
     private javax.swing.JLabel iconoLibro;
@@ -1779,8 +1758,6 @@ public class JFLibreria extends javax.swing.JFrame{
     private javax.swing.JLabel lblCountEstud;
     private javax.swing.JLabel lblCountLib;
     private javax.swing.JLabel lblCountMult;
-    private javax.swing.JLabel lblFechaHora;
-    private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblUsers;
     private javax.swing.JPanel pnlLib;
     // End of variables declaration//GEN-END:variables

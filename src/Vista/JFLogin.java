@@ -1,22 +1,18 @@
 package Vista;
 
-import ConexionBD.ConexionBD;
 import Logica.Login;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-public class JFLogin extends javax.swing.JFrame {
-//    ConexionBD con = new ConexionBD();
+public final class JFLogin extends javax.swing.JFrame {
       Login logi = new Login();
-//    JFCrearUsuario jfcrearusuario;
     
     public JFLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
         scaleImage();
-//        this.jfcrearusuario = new JFCrearUsuario();
     }
     //Escalar imagenes
     public void scaleImage() {
