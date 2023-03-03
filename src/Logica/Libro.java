@@ -130,12 +130,12 @@ public class Libro {
             PreparedStatement pps = cn.prepareStatement("INSERT INTO V_Ejemplar VALUES (?,?,?,?)"); 
             pps.setString (1, this.ISBN);
             pps.setString (2, this.codSede);
-            pps.setString (3, this.numEjemplar);
+            pps.setInt (3, Integer.parseInt(this.numEjemplar));
             pps.setString(4, this.ubicacion);
             pps.executeUpdate ();
             flag = true;
         } catch(SQLException ex) {
-            Logger.getLogger(Libro.class.getName()).log(Level. SEVERE, null, ex);     
+            return flag;    
         }
         return flag;
     }
@@ -192,6 +192,7 @@ public class Libro {
     }
     return cantidad;
 }
+    
     public void LibroDisponible(){
     int cantidad = obtenerCantidadLibro(this.ISBN);
     cantidad++;
@@ -234,7 +235,8 @@ public class Libro {
     ResultSet rs=null;    
     try {   
         st = cn.createStatement();      
-        rs = st.executeQuery("SELECT * FROM V_Libros WHERE "+consulta); 
+        rs = st.executeQuery("SELECT * FROM V_Libros WHERE ISBN='"+consulta+"' OR NOMBREAUTOR='"+consulta
+        +"' OR GENERO='"+consulta+"'"+" OR TITULOLIBRO='"+consulta+"'"); 
         DefaultTableModel dfm = new DefaultTableModel();
         tabla.setModel(dfm);
         dfm.setColumnIdentifiers(new Object[]{"ISBN","Titulo","Autor","Género","Año","Editorial",
@@ -245,9 +247,8 @@ public class Libro {
             rs.getString("Ubicacion")});
         }    
         }catch(SQLException ex) {
-        //Logger.getLogger(JFBibliotecaDB.class.getName()).log(Level. SEVERE, null, ex); 
-        //JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");     
-    }
+            JOptionPane.showMessageDialog (null, "No se encuentra");     
+        }
 }
     public void LibroOcupado(){
     int cantidad = obtenerCantidadLibro(this.ISBN);

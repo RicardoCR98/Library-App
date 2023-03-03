@@ -11,16 +11,21 @@ public class JFAddLibro extends javax.swing.JFrame {
     Libro libro;
     /**
      * Creates new form JFAddEstudiante
+     * @param tabla
      */
     public JFAddLibro(JTable tabla) {
         initComponents();
-//        this.setAlwaysOnTop(true);
-        this.setLocationRelativeTo(null);
+//      this.setAlwaysOnTop(true);
         this.tabla = tabla;
-        libro = new Libro();
-        libro.actualizarTabla(tabla);
+        this.setLocationRelativeTo(null);
     }
 
+    public JTable actualizarTabla(){
+        libro = new Libro();
+        libro.actualizarTabla(tabla);
+        return tabla;
+    }
+    
     private JFAddLibro() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
