@@ -127,17 +127,15 @@ public class Libro {
     public boolean añadirLibro(String ISBN, String codSede, int numEjemplar, String ubicacion){
         boolean flag = false;
         try {
-            PreparedStatement pps = cn.prepareStatement("INSERT INTO V_Ejemplar (ISBN, CODSEDE, NUMEJEMPLAR, UBICACION) VALUES (?, ?, ?, ?)"); 
+            PreparedStatement pps = cn.prepareStatement("INSERT INTO V_Ejemplar (ISBN, CODIGOSEDE, NUMEJEMPLAR, UBICACION) VALUES (?, ?, ?, ?)"); 
             pps.setString (1, ISBN);
             pps.setString (2, codSede);
             pps.setInt (3, numEjemplar);
             pps.setString(4, ubicacion);
             pps.executeUpdate ();
             flag = true;
-        } catch(SQLException ex) {
-            flag = false;    
+        } catch(SQLException ex) {   
         }
-        System.out.println(flag);
         return flag;
     }
     
