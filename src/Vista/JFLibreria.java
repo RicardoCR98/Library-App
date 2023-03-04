@@ -4,6 +4,8 @@ import Logica.*;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 public final class JFLibreria extends javax.swing.JFrame{
    
@@ -12,20 +14,23 @@ public final class JFLibreria extends javax.swing.JFrame{
     JFAddLibro jfaddlibro;
     JFModificarLibro jfmodificarlibro;
     Libro libro;
-
+    JFAddFactura jfAddFactura;
     Login log = new Login();
+    Facturas factura;
+    JTable tabla;
     public JFLibreria() {
         Facturas prestamo = new Facturas();
-        prestamo.setMultas();
         initComponents();
         this.setLocationRelativeTo(null);
         scaleImage();
         showPanel();
         setVisible(true);
         jfaddlibro = new JFAddLibro(this.jTLibros);
+        jfmodificarlibro = new JFModificarLibro();
         jfaddcliente = new JFAddCliente(this.jTEstudiantes);
         jfeditcliente = new JFEditCliente(this.jTEstudiantes);
-        jfmodificarlibro = new JFModificarLibro();
+        jfAddFactura = new JFAddFactura(this.JTFactuas);
+        
         libro = new Libro();
         jfaddlibro.actualizarTabla();
     }
@@ -202,7 +207,7 @@ public final class JFLibreria extends javax.swing.JFrame{
         PiconoElimiPrest = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTPrestamos = new javax.swing.JTable();
+        JTFactuas = new javax.swing.JTable();
         PMiconoLupa = new javax.swing.JLabel();
         LtxtBusquedaPrestamosMultas = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -914,7 +919,7 @@ public final class JFLibreria extends javax.swing.JFrame{
                     .addGroup(LPanelAñadirLibLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(LiconoAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         LPanelAñadirLibLayout.setVerticalGroup(
             LPanelAñadirLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1082,7 +1087,7 @@ public final class JFLibreria extends javax.swing.JFrame{
                 .addContainerGap())
         );
 
-        jTPrestamos.setModel(new javax.swing.table.DefaultTableModel(
+        JTFactuas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1105,9 +1110,15 @@ public final class JFLibreria extends javax.swing.JFrame{
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane6.setViewportView(jTPrestamos);
+        jScrollPane6.setViewportView(JTFactuas);
 
         jScrollPane5.setViewportView(jScrollPane6);
+
+        PMiconoLupa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PMiconoLupaMouseClicked(evt);
+            }
+        });
 
         LtxtBusquedaPrestamosMultas.setForeground(new java.awt.Color(204, 204, 204));
         LtxtBusquedaPrestamosMultas.setText("Busqueda");
@@ -1361,7 +1372,25 @@ public final class JFLibreria extends javax.swing.JFrame{
     }//GEN-LAST:event_PPEliminarPrestamoMouseEntered
 
     private void PPEliminarPrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PPEliminarPrestamoMouseClicked
+        int row = JTFactuas.getSelectedRow();
+        if (row < 0) {
+            // Ninguna fila seleccionada, ignorar evento
+            return;
+        }
+        
 
+        String ID= (String)JTFactuas.getValueAt(row, 0);
+        
+        if(0==JOptionPane.showConfirmDialog(null, "¿Esta seguro de borrar la factura con ID: "+ID+" ?","Advertencia",JOptionPane.INFORMATION_MESSAGE)){
+               
+
+             if(factura.eliminarRegistro())
+                 JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
+             else{
+                 JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ");
+             }           
+                 factura.ActualizarTablaFacturas(tabla);
+             }
     }//GEN-LAST:event_PPEliminarPrestamoMouseClicked
 
     private void PPanelPrestamoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PPanelPrestamoMouseExited
@@ -1375,7 +1404,7 @@ public final class JFLibreria extends javax.swing.JFrame{
     }//GEN-LAST:event_PPanelPrestamoMouseEntered
 
     private void PPanelPrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PPanelPrestamoMouseClicked
-
+        jfAddFactura.setVisible(true);
     }//GEN-LAST:event_PPanelPrestamoMouseClicked
 
     private void LPanelAñadirLibMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LPanelAñadirLibMouseExited
@@ -1642,6 +1671,12 @@ public final class JFLibreria extends javax.swing.JFrame{
         }
     }//GEN-LAST:event_LtxtBusquedaActionPerformed
 
+    private void PMiconoLupaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PMiconoLupaMouseClicked
+        String consulta;
+        consulta = LtxtBusquedaPrestamosMultas.getText();
+        factura.ActualizarTablaFacturasBusqueda(this.jTLibros, consulta);
+    }//GEN-LAST:event_PMiconoLupaMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1691,6 +1726,7 @@ public final class JFLibreria extends javax.swing.JFrame{
     private javax.swing.JLabel EiconoModificar;
     private javax.swing.JTextField EtxtBusqueda;
     private javax.swing.JPanel Inicio;
+    private javax.swing.JTable JTFactuas;
     private javax.swing.JPanel LPanelAñadirLib;
     private javax.swing.JPanel LPanelElimiLib;
     private javax.swing.JLabel LiconoAñadir;
@@ -1754,7 +1790,6 @@ public final class JFLibreria extends javax.swing.JFrame{
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable jTEstudiantes;
     private javax.swing.JTable jTLibros;
-    private javax.swing.JTable jTPrestamos;
     private javax.swing.JLabel lblCountEstud;
     private javax.swing.JLabel lblCountLib;
     private javax.swing.JLabel lblCountMult;

@@ -5,156 +5,127 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 public class Facturas {
-    private long codigoPrestamo;
-    private Cliente estudiante;
-    private Libro libro;
+    private String identificadorFactura;
+    private String ISBN;
+    private int cantidad;
+    private double  precioTotal;
     ConexionBD conexion = new ConexionBD();
     Connection cn = conexion.conexion();
 
+    
     public Facturas() {
     }
-    public Facturas(Cliente estudiante, Libro libro) {
-        this.estudiante = estudiante;
-        this.libro = libro;
-    }
-        public long getCodigoPrestamo() {
-        return codigoPrestamo;
+
+    public Facturas(String identificadorFactura, String ISBN, int cantidad, double precioTotal) {
+        this.identificadorFactura = identificadorFactura;
+        this.ISBN = ISBN;
+        this.cantidad = cantidad;
+        this.precioTotal = precioTotal;
     }
 
-    public void setCodigoPrestamo(long codigoPrestamo) {
-        this.codigoPrestamo = codigoPrestamo;
+    public String getIdentificadorFactura() {
+        return identificadorFactura;
     }
 
-    public Cliente getEstudiante() {
-        return estudiante;
+    public void setIdentificadorFactura(String identificadorFactura) {
+        this.identificadorFactura = identificadorFactura;
     }
 
-    public void setEstudiante(Cliente estudiante) {
-        this.estudiante = estudiante;
+    public String getISBN() {
+        return ISBN;
     }
 
-    public Libro getLibro() {
-        return libro;
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
     }
 
-    public void setLibro(Libro libro) {
-        this.libro = libro;
+    public int getCantidad() {
+        return cantidad;
     }
-    public boolean añadirPrestamo(String dateDevolucion){
-//        boolean flag = false;
-//        try {
-//            PreparedStatement pps = cn.prepareStatement("INSERT into Facturas(codigo_l,codigo_e,fecha_desde,fecha_hasta,multas) VALUES (?,?,?,?,?)"); 
-////            pps.setLong(1, this.codigoPrestamo);
-//            pps.setLong(1, this.libro.getCodigoLibro());
-//            pps.setLong (2, this.estudiante.getCodigoEstudiante());
-//            pps.setString(3,this.fechaActual());
-//            pps.setString(4,dateDevolucion);
-//            pps.setInt(5,0);
-//            pps.executeUpdate();
-//            libro.LibroOcupado();
-//            flag = true;
-//        } catch(SQLException ex) {
-//            Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex); 
-//        }
-//        return flag;
-return true;
-    }
-    public void setMultas(){
-//        boolean flag = false;
-//        int x;
-//        DateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
-//        Calendar cal=Calendar.getInstance();
-//        Date date=cal.getTime();
-//        String fechaAct=dateFormat.format(date);
-//        try {
-//            Statement stat = cn.createStatement();
-//            ResultSet rs = stat.executeQuery("SELECT codigo_le,fecha_hasta FROM prestamo");
-//            
-//            while(rs.next()){  
-//                Facturas aux = new Facturas();
-//                aux.codigoPrestamo=rs.getInt(1);
-//                String fechaDevuelta = rs.getString(2);
-//                Date fechadevuelta = dateFormat.parse(fechaDevuelta);  
-//                //fechadevuelta.
-//                long constante= (date.getTime() - (fechadevuelta.getTime()));
-//                if (constante > 0) {
-//                    aux.actualizarPrestamo("UPDATE prestamo SET multas ="+ constante/100000000 +" WHERE codigo_le="+aux.codigoPrestamo);
-//                } 
-//            }
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
-//           // JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar los datos ");
-//        } catch (ParseException ex) {
-//            Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
-//        }
 
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
-    public boolean actualizarPrestamo(String sql){
+
+    public double getPrecioTotal() {
+        return precioTotal;
+    }
+
+    public void setPrecioTotal(double precioTotal) {
+        this.precioTotal = precioTotal;
+    }
+
+    public ConexionBD getConexion() {
+        return conexion;
+    }
+
+    public void setConexion(ConexionBD conexion) {
+        this.conexion = conexion;
+    }
+
+    public Connection getCn() {
+        return cn;
+    }
+
+    public void setCn(Connection cn) {
+        this.cn = cn;
+    }
+     
+    
+    public boolean añadirFactura(){
         boolean flag = false;
-        try {
-            PreparedStatement pps = cn.prepareStatement(sql);
-            pps.executeUpdate();
+        try 
+        {
+            PreparedStatement pps = cn.prepareStatement("INSERT INTO V_facturas (IDENTIFICADORFACTURA,ISBN,CANTIDAD,PRECIOTOTAL) VALUES (?,?,?,?)"); 
+            pps.setString(1, this.identificadorFactura);
+            pps.setString(2,this.ISBN);
+            pps.setInt(3,this.cantidad);
+            pps.setDouble(4, this.precioTotal);
             flag = true;
-        } catch(SQLException ex) {
-            Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex);    
+        } 
+        catch(SQLException ex) 
+        {
+            Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex); 
         }
         return flag;
     }
    
-    public String fechaActual(){
-        SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar calendar = Calendar.getInstance();
-        Date dateObj = calendar.getTime();
-        String formattedDate = dtf.format(dateObj);
-        return formattedDate;
-        
-        }
+//    public boolean actualizarPrestamo(String sql){
+//        boolean flag = false;
+//        try {
+//            PreparedStatement pps = cn.prepareStatement(sql);
+//            pps.executeUpdate();
+//            flag = true;
+//        } catch(SQLException ex) {
+//            Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex);    
+//        }
+//        return flag;
+//    }
+   
+ 
     
-    public boolean verificarMultas(){
-        boolean x=false;
-        
-        try {
-            Statement stat = cn.createStatement();
-            ResultSet rs = stat.executeQuery("SELECT multas FROM prestamo WHERE codigo_le=" + this.codigoPrestamo);
-            rs.next();
-            int multas = rs.getInt(1);
-
-
-            if (multas > 0) {
-                x=true; 
-            } 
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return x;
-    }
-    
-    public void eliminarRegistro(){
-        this.libro.LibroDisponible();
-        
-        try {
+    public boolean eliminarRegistro()
+    {
+        boolean flag = false;
+        try 
+        {
             PreparedStatement pps;
-            pps = cn.prepareStatement("DELETE FROM prestamo WHERE codigo_le=" + this.codigoPrestamo);
+            pps = cn.prepareStatement("DELETE FROM V_facturas WHERE IDENTIFICADORFACTURA=" + this.identificadorFactura);
             pps.executeUpdate();
-            
+            flag = true;
         } catch (SQLException ex) {
             Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return flag;
     }
-    public JTable ActualizarTablaPrestamos(JTable tabla1){
+    
+    public JTable ActualizarTablaFacturas(JTable tabla1){
     Statement st;
     ResultSet rs=null; 
     JTable tabla = tabla1;
@@ -163,9 +134,9 @@ return true;
         rs = st.executeQuery("SELECT * FROM Prestamo"); 
         DefaultTableModel dfm = new DefaultTableModel();
         tabla.setModel(dfm);
-        dfm.setColumnIdentifiers(new Object[]{"Codigo Prestamo","Codigo Libro","Código Estudiante","Fecha Prestamo","Fecha Devolucion","Multas"});
+        dfm.setColumnIdentifiers(new Object[]{"ID FACTURA","ISBN","CANTIDAD","PRECIO TOTAL"});
         while(rs.next()){
-            dfm.addRow(new Object[]{rs.getInt("codigo_le"), rs.getInt("codigo_l"), rs.getInt("codigo_e"),rs.getString("fecha_desde"),rs.getString("fecha_hasta"),rs.getInt("multas")});
+            dfm.addRow(new Object[]{rs.getString("IDENTIFICADORFACTURA"), rs.getString("ISBN"), rs.getInt("CANTIDAD"),rs.getInt("PRECIOTOTAL")});
         }
     }catch(SQLException ex) {
         Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex); 
@@ -174,7 +145,7 @@ return true;
     return tabla;
 }
     
-    public void ActualizarTablaPrestamosBusqueda(JTable tabla1, String consulta){
+    public void ActualizarTablaFacturasBusqueda(JTable tabla1, String consulta){
     Statement st;
     ResultSet rs=null; 
     try {   
@@ -182,9 +153,9 @@ return true;
         rs = st.executeQuery(consulta); 
         DefaultTableModel dfm = new DefaultTableModel();
         tabla1.setModel(dfm);
-        dfm.setColumnIdentifiers(new Object[]{"Codigo Prestamo","Codigo Libro","Código Estudiante","Fecha Prestamo","Fecha Devolucion","Multas"});
+        dfm.setColumnIdentifiers(new Object[]{"ID FACTURA","ISBN","CANTIDAD","PRECIO TOTAL"});
         while(rs.next()){
-            dfm.addRow(new Object[]{rs.getInt("codigo_le"), rs.getInt("codigo_l"), rs.getInt("codigo_e"),rs.getString("fecha_desde"),rs.getString("fecha_hasta"),rs.getInt("multas")});
+            dfm.addRow(new Object[]{rs.getString("IDENTIFICADORFACTURA"), rs.getString("ISBN"), rs.getInt("CANTIDAD"),rs.getInt("PRECIOTOTAL")});
         }
     }catch(SQLException ex) {
         Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex); 

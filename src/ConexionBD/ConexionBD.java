@@ -10,7 +10,7 @@ public class ConexionBD {
 
     public Connection conexion() {
        try{
-            String urlBD = "jdbc:sqlserver://LAPTOP-VVFJVO8S:1433;"+"databaseName="+nombreBD;
+            String urlBD = "jdbc:sqlserver://RICARDO:1433;"+"databaseName="+nombreBD;
             conexion = DriverManager.getConnection(urlBD, user, password);
             System.out.println("Conexion exitosa con la BD " + nombreBD);
             return conexion;
