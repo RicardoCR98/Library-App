@@ -141,7 +141,7 @@ public class Cliente {
         ResultSet rs=null; 
         try {   
             st = cn.createStatement();
-            rs = st.executeQuery("SELECT * FROM V_clientes"); 
+            rs = st.executeQuery("SELECT * FROM V_Clientes"); 
             DefaultTableModel dfm = new DefaultTableModel();
             tabla.setModel(dfm);
            dfm.setColumnIdentifiers(new Object[]{"Cédula","Código Sede","Nombre","Telefono","Dirección","Ubicación"});
