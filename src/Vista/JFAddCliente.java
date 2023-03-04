@@ -180,7 +180,7 @@ public class JFAddCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptaEstudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptaEstudActionPerformed
-        String ubicacion = (String)comboBoxUbicacion.getSelectedItem();
+        String ubicacion = comboBoxUbicacion.getSelectedItem().toString();
         cliente = new Cliente(this.txtCedula.getText(), this.txtNombre.getText(),this.txtTelefono.getText(), this.txtDireccion.getText(),ubicacion);
         boolean flag = cliente.añadirCliente();
         if(flag){
