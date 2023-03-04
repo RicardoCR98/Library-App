@@ -6,6 +6,7 @@ package Vista;
 import java.sql.*;
 import Logica.Cliente;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.lang.System.Logger;
 //import java.lang.System.Logger.Level;
 import java.util.ArrayList;
@@ -20,14 +21,14 @@ import javax.swing.table.DefaultTableModel;
  * @author PC
  */
 public class JFEditCliente extends javax.swing.JFrame {
-JTable tabla;
+//JTable tabla;
 Cliente cliente;
     public JFEditCliente(JTable tabla) {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.tabla = tabla;
+        //this.tabla = tabla;
         this.cliente = new Cliente();
-        cliente.actualizarTabla(tabla);
+        cliente.actualizarTabla(jtableClientes);
     }
 
     /**
@@ -40,8 +41,8 @@ Cliente cliente;
     private void initComponents() {
 
         jPanel17 = new javax.swing.JPanel();
-        jCNombresEstudiante = new javax.swing.JCheckBox();
-        jCApellidosEstudiante = new javax.swing.JCheckBox();
+        jCTelefonoCliente = new javax.swing.JCheckBox();
+        jCDireccionEstudianteCliente = new javax.swing.JCheckBox();
         jTFCedulaClienteActualizar = new javax.swing.JTextField();
         jTFTelefonoClienteaActualizar = new javax.swing.JTextField();
         jTFDireccionClienteaActualizar = new javax.swing.JTextField();
@@ -51,35 +52,40 @@ Cliente cliente;
         jtableClientes = new javax.swing.JTable();
         comboBoxBusquedaCliente = new javax.swing.JComboBox<>();
         jTFBusquedaCliente = new javax.swing.JTextField();
-        btnActualizarEstud = new javax.swing.JButton();
-        btnEliminarEstud = new javax.swing.JButton();
-        btnCancelatStud2 = new javax.swing.JButton();
+        btnActualizarCliente = new javax.swing.JButton();
+        btnEliminarCliente = new javax.swing.JButton();
+        btnCancelarCliente2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setTitle("Actualizar y eliminar Estudiante");
 
         jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder("Atributos a actualizar"));
 
-        jCNombresEstudiante.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jCNombresEstudiante.setText("Telefono");
-        jCNombresEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jCNombresEstudiante.addChangeListener(new javax.swing.event.ChangeListener() {
+        jCTelefonoCliente.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jCTelefonoCliente.setText("Telefono");
+        jCTelefonoCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCTelefonoCliente.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jCNombresEstudianteStateChanged(evt);
+                jCTelefonoClienteStateChanged(evt);
             }
         });
-        jCNombresEstudiante.addActionListener(new java.awt.event.ActionListener() {
+        jCTelefonoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCNombresEstudianteActionPerformed(evt);
+                jCTelefonoClienteActionPerformed(evt);
             }
         });
 
-        jCApellidosEstudiante.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jCApellidosEstudiante.setText("Direccion");
-        jCApellidosEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jCApellidosEstudiante.addChangeListener(new javax.swing.event.ChangeListener() {
+        jCDireccionEstudianteCliente.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jCDireccionEstudianteCliente.setText("Direccion");
+        jCDireccionEstudianteCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCDireccionEstudianteCliente.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jCApellidosEstudianteStateChanged(evt);
+                jCDireccionEstudianteClienteStateChanged(evt);
+            }
+        });
+        jCDireccionEstudianteCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCDireccionEstudianteClienteActionPerformed(evt);
             }
         });
 
@@ -99,8 +105,8 @@ Cliente cliente;
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCApellidosEstudiante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCNombresEstudiante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jCDireccionEstudianteCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCTelefonoCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTFDireccionClienteaActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -122,11 +128,11 @@ Cliente cliente;
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCNombresEstudiante)
+                    .addComponent(jCTelefonoCliente)
                     .addComponent(jTFTelefonoClienteaActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCApellidosEstudiante)
+                    .addComponent(jCDireccionEstudianteCliente)
                     .addComponent(jTFDireccionClienteaActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
@@ -167,7 +173,8 @@ Cliente cliente;
         jScrollPane9.setViewportView(jtableClientes);
 
         comboBoxBusquedaCliente.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        comboBoxBusquedaCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "cedula", "nombre", " " }));
+        comboBoxBusquedaCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "cedula", "nombre", "telefono", " " }));
+        comboBoxBusquedaCliente.setSelectedIndex(-1);
         comboBoxBusquedaCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxBusquedaClienteActionPerformed(evt);
@@ -175,8 +182,8 @@ Cliente cliente;
         });
 
         jTFBusquedaCliente.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTFBusquedaClienteKeyReleased(evt);
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTFBusquedaClienteKeyPressed(evt);
             }
         });
 
@@ -206,54 +213,54 @@ Cliente cliente;
                 .addGap(23, 23, 23))
         );
 
-        btnActualizarEstud.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        btnActualizarEstud.setText("Actualizar");
-        btnActualizarEstud.setPreferredSize(new java.awt.Dimension(107, 51));
-        btnActualizarEstud.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnActualizarCliente.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        btnActualizarCliente.setText("Actualizar");
+        btnActualizarCliente.setPreferredSize(new java.awt.Dimension(107, 51));
+        btnActualizarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnActualizarEstudMouseEntered(evt);
+                btnActualizarClienteMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnActualizarEstudMouseExited(evt);
+                btnActualizarClienteMouseExited(evt);
             }
         });
-        btnActualizarEstud.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarEstudActionPerformed(evt);
+                btnActualizarClienteActionPerformed(evt);
             }
         });
 
-        btnEliminarEstud.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        btnEliminarEstud.setText("Eliminar");
-        btnEliminarEstud.setPreferredSize(new java.awt.Dimension(107, 51));
-        btnEliminarEstud.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnEliminarCliente.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        btnEliminarCliente.setText("Eliminar");
+        btnEliminarCliente.setPreferredSize(new java.awt.Dimension(107, 51));
+        btnEliminarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnEliminarEstudMouseEntered(evt);
+                btnEliminarClienteMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnEliminarEstudMouseExited(evt);
+                btnEliminarClienteMouseExited(evt);
             }
         });
-        btnEliminarEstud.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarEstudActionPerformed(evt);
+                btnEliminarClienteActionPerformed(evt);
             }
         });
 
-        btnCancelatStud2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        btnCancelatStud2.setText("Cancelar");
-        btnCancelatStud2.setPreferredSize(new java.awt.Dimension(62, 25));
-        btnCancelatStud2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCancelarCliente2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        btnCancelarCliente2.setText("Cancelar");
+        btnCancelarCliente2.setPreferredSize(new java.awt.Dimension(62, 25));
+        btnCancelarCliente2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCancelatStud2MouseEntered(evt);
+                btnCancelarCliente2MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCancelatStud2MouseExited(evt);
+                btnCancelarCliente2MouseExited(evt);
             }
         });
-        btnCancelatStud2.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelarCliente2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelatStud2ActionPerformed(evt);
+                btnCancelarCliente2ActionPerformed(evt);
             }
         });
 
@@ -277,11 +284,11 @@ Cliente cliente;
                         .addComponent(jLabel1)
                         .addGap(257, 257, 257))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnActualizarEstud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnActualizarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(79, 79, 79)
-                        .addComponent(btnEliminarEstud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(90, 90, 90)
-                        .addComponent(btnCancelatStud2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCancelarCliente2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(228, 228, 228))))
         );
         layout.setVerticalGroup(
@@ -295,21 +302,21 @@ Cliente cliente;
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 175, Short.MAX_VALUE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelatStud2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminarEstud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnActualizarEstud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCancelarCliente2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnActualizarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnActualizarEstudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarEstudActionPerformed
+    private void btnActualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarClienteActionPerformed
         ArrayList<String> atributosActualizar = new ArrayList<String>();
         String consulta = "";
         atributosActualizar.add("CEDULACLIENTE="+jTFCedulaClienteActualizar.getText());
-        if (jCNombresEstudiante.isSelected()){atributosActualizar.add("nombres_e='"+jTFTelefonoClienteaActualizar.getText()+"'");}
-        if (jCApellidosEstudiante.isSelected()){atributosActualizar.add("apellidos_e='"+jTFDireccionClienteaActualizar.getText()+"'");}
+        if (jCTelefonoCliente.isSelected()){atributosActualizar.add("TELEFONOCLIENTE='"+jTFTelefonoClienteaActualizar.getText()+"'");}
+        if (jCDireccionEstudianteCliente.isSelected()){atributosActualizar.add("DIRECCIONCLIENTE='"+jTFDireccionClienteaActualizar.getText()+"'");}
         
         Iterator<String> i = atributosActualizar.iterator();
         while (i.hasNext()){
@@ -319,7 +326,7 @@ Cliente cliente;
         consulta = consulta.substring (0, consulta.length()-1);
         String condicion = "'" +jTFCedulaClienteActualizar.getText() + "'";
         
-        String sql = "UPDATE V_clientes SET "+ consulta + " WHERE codigo_e " + " LIKE "+condicion;
+        String sql = "UPDATE V_clientes SET "+ consulta + " WHERE CEDULACLIENTE" + " LIKE "+condicion;
 
         if(cliente.actualizarCliente(sql))
             JOptionPane.showMessageDialog(null, "Datos Actualizados correctamente. ");
@@ -327,98 +334,122 @@ Cliente cliente;
             JOptionPane.showMessageDialog (null, "Ocurrio un error al Actualizar los datos ");  
         }
 
-        cliente.actualizarTabla(tabla);      
+        cliente.actualizarTabla(jtableClientes);      
         cliente.actualizarTablaBusqueda(jtableClientes, getConsulta());
 
-    }//GEN-LAST:event_btnActualizarEstudActionPerformed
+    }//GEN-LAST:event_btnActualizarClienteActionPerformed
 
     private void jtableClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtableClientesMouseClicked
         int row =jtableClientes.getSelectedRow();
         if (row !=-1 ){
-            jTFCedulaClienteActualizar.setText(Integer.toString((int)jtableClientes.getValueAt(row, 0)));
-            jTFTelefonoClienteaActualizar.setText((String)jtableClientes.getValueAt(row, 1));
-            jTFDireccionClienteaActualizar.setText((String)jtableClientes.getValueAt(row, 2));
+            jTFCedulaClienteActualizar.setText((String)jtableClientes.getValueAt(row, 0));
+            jTFTelefonoClienteaActualizar.setText((String)jtableClientes.getValueAt(row, 3));
+            jTFDireccionClienteaActualizar.setText((String)jtableClientes.getValueAt(row, 4));
         }
     }//GEN-LAST:event_jtableClientesMouseClicked
 
-    private void btnEliminarEstudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEstudActionPerformed
-        if(0==JOptionPane.showConfirmDialog(null, "¿Esta seguro de borrar "+jTFTelefonoClienteaActualizar.getText()+" ?","Advertencia",JOptionPane.INFORMATION_MESSAGE)){
-            cliente.setCedula(jTFCedulaClienteActualizar.getText());
-    
-        if(cliente.eliminarCliente())
-            JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
-        else{
-            JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ");
-        }     
+    private void btnEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClienteActionPerformed
+        if("".equals(jTFCedulaClienteActualizar.getText())){
+            JOptionPane.showMessageDialog (null, "Seleccione a un cliente para eliminar"); 
+        }else{
+            if(0==JOptionPane.showConfirmDialog(null, "¿Esta seguro de borrar al cliente con cedula "+jTFCedulaClienteActualizar.getText()+" ?","Advertencia",JOptionPane.INFORMATION_MESSAGE)){
+                if(cliente.eliminarCliente()){
+                    JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
+                }else{
+                    JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ");
+                }      
+            }
+        }    
             jTFCedulaClienteActualizar.setText("");
             jTFTelefonoClienteaActualizar.setText("");
             jTFDireccionClienteaActualizar.setText("");       
-            cliente.actualizarTabla(tabla);
-        }
-    }//GEN-LAST:event_btnEliminarEstudActionPerformed
+            cliente.actualizarTabla(jtableClientes);
+    }//GEN-LAST:event_btnEliminarClienteActionPerformed
 
-    private void btnCancelatStud2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelatStud2ActionPerformed
+    private void btnCancelarCliente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCliente2ActionPerformed
         this.setVisible(false);
-    }//GEN-LAST:event_btnCancelatStud2ActionPerformed
+    }//GEN-LAST:event_btnCancelarCliente2ActionPerformed
 
-    private void jTFBusquedaClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBusquedaClienteKeyReleased
-        cliente.actualizarTablaBusqueda(jtableClientes, getConsulta());
-    }//GEN-LAST:event_jTFBusquedaClienteKeyReleased
+    private void btnActualizarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarClienteMouseEntered
+        this.btnActualizarCliente.setBorder(new LineBorder(Color.red));
+        this.btnActualizarCliente.setForeground(Color.red);
+    }//GEN-LAST:event_btnActualizarClienteMouseEntered
 
-    private void btnActualizarEstudMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarEstudMouseEntered
-        this.btnActualizarEstud.setBorder(new LineBorder(Color.red));
-        this.btnActualizarEstud.setForeground(Color.red);
-    }//GEN-LAST:event_btnActualizarEstudMouseEntered
+    private void btnActualizarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarClienteMouseExited
+        this.btnActualizarCliente.setBorder(new LineBorder(new Color(90,130,191)));
+        this.btnActualizarCliente.setForeground(Color.black);
+    }//GEN-LAST:event_btnActualizarClienteMouseExited
 
-    private void btnActualizarEstudMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarEstudMouseExited
-        this.btnActualizarEstud.setBorder(new LineBorder(new Color(90,130,191)));
-        this.btnActualizarEstud.setForeground(Color.black);
-    }//GEN-LAST:event_btnActualizarEstudMouseExited
+    private void btnEliminarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarClienteMouseEntered
+        this.btnEliminarCliente.setBorder(new LineBorder(Color.red));
+        this.btnEliminarCliente.setForeground(Color.red);
+    }//GEN-LAST:event_btnEliminarClienteMouseEntered
 
-    private void btnEliminarEstudMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarEstudMouseEntered
-        this.btnEliminarEstud.setBorder(new LineBorder(Color.red));
-        this.btnEliminarEstud.setForeground(Color.red);
-    }//GEN-LAST:event_btnEliminarEstudMouseEntered
+    private void btnEliminarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarClienteMouseExited
+        this.btnEliminarCliente.setBorder(new LineBorder(new Color(90,130,191)));
+        this.btnEliminarCliente.setForeground(Color.black);
+    }//GEN-LAST:event_btnEliminarClienteMouseExited
 
-    private void btnEliminarEstudMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarEstudMouseExited
-        this.btnEliminarEstud.setBorder(new LineBorder(new Color(90,130,191)));
-        this.btnEliminarEstud.setForeground(Color.black);
-    }//GEN-LAST:event_btnEliminarEstudMouseExited
+    private void btnCancelarCliente2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarCliente2MouseEntered
+        this.btnCancelarCliente2.setBorder(new LineBorder(Color.red));
+        this.btnCancelarCliente2.setForeground(Color.red);
+    }//GEN-LAST:event_btnCancelarCliente2MouseEntered
 
-    private void btnCancelatStud2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelatStud2MouseEntered
-        this.btnCancelatStud2.setBorder(new LineBorder(Color.red));
-        this.btnCancelatStud2.setForeground(Color.red);
-    }//GEN-LAST:event_btnCancelatStud2MouseEntered
-
-    private void btnCancelatStud2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelatStud2MouseExited
-        this.btnCancelatStud2.setBorder(new LineBorder(new Color(90,130,191)));
-        this.btnCancelatStud2.setForeground(Color.black);
-    }//GEN-LAST:event_btnCancelatStud2MouseExited
+    private void btnCancelarCliente2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarCliente2MouseExited
+        this.btnCancelarCliente2.setBorder(new LineBorder(new Color(90,130,191)));
+        this.btnCancelarCliente2.setForeground(Color.black);
+    }//GEN-LAST:event_btnCancelarCliente2MouseExited
 
     private void comboBoxBusquedaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxBusquedaClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxBusquedaClienteActionPerformed
 
-    private void jCApellidosEstudianteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCApellidosEstudianteStateChanged
-        Checkboxcambio(jCApellidosEstudiante, jTFDireccionClienteaActualizar);
-    }//GEN-LAST:event_jCApellidosEstudianteStateChanged
+    private void jCDireccionEstudianteClienteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCDireccionEstudianteClienteStateChanged
+        Checkboxcambio(jCDireccionEstudianteCliente, jTFDireccionClienteaActualizar);
+    }//GEN-LAST:event_jCDireccionEstudianteClienteStateChanged
 
-    private void jCNombresEstudianteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCNombresEstudianteStateChanged
-        Checkboxcambio(jCNombresEstudiante, jTFTelefonoClienteaActualizar);
-    }//GEN-LAST:event_jCNombresEstudianteStateChanged
+    private void jCTelefonoClienteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCTelefonoClienteStateChanged
+        Checkboxcambio(jCTelefonoCliente, jTFTelefonoClienteaActualizar);
+    }//GEN-LAST:event_jCTelefonoClienteStateChanged
 
-    private void jCNombresEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCNombresEstudianteActionPerformed
+    private void jCTelefonoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCTelefonoClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCNombresEstudianteActionPerformed
+    }//GEN-LAST:event_jCTelefonoClienteActionPerformed
+
+    private void jCDireccionEstudianteClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCDireccionEstudianteClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCDireccionEstudianteClienteActionPerformed
+
+    private void jTFBusquedaClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBusquedaClienteKeyPressed
+        // TODO add your handling code here:
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            cliente.actualizarTablaBusqueda(jtableClientes, getConsulta());
+        }
+
+        // Obtener el índice de la columna deseada
+        int indiceColumna = jtableClientes.getColumnModel().getColumnIndex("Cedula");
+        Object valorCelda;
+        int fila = jtableClientes.getSelectedRow();
+        // Obtener el valor de la celda en la fila 0 y la columna correspondiente
+        if(fila == -1){
+            valorCelda = jtableClientes.getModel().getValueAt(0, indiceColumna);
+        }else{
+            valorCelda = jtableClientes.getModel().getValueAt(fila, indiceColumna);
+        }
+        jTFCedulaClienteActualizar.setText((String)valorCelda);  
+        if(jTFBusquedaCliente.getText().equalsIgnoreCase("")){
+            cliente.actualizarTabla(jtableClientes);
+        }
+    }//GEN-LAST:event_jTFBusquedaClienteKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizarEstud;
-    private javax.swing.JButton btnCancelatStud2;
-    private javax.swing.JButton btnEliminarEstud;
+    private javax.swing.JButton btnActualizarCliente;
+    private javax.swing.JButton btnCancelarCliente2;
+    private javax.swing.JButton btnEliminarCliente;
     private javax.swing.JComboBox<String> comboBoxBusquedaCliente;
-    private javax.swing.JCheckBox jCApellidosEstudiante;
-    private javax.swing.JCheckBox jCNombresEstudiante;
+    private javax.swing.JCheckBox jCDireccionEstudianteCliente;
+    private javax.swing.JCheckBox jCTelefonoCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel17;
@@ -431,26 +462,27 @@ Cliente cliente;
     private javax.swing.JTable jtableClientes;
     // End of variables declaration//GEN-END:variables
 
-public void Checkboxcambio(javax.swing.JCheckBox jCheckBox, javax.swing.JTextField jTField ){
-        if(jCheckBox.isSelected()){
-            jTField.setEditable(true);
-        }else{
-             jTField.setEditable(false);
-        }
-}
+    public void Checkboxcambio(javax.swing.JCheckBox jCheckBox, javax.swing.JTextField jTField ){
+            if(jCheckBox.isSelected()){
+                jTField.setEditable(true);
+            }else{
+                 jTField.setEditable(false);
+            }
+    }
 
-public String getConsulta(){
-        String consulta = "";
-        switch(comboBoxBusquedaCliente.getSelectedIndex()){
-            case 0:
-                consulta="cedula='"+jTFBusquedaCliente.getText(); 
-                break;
-            case 1:
-                consulta="nombre='"+jTFBusquedaCliente.getText()+"'"; 
-                break;
-        }
-        
-        return consulta;
-
-}
+    public String getConsulta(){
+            String consulta = "";
+            switch(comboBoxBusquedaCliente.getSelectedIndex()){
+                case 0:
+                    consulta=jTFBusquedaCliente.getText(); 
+                    break;
+                case 1:
+                    consulta=jTFBusquedaCliente.getText(); 
+                    break;
+                case 2:
+                    consulta=jTFBusquedaCliente.getText();
+                    break;
+            }        
+            return consulta;
+    }
 }
