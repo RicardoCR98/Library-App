@@ -15,6 +15,9 @@ public class Facturas {
     private String ISBN;
     private int cantidad;
     private double  precioTotal;
+    private String ubicacionFactura;
+
+    private String codigoSede;
     ConexionBD conexion = new ConexionBD();
     Connection cn = conexion.conexion();
 
@@ -22,11 +25,13 @@ public class Facturas {
     public Facturas() {
     }
 
-    public Facturas(String identificadorFactura, String ISBN, int cantidad, double precioTotal) {
+    public Facturas(String identificadorFactura, String ISBN, int cantidad, double precioTotal, String ubicacionFactura, String codigoSede) {
         this.identificadorFactura = identificadorFactura;
         this.ISBN = ISBN;
         this.cantidad = cantidad;
         this.precioTotal = precioTotal;
+        this.ubicacionFactura = ubicacionFactura;
+        this.ubicacionFactura = codigoSede;
     }
 
     public String getIdentificadorFactura() {
@@ -76,17 +81,35 @@ public class Facturas {
     public void setCn(Connection cn) {
         this.cn = cn;
     }
-     
+    public String getUbicacionFactura() {
+        return ubicacionFactura;
+    }
+
+    public void setUbicacionFactura(String ubicacionFactura) {
+        this.ubicacionFactura = ubicacionFactura;
+    }
+    
+    
+    public String getCodigoSede() {
+        return codigoSede;
+    }
+
+    public void setCodigoSede(String codigoSede) {
+        this.codigoSede = codigoSede;
+    }
     
     public boolean añadirFactura(){
         boolean flag = false;
         try 
         {
-            PreparedStatement pps = cn.prepareStatement("INSERT INTO V_facturas (IDENTIFICADORFACTURA,ISBN,CANTIDAD,PRECIOTOTAL) VALUES (?,?,?,?)"); 
+            PreparedStatement pps = cn.prepareStatement("INSERT INTO V_facturas (IDENTIFICADORFACTURA,ISBN,CANTIDAD,PRECIOTOTAL,CODIGOSEDE,UBICACION) VALUES (?,?,?,?,?,?)"); 
             pps.setString(1, this.identificadorFactura);
             pps.setString(2,this.ISBN);
             pps.setInt(3,this.cantidad);
             pps.setDouble(4, this.precioTotal);
+            pps.setString(5, this.codigoSede);
+            pps.setString(6, this.ubicacionFactura);
+
             flag = true;
         } 
         catch(SQLException ex) 
@@ -95,21 +118,7 @@ public class Facturas {
         }
         return flag;
     }
-   
-//    public boolean actualizarPrestamo(String sql){
-//        boolean flag = false;
-//        try {
-//            PreparedStatement pps = cn.prepareStatement(sql);
-//            pps.executeUpdate();
-//            flag = true;
-//        } catch(SQLException ex) {
-//            Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex);    
-//        }
-//        return flag;
-//    }
-   
- 
-    
+       
     public boolean eliminarRegistro()
     {
         boolean flag = false;
@@ -131,12 +140,12 @@ public class Facturas {
     JTable tabla = tabla1;
     try {   
         st = cn.createStatement();
-        rs = st.executeQuery("SELECT * FROM Prestamo"); 
+        rs = st.executeQuery("SELECT * FROM V_facturas"); 
         DefaultTableModel dfm = new DefaultTableModel();
         tabla.setModel(dfm);
-        dfm.setColumnIdentifiers(new Object[]{"ID FACTURA","ISBN","CANTIDAD","PRECIO TOTAL"});
+        dfm.setColumnIdentifiers(new Object[]{"ID FACTURA","ISBN","CANTIDAD","PRECIO TOTAL","UBICACION"});
         while(rs.next()){
-            dfm.addRow(new Object[]{rs.getString("IDENTIFICADORFACTURA"), rs.getString("ISBN"), rs.getInt("CANTIDAD"),rs.getInt("PRECIOTOTAL")});
+            dfm.addRow(new Object[]{rs.getString("IDENTIFICADORFACTURA"), rs.getString("ISBN"), rs.getInt("CANTIDAD"),rs.getInt("PRECIOTOTAL"), rs.getString("UBICACION")});
         }
     }catch(SQLException ex) {
         Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex); 
@@ -153,9 +162,9 @@ public class Facturas {
         rs = st.executeQuery(consulta); 
         DefaultTableModel dfm = new DefaultTableModel();
         tabla1.setModel(dfm);
-        dfm.setColumnIdentifiers(new Object[]{"ID FACTURA","ISBN","CANTIDAD","PRECIO TOTAL"});
+        dfm.setColumnIdentifiers(new Object[]{"ID FACTURA","ISBN","CANTIDAD","PRECIO TOTAL", "UBICACION"});
         while(rs.next()){
-            dfm.addRow(new Object[]{rs.getString("IDENTIFICADORFACTURA"), rs.getString("ISBN"), rs.getInt("CANTIDAD"),rs.getInt("PRECIOTOTAL")});
+            dfm.addRow(new Object[]{rs.getString("IDENTIFICADORFACTURA"), rs.getString("ISBN"), rs.getInt("CANTIDAD"),rs.getInt("PRECIOTOTAL"), rs.getString("UBICACION")});
         }
     }catch(SQLException ex) {
         Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex); 
