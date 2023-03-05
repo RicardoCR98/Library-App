@@ -1268,7 +1268,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="PMiconoLupa" min="-2" pref="24" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="LtxtBusquedaPrestamosMultas" min="-2" pref="172" max="-2" attributes="0"/>
+                          <Component id="LtxtBusquedaFacturas" min="-2" pref="172" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -1333,7 +1333,7 @@
                                       <Component id="PPEliminarPrestamo" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                  <Component id="LtxtBusquedaPrestamosMultas" min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Component id="LtxtBusquedaFacturas" min="-2" pref="29" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="291" max="32767" attributes="0"/>
@@ -1551,7 +1551,7 @@
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="PMiconoLupaMouseClicked"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="LtxtBusquedaPrestamosMultas">
+                <Component class="javax.swing.JTextField" name="LtxtBusquedaFacturas">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -1566,10 +1566,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="LtxtBusquedaPrestamosMultasMouseClicked"/>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="LtxtBusquedaPrestamosMultasMouseEntered"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="LtxtBusquedaPrestamosMultasMouseExited"/>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="LtxtBusquedaPrestamosMultasMousePressed"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="LtxtBusquedaFacturasMouseClicked"/>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="LtxtBusquedaFacturasMouseEntered"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="LtxtBusquedaFacturasMouseExited"/>
+                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="LtxtBusquedaFacturasMousePressed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel12">

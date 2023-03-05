@@ -20,8 +20,8 @@ public final class JFLibreria extends javax.swing.JFrame{
     Facturas factura;
     JTable tabla;
     public JFLibreria() {
-        Facturas prestamo = new Facturas();
         initComponents();
+        factura = new Facturas();
         this.setLocationRelativeTo(null);
         scaleImage();
         showPanel();
@@ -34,6 +34,7 @@ public final class JFLibreria extends javax.swing.JFrame{
         cliente = new Cliente();
         libro = new Libro();
         jfaddlibro.actualizarTabla();
+        
     }
     
     public void showPanel() {
@@ -210,7 +211,7 @@ public final class JFLibreria extends javax.swing.JFrame{
         jScrollPane6 = new javax.swing.JScrollPane();
         JTFactuas = new javax.swing.JTable();
         PMiconoLupa = new javax.swing.JLabel();
-        LtxtBusquedaPrestamosMultas = new javax.swing.JTextField();
+        LtxtBusquedaFacturas = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         lblCountMult = new javax.swing.JLabel();
         PInicio = new javax.swing.JPanel();
@@ -1128,21 +1129,21 @@ public final class JFLibreria extends javax.swing.JFrame{
             }
         });
 
-        LtxtBusquedaPrestamosMultas.setForeground(new java.awt.Color(204, 204, 204));
-        LtxtBusquedaPrestamosMultas.setText("Busqueda");
-        LtxtBusquedaPrestamosMultas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(37, 40, 80)));
-        LtxtBusquedaPrestamosMultas.addMouseListener(new java.awt.event.MouseAdapter() {
+        LtxtBusquedaFacturas.setForeground(new java.awt.Color(204, 204, 204));
+        LtxtBusquedaFacturas.setText("Busqueda");
+        LtxtBusquedaFacturas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(37, 40, 80)));
+        LtxtBusquedaFacturas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LtxtBusquedaPrestamosMultasMouseClicked(evt);
+                LtxtBusquedaFacturasMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                LtxtBusquedaPrestamosMultasMouseEntered(evt);
+                LtxtBusquedaFacturasMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                LtxtBusquedaPrestamosMultasMouseExited(evt);
+                LtxtBusquedaFacturasMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                LtxtBusquedaPrestamosMultasMousePressed(evt);
+                LtxtBusquedaFacturasMousePressed(evt);
             }
         });
 
@@ -1160,7 +1161,7 @@ public final class JFLibreria extends javax.swing.JFrame{
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(PMiconoLupa, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(LtxtBusquedaPrestamosMultas, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LtxtBusquedaFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66))
             .addGroup(PFacturasLayout.createSequentialGroup()
                 .addGroup(PFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1209,7 +1210,7 @@ public final class JFLibreria extends javax.swing.JFrame{
                                 .addComponent(PPanelPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(PPEliminarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(LtxtBusquedaPrestamosMultas, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(LtxtBusquedaFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
                 .addGroup(PFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
@@ -1350,24 +1351,24 @@ public final class JFLibreria extends javax.swing.JFrame{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void LtxtBusquedaPrestamosMultasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LtxtBusquedaPrestamosMultasMousePressed
-        if (this.LtxtBusquedaPrestamosMultas.getText().equals("Busqueda")) {
-            this.LtxtBusquedaPrestamosMultas.setText("");
-            this.LtxtBusquedaPrestamosMultas.setForeground(Color.black);
+    private void LtxtBusquedaFacturasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LtxtBusquedaFacturasMousePressed
+        if (this.LtxtBusquedaFacturas.getText().equals("Busqueda")) {
+            this.LtxtBusquedaFacturas.setText("");
+            this.LtxtBusquedaFacturas.setForeground(Color.black);
         }
-    }//GEN-LAST:event_LtxtBusquedaPrestamosMultasMousePressed
+    }//GEN-LAST:event_LtxtBusquedaFacturasMousePressed
 
-    private void LtxtBusquedaPrestamosMultasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LtxtBusquedaPrestamosMultasMouseExited
+    private void LtxtBusquedaFacturasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LtxtBusquedaFacturasMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_LtxtBusquedaPrestamosMultasMouseExited
+    }//GEN-LAST:event_LtxtBusquedaFacturasMouseExited
 
-    private void LtxtBusquedaPrestamosMultasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LtxtBusquedaPrestamosMultasMouseEntered
+    private void LtxtBusquedaFacturasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LtxtBusquedaFacturasMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_LtxtBusquedaPrestamosMultasMouseEntered
+    }//GEN-LAST:event_LtxtBusquedaFacturasMouseEntered
 
-    private void LtxtBusquedaPrestamosMultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LtxtBusquedaPrestamosMultasMouseClicked
+    private void LtxtBusquedaFacturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LtxtBusquedaFacturasMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_LtxtBusquedaPrestamosMultasMouseClicked
+    }//GEN-LAST:event_LtxtBusquedaFacturasMouseClicked
 
     private void PPEliminarPrestamoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PPEliminarPrestamoMouseExited
         this.PPEliminarPrestamo.setBorder(null);
@@ -1681,8 +1682,9 @@ public final class JFLibreria extends javax.swing.JFrame{
 
     private void PMiconoLupaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PMiconoLupaMouseClicked
         String consulta;
-        consulta = LtxtBusquedaPrestamosMultas.getText();
-        factura.ActualizarTablaFacturasBusqueda(this.jTLibros, consulta);
+        consulta = LtxtBusquedaFacturas.getText();
+        factura.ActualizarTablaFacturasBusqueda(this.jTLibros,consulta);  
+
     }//GEN-LAST:event_PMiconoLupaMouseClicked
 
     private void EiconoLupaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EiconoLupaMouseClicked
@@ -1748,7 +1750,7 @@ public final class JFLibreria extends javax.swing.JFrame{
     private javax.swing.JLabel LiconoEliminar;
     private javax.swing.JLabel LiconoLupa;
     private javax.swing.JTextField LtxtBusqueda;
-    private javax.swing.JTextField LtxtBusquedaPrestamosMultas;
+    private javax.swing.JTextField LtxtBusquedaFacturas;
     private javax.swing.JPanel Opciones;
     private javax.swing.JPanel PClientes;
     private javax.swing.JPanel PFacturas;

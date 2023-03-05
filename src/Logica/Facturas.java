@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -15,8 +16,10 @@ public class Facturas {
     private String ISBN;
     private int cantidad;
     private double  precioTotal;
+    private String cedulaCliente;
     private String ubicacionFactura;
-
+    LocalDate fechaActual = LocalDate.now();
+    
     private String codigoSede;
     ConexionBD conexion = new ConexionBD();
     Connection cn = conexion.conexion();
@@ -25,15 +28,17 @@ public class Facturas {
     public Facturas() {
     }
 
-    public Facturas(String identificadorFactura, String ISBN, int cantidad, double precioTotal, String ubicacionFactura, String codigoSede) {
+    public Facturas(String identificadorFactura, String ISBN, int cantidad, double precioTotal, String ubicacionFactura, String codigoSede,String cedulaCliente) {
         this.identificadorFactura = identificadorFactura;
         this.ISBN = ISBN;
         this.cantidad = cantidad;
         this.precioTotal = precioTotal;
         this.ubicacionFactura = ubicacionFactura;
         this.ubicacionFactura = codigoSede;
+        this.cedulaCliente = cedulaCliente;
     }
 
+    
     public String getIdentificadorFactura() {
         return identificadorFactura;
     }
@@ -98,18 +103,36 @@ public class Facturas {
         this.codigoSede = codigoSede;
     }
     
+    public String getCedulaCliente() {
+        return cedulaCliente;
+    }
+
+    public void setCedulaCliente(String cedulaCliente) {
+        this.cedulaCliente = cedulaCliente;
+    }
+    
     public boolean añadirFactura(){
         boolean flag = false;
         try 
         {
-            PreparedStatement pps = cn.prepareStatement("INSERT INTO V_facturas (IDENTIFICADORFACTURA,ISBN,CANTIDAD,PRECIOTOTAL,CODIGOSEDE,UBICACION) VALUES (?,?,?,?,?,?)"); 
+            PreparedStatement pps = cn.prepareStatement("INSERT INTO V_Facturas (IDENTIFICADORFACTURA,ISBN,CANTIDAD,PRECIOTOTAL,CODIGOSEDE,UBICACION) VALUES (?,?,?,?,?,?)"); 
             pps.setString(1, this.identificadorFactura);
             pps.setString(2,this.ISBN);
             pps.setInt(3,this.cantidad);
             pps.setDouble(4, this.precioTotal);
             pps.setString(5, this.codigoSede);
             pps.setString(6, this.ubicacionFactura);
+            pps.executeUpdate();
+            
 
+            
+            PreparedStatement pps1 = cn.prepareStatement("INSERT INTO V_EstadisticaFact (IDENTIFICADORFACTURA,FECHAFACTURA,CEDULACLIENTE,CODIGOSEDE,UBICACION) VALUES (?,?,?,?,?)"); 
+            pps1.setString(1, this.identificadorFactura);
+            pps1.setString(2,this.fechaActual.toString());
+            pps1.setString(3,this.cedulaCliente);
+            pps1.setString(4, this.codigoSede);
+            pps1.setString(5, this.ubicacionFactura);
+            pps1.executeUpdate();
             flag = true;
         } 
         catch(SQLException ex) 
@@ -125,7 +148,7 @@ public class Facturas {
         try 
         {
             PreparedStatement pps;
-            pps = cn.prepareStatement("DELETE FROM V_facturas WHERE IDENTIFICADORFACTURA=" + this.identificadorFactura);
+            pps = cn.prepareStatement("DELETE FROM V_Facturas WHERE IDENTIFICADORFACTURA=" + this.identificadorFactura);
             pps.executeUpdate();
             flag = true;
         } catch (SQLException ex) {
@@ -140,13 +163,15 @@ public class Facturas {
     JTable tabla = tabla1;
     try {   
         st = cn.createStatement();
-        rs = st.executeQuery("SELECT * FROM V_facturas"); 
+        rs = st.executeQuery("SELECT * FROM V_Facturas order by IDENTIFICADORFACTURA ASC"); 
         DefaultTableModel dfm = new DefaultTableModel();
         tabla.setModel(dfm);
         dfm.setColumnIdentifiers(new Object[]{"ID FACTURA","ISBN","CANTIDAD","PRECIO TOTAL","UBICACION"});
         while(rs.next()){
-            dfm.addRow(new Object[]{rs.getString("IDENTIFICADORFACTURA"), rs.getString("ISBN"), rs.getInt("CANTIDAD"),rs.getInt("PRECIOTOTAL"), rs.getString("UBICACION")});
+            dfm.addRow(new Object[]{rs.getString("IDENTIFICADORFACTURA"), rs.getString("ISBN"), rs.getInt("CANTIDAD"),rs.getDouble("PRECIOTOTAL"), rs.getString("UBICACION")});
         }
+        cn.close();
+        return tabla;
     }catch(SQLException ex) {
         Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex); 
         JOptionPane.showMessageDialog (null, "Ocurrio un error al mostrar la tabla ");     
@@ -154,12 +179,12 @@ public class Facturas {
     return tabla;
 }
     
-    public void ActualizarTablaFacturasBusqueda(JTable tabla1, String consulta){
+    public void ActualizarTablaFacturasBusqueda(JTable tabla1,String consulta){
     Statement st;
     ResultSet rs=null; 
     try {   
         st = cn.createStatement();
-        rs = st.executeQuery(consulta); 
+        rs = st.executeQuery("SELECT * FROM V_Facturas WHERE ISBN ='"+consulta+"' OR IDENTIFICADORFACTURA='"+consulta+"' OR UBICACION='"+consulta+"'"); 
         DefaultTableModel dfm = new DefaultTableModel();
         tabla1.setModel(dfm);
         dfm.setColumnIdentifiers(new Object[]{"ID FACTURA","ISBN","CANTIDAD","PRECIO TOTAL", "UBICACION"});
