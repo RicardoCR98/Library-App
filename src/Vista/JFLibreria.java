@@ -978,7 +978,7 @@ public final class JFLibreria extends javax.swing.JFrame{
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblCountLib)))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         PnlLibLayout.setVerticalGroup(
             PnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1003,7 +1003,7 @@ public final class JFLibreria extends javax.swing.JFrame{
                 .addGroup(PnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(lblCountLib))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         jLabel19.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
@@ -1127,6 +1127,12 @@ public final class JFLibreria extends javax.swing.JFrame{
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PMiconoLupaMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PMiconoLupaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PMiconoLupaMouseExited(evt);
+            }
         });
 
         LtxtBusquedaFacturas.setForeground(new java.awt.Color(204, 204, 204));
@@ -1144,6 +1150,11 @@ public final class JFLibreria extends javax.swing.JFrame{
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 LtxtBusquedaFacturasMousePressed(evt);
+            }
+        });
+        LtxtBusquedaFacturas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LtxtBusquedaFacturasActionPerformed(evt);
             }
         });
 
@@ -1683,7 +1694,11 @@ public final class JFLibreria extends javax.swing.JFrame{
     private void PMiconoLupaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PMiconoLupaMouseClicked
         String consulta;
         consulta = LtxtBusquedaFacturas.getText();
-        factura.ActualizarTablaFacturasBusqueda(this.jTLibros,consulta);  
+        factura.ActualizarTablaFacturasBusqueda(this.JTFactuas,consulta);
+        
+        if(this.LtxtBusquedaFacturas.getText().equals("")){
+            factura.ActualizarTablaFacturas(JTFactuas);
+        }
 
     }//GEN-LAST:event_PMiconoLupaMouseClicked
 
@@ -1693,6 +1708,22 @@ public final class JFLibreria extends javax.swing.JFrame{
         consulta = LtxtBusqueda.getText();
         cliente.actualizarTablaBusqueda(this.jTEstudiantes, consulta);  
     }//GEN-LAST:event_EiconoLupaMouseClicked
+
+    private void LtxtBusquedaFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LtxtBusquedaFacturasActionPerformed
+
+    }//GEN-LAST:event_LtxtBusquedaFacturasActionPerformed
+
+    private void PMiconoLupaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PMiconoLupaMouseEntered
+         this.PMiconoLupa.setBorder(new LineBorder(Color.red));
+        this.PMiconoLupa.setForeground(Color.red);
+        String consulta;
+    }//GEN-LAST:event_PMiconoLupaMouseEntered
+
+    private void PMiconoLupaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PMiconoLupaMouseExited
+       
+        this.PMiconoLupa.setBorder(null);
+        this.PMiconoLupa.setForeground(Color.black);
+    }//GEN-LAST:event_PMiconoLupaMouseExited
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

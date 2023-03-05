@@ -5,6 +5,7 @@
 package Vista;
 
 import Logica.Facturas;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
@@ -18,6 +19,7 @@ public class JFAddFactura extends javax.swing.JFrame {
      * Creates new form JFAddFactura
      */
     Facturas factura;
+    Facturas factura2;
     JTable tabla;
     public JFAddFactura(JTable tabla) {
         initComponents();
@@ -202,12 +204,16 @@ public class JFAddFactura extends javax.swing.JFrame {
         }else{
             codigoSede = "02";
         }
-        
         int cantidad = Integer.parseInt(this.txt_CantidadFactura.getText());
         double precioTotal = Double.parseDouble(this.txt_PrecioTotalFactura.getText());
-        factura = new Facturas(this.txt_IDFactura.getText(),txt_ISBNFactura.getText(),cantidad,precioTotal,ubi,codigoSede,txt_CedulaCliente.getText());
+        
+//        factura = new Facturas(this.txt_IDFactura.getText(),txt_ISBNFactura.getText(),cantidad,precioTotal,ubi,codigoSede,txt_CedulaCliente.getText());
+//        factura2 = new Facturas(this.txt_IDFactura.getText(),LocalDate.now() ,this.txt_CedulaCliente.getText(),codigoSede,ubi);
+        System.out.print(codigoSede);
+        factura = new Facturas(txt_IDFactura.getText(),txt_ISBNFactura.getText(),cantidad,precioTotal,ubi,codigoSede,txt_CedulaCliente.getText(),LocalDate.now());        
         boolean flag = factura.añadirFactura();
-        if(flag){
+//        boolean flag2 = factura2.añadirEstadistica();
+        if(flag==true){
             JOptionPane.showMessageDialog(null, "Datos Guardados correctamente.");
             factura.ActualizarTablaFacturas(tabla);
             comewth();
