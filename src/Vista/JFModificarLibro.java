@@ -134,6 +134,11 @@ Libro libro;
         jCBusquedaLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ISBN", "Nombre", "Genero", "Autor" }));
         jCBusquedaLibro.setSelectedIndex(-1);
 
+        jTFBusquedaLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFBusquedaLibroActionPerformed(evt);
+            }
+        });
         jTFBusquedaLibro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTFBusquedaLibroKeyPressed(evt);
@@ -311,6 +316,9 @@ Libro libro;
         
         libro.actualizarTabla(jTBusquedaAct);
         libro.ActualizarTablaLibrosBusqueda(jTBusquedaAct, getConsulta());
+        jTFCantidadActualizarLibros.setText("");
+        jTFISBNLibroActualizar.setText("");
+        jTFPrecioLibActu.setText("");   
     }//GEN-LAST:event_btnActualizarLibActionPerformed
 
     private void btnCancelarLibActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarLibActionPerformed
@@ -344,22 +352,28 @@ Libro libro;
     private void jTFBusquedaLibroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBusquedaLibroKeyPressed
         // TODO add your handling code here:                                      
         if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if(jTFBusquedaLibro.getText().equals("")){
+                libro.actualizarTabla(jTBusquedaAct);
+            }
             libro.ActualizarTablaLibrosBusqueda(jTBusquedaAct, getConsulta());
+            try{
+                    // Obtener el índice de la columna deseada
+                int indiceColumna = jTBusquedaAct.getColumnModel().getColumnIndex("ISBN");
+                Object valorCelda;
+                int fila = jTBusquedaAct.getSelectedRow();
+                // Obtener el valor de la celda en la fila 0 y la columna correspondiente
+                if(fila == -1){
+                    valorCelda = jTBusquedaAct.getModel().getValueAt(0, indiceColumna);
+                }else{
+                    valorCelda = jTBusquedaAct.getModel().getValueAt(fila, indiceColumna);
+                }
+                jTFISBNLibroActualizar.setText((String)valorCelda);  
+                if(jTFBusquedaLibro.getText().equalsIgnoreCase("")){
+                libro.actualizarTabla(jTBusquedaAct);
         }
-
-        // Obtener el índice de la columna deseada
-        int indiceColumna = jTBusquedaAct.getColumnModel().getColumnIndex("ISBN");
-        Object valorCelda;
-        int fila = jTBusquedaAct.getSelectedRow();
-        // Obtener el valor de la celda en la fila 0 y la columna correspondiente
-        if(fila == -1){
-            valorCelda = jTBusquedaAct.getModel().getValueAt(0, indiceColumna);
-        }else{
-            valorCelda = jTBusquedaAct.getModel().getValueAt(fila, indiceColumna);
-        }
-        jTFISBNLibroActualizar.setText((String)valorCelda);  
-        if(jTFBusquedaLibro.getText().equalsIgnoreCase("")){
-            libro.actualizarTabla(jTBusquedaAct);
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(rootPane, "No se encontro el Libro","Libro Error ",0);
+            }
         }
     }//GEN-LAST:event_jTFBusquedaLibroKeyPressed
 
@@ -375,6 +389,13 @@ Libro libro;
         }
         jTFISBNLibroActualizar.setText((String)valorCelda); 
     }//GEN-LAST:event_jTBusquedaActMouseClicked
+
+    private void jTFBusquedaLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFBusquedaLibroActionPerformed
+        // TODO add your handling code here:
+        if(jTFBusquedaLibro.getText().equals("")){
+                libro.actualizarTabla(jTBusquedaAct);
+        }
+    }//GEN-LAST:event_jTFBusquedaLibroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -142,19 +142,19 @@ Cliente cliente;
         jtableClientes.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jtableClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Cedula", "Código Sede", "Nombre", "Telefono", "Dirección", "Ubicación"
+                "Cedula", "Nombre", "Telefono", "Dirección", "Ubicación"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -173,7 +173,7 @@ Cliente cliente;
         jScrollPane9.setViewportView(jtableClientes);
 
         comboBoxBusquedaCliente.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        comboBoxBusquedaCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "cedula", "nombre", "telefono", " " }));
+        comboBoxBusquedaCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cedula", "Nombre", "Telefono" }));
         comboBoxBusquedaCliente.setSelectedIndex(-1);
         comboBoxBusquedaCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -336,15 +336,15 @@ Cliente cliente;
 
         cliente.actualizarTabla(jtableClientes);      
         cliente.actualizarTablaBusqueda(jtableClientes, getConsulta());
-
+        jTFCedulaClienteActualizar.setText("");
+        jTFTelefonoClienteaActualizar.setText("");
+        jTFDireccionClienteaActualizar.setText("");   
     }//GEN-LAST:event_btnActualizarClienteActionPerformed
 
     private void jtableClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtableClientesMouseClicked
         int row =jtableClientes.getSelectedRow();
         if (row !=-1 ){
             jTFCedulaClienteActualizar.setText((String)jtableClientes.getValueAt(row, 0));
-            jTFTelefonoClienteaActualizar.setText((String)jtableClientes.getValueAt(row, 3));
-            jTFDireccionClienteaActualizar.setText((String)jtableClientes.getValueAt(row, 4));
         }
     }//GEN-LAST:event_jtableClientesMouseClicked
 
@@ -424,22 +424,26 @@ Cliente cliente;
         // TODO add your handling code here:
          if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
             cliente.actualizarTablaBusqueda(jtableClientes, getConsulta());
+            try{
+                // Obtener el índice de la columna deseada
+                int indiceColumna = jtableClientes.getColumnModel().getColumnIndex("Cedula");
+                Object valorCelda;
+                int fila = jtableClientes.getSelectedRow();
+                // Obtener el valor de la celda en la fila 0 y la columna correspondiente
+                if(fila == -1){
+                    valorCelda = jtableClientes.getModel().getValueAt(0, indiceColumna);
+                }else{
+                    valorCelda = jtableClientes.getModel().getValueAt(fila, indiceColumna);
+                }
+                jTFCedulaClienteActualizar.setText((String)valorCelda);  
+                if(jTFBusquedaCliente.getText().equalsIgnoreCase("")){
+                    cliente.actualizarTabla(jtableClientes);
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(rootPane, "No se encontro el cliente","Cliente Error",0);
+            }
         }
 
-        // Obtener el índice de la columna deseada
-        int indiceColumna = jtableClientes.getColumnModel().getColumnIndex("Cedula");
-        Object valorCelda;
-        int fila = jtableClientes.getSelectedRow();
-        // Obtener el valor de la celda en la fila 0 y la columna correspondiente
-        if(fila == -1){
-            valorCelda = jtableClientes.getModel().getValueAt(0, indiceColumna);
-        }else{
-            valorCelda = jtableClientes.getModel().getValueAt(fila, indiceColumna);
-        }
-        jTFCedulaClienteActualizar.setText((String)valorCelda);  
-        if(jTFBusquedaCliente.getText().equalsIgnoreCase("")){
-            cliente.actualizarTabla(jtableClientes);
-        }
     }//GEN-LAST:event_jTFBusquedaClienteKeyPressed
 
 

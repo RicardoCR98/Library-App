@@ -94,16 +94,15 @@ public class Cliente {
             try{
               PreparedStatement pps = cn.prepareStatement("INSERT INTO V_clientes"
                                                         + "(CEDULACLIENTE, CODIGOSEDE, NOMBRECLIENTE, TELEFONOCLIENTE, DIRECCIONCLIENTE, UBICACION) VALUES (?,?,?,?,?,?);"); 
-              pps.setString(0, this.cedula);
-              pps.setString(1, this.codigoSede);
-              pps.setString(2, this.nombre);
-              pps.setString(3, this.telefono);
-              pps.setString(4,this.direccion);
-              pps.setString(5, this.ubicacion);
+              pps.setString(1, this.cedula);
+              pps.setString(2, this.codigoSede);
+              pps.setString(3, this.nombre);
+              pps.setString(4, this.telefono);
+              pps.setString(5,this.direccion);
+              pps.setString(6, this.ubicacion);
               pps.executeUpdate();
               bandera = true;
             }catch(SQLException e){
-             Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, e); 
              bandera = false;        
             }
             return bandera;
@@ -128,12 +127,10 @@ public class Cliente {
            pps.executeUpdate ();
            bandera = true;
         }catch(SQLException e){
-           Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, e); 
            JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ");  
            bandera = false;
         }
         return bandera;
-        
     }
     public JTable actualizarTabla(JTable tabla1){
         JTable tabla = tabla1;
@@ -144,13 +141,12 @@ public class Cliente {
             rs = st.executeQuery("SELECT * FROM V_Clientes"); 
             DefaultTableModel dfm = new DefaultTableModel();
             tabla.setModel(dfm);
-           dfm.setColumnIdentifiers(new Object[]{"Cédula","Código Sede","Nombre","Telefono","Dirección","Ubicación"});
+           dfm.setColumnIdentifiers(new Object[]{"Cédula","Nombre","Telefono","Dirección","Ubicación"});
            while(rs.next()){
-               dfm.addRow(new Object[]{rs.getString("CEDULACLIENTE"), rs.getString("CODIGOSEDE"), rs.getString("NOMBRECLIENTE"), 
-                                        rs.getString("TELEFONOCLIENTE"), rs.getString("DIRECCIONCLIENTE"), rs.getString("UBICACION") });
+               dfm.addRow(new Object[]{rs.getString("CEDULACLIENTE"), rs.getString("NOMBRECLIENTE"),rs.getString("TELEFONOCLIENTE"), 
+                   rs.getString("DIRECCIONCLIENTE"), rs.getString("UBICACION") });
             }
         }catch(SQLException ex) {
-            Logger.getLogger(JFLibreria.class.getName()).log(Level. SEVERE, null, ex);
             JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");  
         }        
             return tabla;
@@ -166,13 +162,12 @@ public class Cliente {
                              "' OR TELEFONOCLIENTE='"+consulta+"'"); 
         DefaultTableModel dfm = new DefaultTableModel();
         tabla1.setModel(dfm);
-        dfm.setColumnIdentifiers(new Object[]{"Cédula","Código Sede","Nombre","Telefono","Dirección","Ubicación"});
+        dfm.setColumnIdentifiers(new Object[]{"Cédula","Nombre","Telefono","Dirección","Ubicación"});
         while(rs.next()){
-            dfm.addRow(new Object[]{rs.getString("CEDULACLIENTE"), rs.getString("CODIGOSEDE"), rs.getString("NOMBRECLIENTE"), 
-                                        rs.getString("TELEFONOCLIENTE"), rs.getString("DIRECCIONCLIENTE"), rs.getString("UBICACION") });
+            dfm.addRow(new Object[]{rs.getString("CEDULACLIENTE"), rs.getString("NOMBRECLIENTE"),
+                rs.getString("TELEFONOCLIENTE"), rs.getString("DIRECCIONCLIENTE"), rs.getString("UBICACION") });
         }
         }catch(SQLException ex) {
-            Logger.getLogger(JFLibreria.class.getName()).log(Level. SEVERE, null, ex); 
             JOptionPane.showMessageDialog (null, "No se encuentra");      
     }
    }

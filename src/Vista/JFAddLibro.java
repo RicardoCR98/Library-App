@@ -4,6 +4,7 @@ import Logica.Libro;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 public class JFAddLibro extends javax.swing.JFrame {
@@ -251,10 +252,15 @@ public class JFAddLibro extends javax.swing.JFrame {
         if(flag){
             JOptionPane.showMessageDialog(null, "Datos Guardados correctamente.");
             tabla = libro.actualizarTabla(tabla);
+            JTextField[] textFields = {jTFAnio,jTFAutor,jTFCantidad,jTFEditorial,jTFGenero,jTFISBN,jTFPrecio,jTFTitulo};
+            for (JTextField textField : textFields) {
+                textField.setText("");
+            }
             comewth();
         }else{
             JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");    
         }
+        
     }//GEN-LAST:event_btnAceptarLibActionPerformed
 
     private void btnCancelarLibActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarLibActionPerformed

@@ -821,6 +821,7 @@ public final class JFLibreria extends javax.swing.JFrame{
         });
 
         LPanelElimiLib.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LPanelElimiLib.setPreferredSize(new java.awt.Dimension(213, 61));
         LPanelElimiLib.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LPanelElimiLibMouseClicked(evt);
@@ -834,7 +835,7 @@ public final class JFLibreria extends javax.swing.JFrame{
         });
 
         btnModificarLibrTxt.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        btnModificarLibrTxt.setText("Modificar/Eliminar Libro");
+        btnModificarLibrTxt.setText("Modificar Libro");
         btnModificarLibrTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnModificarLibrTxtMouseClicked(evt);
@@ -846,19 +847,18 @@ public final class JFLibreria extends javax.swing.JFrame{
         LPanelElimiLibLayout.setHorizontalGroup(
             LPanelElimiLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LPanelElimiLibLayout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
-                .addGroup(LPanelElimiLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LPanelElimiLibLayout.createSequentialGroup()
-                        .addComponent(btnModificarLibrTxt)
-                        .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LPanelElimiLibLayout.createSequentialGroup()
-                        .addComponent(LiconoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(97, 97, 97))))
+                .addContainerGap(92, Short.MAX_VALUE)
+                .addComponent(LiconoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(97, 97, 97))
+            .addGroup(LPanelElimiLibLayout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(btnModificarLibrTxt)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         LPanelElimiLibLayout.setVerticalGroup(
             LPanelElimiLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LPanelElimiLibLayout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LiconoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnModificarLibrTxt)
@@ -957,10 +957,11 @@ public final class JFLibreria extends javax.swing.JFrame{
                                     .addComponent(LiconoLupa, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(PnlLibLayout.createSequentialGroup()
                                         .addComponent(LPanelAñadirLib, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(125, 125, 125)
-                                        .addComponent(LPanelElimiLib, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(84, 84, 84)
+                                        .addComponent(LPanelElimiLib, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(41, 41, 41)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(LtxtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(LtxtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(PnlLibLayout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addGroup(PnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -969,7 +970,7 @@ public final class JFLibreria extends javax.swing.JFrame{
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblCountLib)))))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         PnlLibLayout.setVerticalGroup(
             PnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -994,7 +995,7 @@ public final class JFLibreria extends javax.swing.JFrame{
                 .addGroup(PnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(lblCountLib))
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jLabel19.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
