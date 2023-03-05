@@ -795,6 +795,9 @@
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="EiconoLupa">
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EiconoLupaMouseClicked"/>
+                  </Events>
                 </Component>
                 <Container class="javax.swing.JPanel" name="EPanelA&#xf1;adir">
                   <Properties>
@@ -970,7 +973,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="14" max="32767" attributes="0"/>
+                          <EmptySpace pref="74" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1001,7 +1004,7 @@
                               <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblCountLib" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="29" max="32767" attributes="0"/>
+                          <EmptySpace pref="132" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

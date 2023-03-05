@@ -14,6 +14,7 @@ public final class JFLibreria extends javax.swing.JFrame{
     JFAddLibro jfaddlibro;
     JFModificarLibro jfmodificarlibro;
     Libro libro;
+    Cliente cliente;
     JFAddFactura jfAddFactura;
     Login log = new Login();
     Facturas factura;
@@ -30,7 +31,7 @@ public final class JFLibreria extends javax.swing.JFrame{
         jfaddcliente = new JFAddCliente(this.jTEstudiantes);
         jfeditcliente = new JFEditCliente(this.jTEstudiantes);
         jfAddFactura = new JFAddFactura(this.JTFactuas);
-        
+        cliente = new Cliente();
         libro = new Libro();
         jfaddlibro.actualizarTabla();
     }
@@ -612,6 +613,12 @@ public final class JFLibreria extends javax.swing.JFrame{
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 EtxtBusquedaMousePressed(evt);
+            }
+        });
+
+        EiconoLupa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EiconoLupaMouseClicked(evt);
             }
         });
 
@@ -1677,6 +1684,13 @@ public final class JFLibreria extends javax.swing.JFrame{
         consulta = LtxtBusquedaPrestamosMultas.getText();
         factura.ActualizarTablaFacturasBusqueda(this.jTLibros, consulta);
     }//GEN-LAST:event_PMiconoLupaMouseClicked
+
+    private void EiconoLupaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EiconoLupaMouseClicked
+        // TODO add your handling code here:
+        String consulta;
+        consulta = LtxtBusqueda.getText();
+        cliente.actualizarTablaBusqueda(this.jTEstudiantes, consulta);  
+    }//GEN-LAST:event_EiconoLupaMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

@@ -132,6 +132,7 @@ public class Cliente {
         }
         return bandera;
     }
+    
     public JTable actualizarTabla(JTable tabla1){
         JTable tabla = tabla1;
         Statement st;
@@ -159,7 +160,9 @@ public class Cliente {
         st = cn.createStatement();       
         rs = st.executeQuery("SELECT * FROM FROM V_clientes WHERE CEDULACLIENTE='"+consulta+
                              "' OR NOMBRECLIENTE='"+consulta+
-                             "' OR TELEFONOCLIENTE='"+consulta+"'"); 
+                             "' OR TELEFONOCLIENTE='"+consulta+
+                             "' OR UBICACION='"+consulta+
+                             "' OR DIRECCIONCLIENTE='"+consulta+"'"); 
         DefaultTableModel dfm = new DefaultTableModel();
         tabla1.setModel(dfm);
         dfm.setColumnIdentifiers(new Object[]{"Cédula","Nombre","Telefono","Dirección","Ubicación"});
