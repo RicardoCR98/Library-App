@@ -181,19 +181,19 @@ public class Facturas {
         return flag;
     }
        
-    public boolean eliminarRegistro()
+    public boolean eliminarRegistro(String id)
     {
         boolean flag = false;
-        try 
-        {
-            PreparedStatement pps;
-            pps = cn.prepareStatement("DELETE FROM V_Facturas WHERE IDENTIFICADORFACTURA=" + this.identificadorFactura);
-            pps.executeUpdate();
-            flag = true;
-        } catch (SQLException ex) {
-            Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return flag;
+    try {
+        PreparedStatement pps;
+        pps = cn.prepareStatement("DELETE FROM V_Facturas WHERE IDENTIFICADORFACTURA=?");
+        pps.setString(1, id);
+        pps.executeUpdate();
+        flag = true;
+    } catch (SQLException ex) {
+        Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return flag;
     }
     
     public JTable ActualizarTablaFacturas(JTable tabla1){
@@ -202,7 +202,7 @@ public class Facturas {
     JTable tabla = tabla1;
     try {   
         st = cn.createStatement();
-        rs = st.executeQuery("SELECT * FROM V_Facturas order by IDENTIFICADORFACTURA ASC"); 
+        rs = st.executeQuery("SELECT * FROM V_facturas order by IDENTIFICADORFACTURA ASC"); 
         DefaultTableModel dfm = new DefaultTableModel();
         tabla.setModel(dfm);
         dfm.setColumnIdentifiers(new Object[]{"ID FACTURA","ISBN","CANTIDAD","PRECIO TOTAL","UBICACION"});

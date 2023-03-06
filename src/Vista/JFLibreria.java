@@ -28,8 +28,8 @@ public final class JFLibreria extends javax.swing.JFrame{
         setVisible(true);
         jfaddlibro = new JFAddLibro(this.jTLibros);
         jfmodificarlibro = new JFModificarLibro();
-        jfaddcliente = new JFAddCliente(this.jTEstudiantes);
-        jfeditcliente = new JFEditCliente(this.jTEstudiantes);
+        jfaddcliente = new JFAddCliente(this.jTClientes);
+        jfeditcliente = new JFEditCliente(this.jTClientes);
         jfAddFactura = new JFAddFactura(this.JTFactuas);
         cliente = new Cliente();
         libro = new Libro();
@@ -166,7 +166,7 @@ public final class JFLibreria extends javax.swing.JFrame{
         Contenido = new javax.swing.JLayeredPane();
         PClientes = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTEstudiantes = new javax.swing.JTable();
+        jTClientes = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -566,7 +566,7 @@ public final class JFLibreria extends javax.swing.JFrame{
 
         PClientes.setPreferredSize(new java.awt.Dimension(947, 706));
 
-        jTEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
+        jTClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -582,12 +582,12 @@ public final class JFLibreria extends javax.swing.JFrame{
                 return types [columnIndex];
             }
         });
-        jTEstudiantes.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTEstudiantesMouseClicked(evt);
+                jTClientesMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTEstudiantes);
+        jScrollPane1.setViewportView(jTClientes);
 
         jLabel6.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
         jLabel6.setText("REGISTRO Y MODIFICACION DE CLIENTES");
@@ -1101,7 +1101,7 @@ public final class JFLibreria extends javax.swing.JFrame{
 
             },
             new String [] {
-                "Código", "ISBN", "Cantidad", "Precio Total", "Ubicacion"
+                "Codigo", "ISBN", "Cantidad", "Precio Total", "Ubicacion"
             }
         ) {
             Class[] types = new Class [] {
@@ -1392,25 +1392,23 @@ public final class JFLibreria extends javax.swing.JFrame{
     }//GEN-LAST:event_PPEliminarPrestamoMouseEntered
 
     private void PPEliminarPrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PPEliminarPrestamoMouseClicked
-        int row = JTFactuas.getSelectedRow();
+    int row = JTFactuas.getSelectedRow();
         if (row < 0) {
             // Ninguna fila seleccionada, ignorar evento
             return;
         }
-        
 
-        String ID= (String)JTFactuas.getValueAt(row, 0);
-        
-        if(0==JOptionPane.showConfirmDialog(null, "¿Esta seguro de borrar la factura con ID: "+ID+" ?","Advertencia",JOptionPane.INFORMATION_MESSAGE)){
-               
+        String ID = JTFactuas.getValueAt(row, 0).toString();
 
-             if(factura.eliminarRegistro())
-                 JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
-             else{
-                 JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ");
-             }           
-                 factura.ActualizarTablaFacturas(tabla);
-             }
+        int confirmacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de borrar la factura con ID: " + ID + "?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            if (factura.eliminarRegistro(ID)){
+                JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
+                factura.ActualizarTablaFacturas(tabla);
+            } else {
+                JOptionPane.showMessageDialog(null, "Ocurrió un error al eliminar los datos.");
+            }
+        }
     }//GEN-LAST:event_PPEliminarPrestamoMouseClicked
 
     private void PPanelPrestamoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PPanelPrestamoMouseExited
@@ -1526,9 +1524,9 @@ public final class JFLibreria extends javax.swing.JFrame{
 
     }//GEN-LAST:event_EtxtBusquedaMouseClicked
 
-    private void jTEstudiantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTEstudiantesMouseClicked
+    private void jTClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTClientesMouseClicked
 
-    }//GEN-LAST:event_jTEstudiantesMouseClicked
+    }//GEN-LAST:event_jTClientesMouseClicked
 
     private void PrestamoMultaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrestamoMultaMouseExited
         this.PrestamoMulta.setBackground(new Color(37, 40, 80));
@@ -1664,6 +1662,9 @@ public final class JFLibreria extends javax.swing.JFrame{
         consulta = LtxtBusqueda.getText();
         libro.ActualizarTablaLibrosBusqueda(this.jTLibros, consulta);  
         
+        if(this.LtxtBusqueda.getText().equals("")){
+            libro.actualizarTabla(jTLibros);
+        }
     }//GEN-LAST:event_LiconoLupaMouseClicked
 
     private void LiconoLupaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LiconoLupaMouseEntered
@@ -1705,8 +1706,12 @@ public final class JFLibreria extends javax.swing.JFrame{
     private void EiconoLupaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EiconoLupaMouseClicked
         // TODO add your handling code here:
         String consulta;
-        consulta = LtxtBusqueda.getText();
-        cliente.actualizarTablaBusqueda(this.jTEstudiantes, consulta);  
+        consulta = EtxtBusqueda.getText();
+        cliente.actualizarTablaBusqueda(this.jTClientes, consulta);  
+        
+        if(EtxtBusqueda.getText().equals("")){
+            cliente.actualizarTabla(this.jTClientes);  
+        }
     }//GEN-LAST:event_EiconoLupaMouseClicked
 
     private void LtxtBusquedaFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LtxtBusquedaFacturasActionPerformed
@@ -1836,7 +1841,7 @@ public final class JFLibreria extends javax.swing.JFrame{
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTable jTEstudiantes;
+    private javax.swing.JTable jTClientes;
     private javax.swing.JTable jTLibros;
     private javax.swing.JLabel lblCountEstud;
     private javax.swing.JLabel lblCountLib;

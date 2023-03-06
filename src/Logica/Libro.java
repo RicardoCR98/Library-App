@@ -127,7 +127,10 @@ public class Libro {
     public boolean añadirLibro(String ISBN, String codSede, int numEjemplar, String ubicacion){
         boolean flag = false;
         try {
-            PreparedStatement pps = cn.prepareStatement("INSERT INTO V_Ejemplar (ISBN, CODIGOSEDE, NUMEJEMPLAR, UBICACION) VALUES (?, ?, ?, ?)"); 
+            PreparedStatement pps = cn.prepareStatement("set xact_abort on"
+                    + " begin distributed tran"
+                    + " INSERT INTO V_Ejemplar (ISBN, CODIGOSEDE, NUMEJEMPLAR, UBICACION) VALUES (?, ?, ?, ?)"
+                    + " commit tran"); 
             pps.setString (1, ISBN);
             pps.setString (2, codSede);
             pps.setInt (3, numEjemplar);
@@ -135,6 +138,7 @@ public class Libro {
             pps.executeUpdate ();
             flag = true;
         } catch(SQLException ex) {   
+            System.out.println(ex.toString());
         }
         return flag;
     }
@@ -158,7 +162,10 @@ public class Libro {
     ResultSet rs=null;    
     try {   
         st = cn.createStatement();
-        rs = st.executeQuery("SELECT cantidad FROM V_Libros WHERE ISBN = "+ this.ISBN); 
+        rs = st.executeQuery("set xact_abort on"
+                + " begin distributed tran"
+                + " SELECT cantidad FROM V_Libros WHERE ISBN = "+ this.ISBN
+                +" commit tran"); 
         while(rs.next()){
             cantidad = rs.getInt("cantidad");
         }

@@ -87,23 +87,26 @@ public class Cliente {
             boolean bandera = false;
             if("Quito".equals(this.getUbicacion())){
                 setCodigoSede("01");
+                
             }else{
                 setCodigoSede("02");
             }
             //sf
             try{
-              PreparedStatement pps = cn.prepareStatement("INSERT INTO V_clientes"
-                                                        + "(CEDULACLIENTE, CODIGOSEDE, NOMBRECLIENTE, TELEFONOCLIENTE, DIRECCIONCLIENTE, UBICACION) VALUES (?,?,?,?,?,?);"); 
+              PreparedStatement pps = cn.prepareStatement("set xact_abort on"
+                      + "INSERT INTO V_clientes"
+                      + "(CEDULACLIENTE, NOMBRECLIENTE,TELEFONOCLIENTE,DIRECCIONCLIENTE,UBICACION,CODIGOSEDE) VALUES (?,?,?,?,?,?)"); 
               pps.setString(1, this.cedula);
-              pps.setString(2, this.codigoSede);
-              pps.setString(3, this.nombre);
-              pps.setString(4, this.telefono);
-              pps.setString(5,this.direccion);
-              pps.setString(6, this.ubicacion);
+              pps.setString(2, this.nombre);
+              pps.setString(3, this.telefono);
+              pps.setString(4, this.direccion);
+              pps.setString(5,this.ubicacion);
+              pps.setString(6, this.codigoSede);
               pps.executeUpdate();
               bandera = true;
             }catch(SQLException e){
-             bandera = false;        
+             bandera = false;
+                System.out.println(e.toString());
             }
             return bandera;
     }
@@ -158,14 +161,14 @@ public class Cliente {
     ResultSet rs=null;    
     try {   
         st = cn.createStatement();       
-        rs = st.executeQuery("SELECT * FROM FROM V_clientes WHERE CEDULACLIENTE='"+consulta+
+        rs = st.executeQuery("SELECT * FROM V_Clientes WHERE CEDULACLIENTE='"+consulta+
                              "' OR NOMBRECLIENTE='"+consulta+
                              "' OR TELEFONOCLIENTE='"+consulta+
                              "' OR UBICACION='"+consulta+
                              "' OR DIRECCIONCLIENTE='"+consulta+"'"); 
         DefaultTableModel dfm = new DefaultTableModel();
         tabla1.setModel(dfm);
-        dfm.setColumnIdentifiers(new Object[]{"Cédula","Nombre","Telefono","Dirección","Ubicación"});
+        dfm.setColumnIdentifiers(new Object[]{"Cedula","Nombre","Telefono","Direccion","Ubicacion"});
         while(rs.next()){
             dfm.addRow(new Object[]{rs.getString("CEDULACLIENTE"), rs.getString("NOMBRECLIENTE"),
                 rs.getString("TELEFONOCLIENTE"), rs.getString("DIRECCIONCLIENTE"), rs.getString("UBICACION") });

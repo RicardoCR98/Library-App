@@ -305,7 +305,10 @@ Libro libro;
         }
         consulta = consulta.substring (0, consulta.length()-1);
         String condicion = "'" +jTFISBNLibroActualizar.getText () + "'";
-        String sql = "UPDATE V_Ejemplar SET "+ consulta + " WHERE ISBN" + " LIKE "+condicion;
+        String sql = "set xact_abort on"
+                + " begin distributed tran"
+                + " UPDATE V_Ejemplar SET "+ consulta + " WHERE ISBN" + " LIKE "+condicion
+                 + " commit tran";
 
 
         if(libro.actualizarLibro(sql))

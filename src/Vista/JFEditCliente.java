@@ -181,6 +181,11 @@ Cliente cliente;
             }
         });
 
+        jTFBusquedaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFBusquedaClienteActionPerformed(evt);
+            }
+        });
         jTFBusquedaCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTFBusquedaClienteKeyPressed(evt);
@@ -445,6 +450,10 @@ Cliente cliente;
         }
 
     }//GEN-LAST:event_jTFBusquedaClienteKeyPressed
+
+    private void jTFBusquedaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFBusquedaClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFBusquedaClienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
