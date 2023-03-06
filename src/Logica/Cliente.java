@@ -94,8 +94,10 @@ public class Cliente {
             //sf
             try{
               PreparedStatement pps = cn.prepareStatement("set xact_abort on"
-                      + "INSERT INTO V_clientes"
-                      + "(CEDULACLIENTE, NOMBRECLIENTE,TELEFONOCLIENTE,DIRECCIONCLIENTE,UBICACION,CODIGOSEDE) VALUES (?,?,?,?,?,?)"); 
+                      + " begin distributed tran"
+                      + " INSERT INTO V_clientes"
+                      + "(CEDULACLIENTE, NOMBRECLIENTE,TELEFONOCLIENTE,DIRECCIONCLIENTE,UBICACION,CODIGOSEDE) VALUES (?,?,?,?,?,?)"
+                      + " commit tran"); 
               pps.setString(1, this.cedula);
               pps.setString(2, this.nombre);
               pps.setString(3, this.telefono);
@@ -123,10 +125,13 @@ public class Cliente {
            }
         return bandera;      
     }
-    public boolean eliminarCliente(){
+    public boolean eliminarCliente(String cedula){
         boolean bandera = false;
         try{
-           PreparedStatement pps = cn.prepareStatement("DELETE FROM V_clientes WHERE CEDULACLIENTE="+this.cedula); 
+           PreparedStatement pps = cn.prepareStatement("set xact_abort on"
+                   + " begin distributed tran"
+                   + " DELETE FROM V_Clientes WHERE CEDULACLIENTE='"+cedula+"'"
+                   + " commit tran");
            pps.executeUpdate ();
            bandera = true;
         }catch(SQLException e){

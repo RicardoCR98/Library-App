@@ -20,7 +20,7 @@ public class Libro {
     private String anio_P;
     private String editorial;
     private int numEjemplar;
-    private String precio;
+    private double precio;
     private String ubicacion;
     private String codSede;
 
@@ -30,7 +30,7 @@ public class Libro {
     }
 
     public Libro(String ISBN, String tituloLibro, String nAutor, String genero, 
-            String anio_P, String editorial, int numEjemplar, String precio, 
+            String anio_P, String editorial, int numEjemplar, double precio, 
             String ubicacion, String codigoSede) {
         this.ISBN = ISBN;
         this.tituloLibro = tituloLibro;
@@ -100,11 +100,11 @@ public class Libro {
         this.numEjemplar = numEjemplar;
     }
 
-    public String getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 

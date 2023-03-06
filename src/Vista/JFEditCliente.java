@@ -331,7 +331,10 @@ Cliente cliente;
         consulta = consulta.substring (0, consulta.length()-1);
         String condicion = "'" +jTFCedulaClienteActualizar.getText() + "'";
         
-        String sql = "UPDATE V_clientes SET "+ consulta + " WHERE CEDULACLIENTE" + " LIKE "+condicion;
+        String sql = "set xact_abort on"
+                + " begin distributed tran"
+                + " UPDATE V_clientes SET "+ consulta + " WHERE CEDULACLIENTE" + " LIKE "+condicion
+                + " commit tran";
 
         if(cliente.actualizarCliente(sql))
             JOptionPane.showMessageDialog(null, "Datos Actualizados correctamente. ");
@@ -358,7 +361,7 @@ Cliente cliente;
             JOptionPane.showMessageDialog (null, "Seleccione a un cliente para eliminar"); 
         }else{
             if(0==JOptionPane.showConfirmDialog(null, "¿Esta seguro de borrar al cliente con cedula "+jTFCedulaClienteActualizar.getText()+" ?","Advertencia",JOptionPane.INFORMATION_MESSAGE)){
-                if(cliente.eliminarCliente()){
+                if(cliente.eliminarCliente(jTFCedulaClienteActualizar.getText())){
                     JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
                 }else{
                     JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ");

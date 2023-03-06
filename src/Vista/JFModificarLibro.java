@@ -292,7 +292,6 @@ Libro libro;
 
     private void btnActualizarLibActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarLibActionPerformed
         ArrayList<String> atributosActualizar = new ArrayList<String>();
-
         String consulta = "";
         atributosActualizar.add("ISBN="+jTFISBNLibroActualizar.getText());
         if (jCPrecio.isSelected()){atributosActualizar.add("precio='"+jTFPrecioLibActu.getText()+"'");}

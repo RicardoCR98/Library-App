@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -18,7 +20,8 @@ public class Facturas {
     private double  precioTotal;
     private String cedulaCliente;
     private String ubicacionFactura;
-    LocalDate fechaActual = LocalDate.now();
+    Date myDate = new Date();
+    String fecha;
     
     private String codigoSede;
     ConexionBD conexion = new ConexionBD();
@@ -27,25 +30,7 @@ public class Facturas {
     
     public Facturas() {
     }
-
-//    public Facturas(String identificadorFactura, String ISBN, int cantidad, double precioTotal, String ubicacionFactura, String codigoSede,String cedulaCliente) {
-//        this.identificadorFactura = identificadorFactura;
-//        this.ISBN = ISBN;
-//        this.cantidad = cantidad;
-//        this.precioTotal = precioTotal;
-//        this.ubicacionFactura = ubicacionFactura;
-//        this.ubicacionFactura = codigoSede;
-//        this.cedulaCliente = cedulaCliente;
-//    }
-//        public Facturas(String identificadorFactura, LocalDate fechaActual, String cedulaCliente, String codigoSede,String ubicacionFactura) {
-//        this.identificadorFactura = identificadorFactura;
-//        this.fechaActual = fechaActual;
-//        this.cedulaCliente = cedulaCliente;
-//        this.codigoSede = codigoSede;
-//        this.ubicacionFactura = ubicacionFactura;
-//    }
-//    
-            public Facturas(String identificadorFactura, String ISBN, int cantidad, double precioTotal, String ubicacionFactura, String codigoSede,String cedulaCliente,LocalDate fechaActual) {
+        public Facturas(String identificadorFactura, String ISBN, int cantidad, double precioTotal, String ubicacionFactura, String codigoSede,String cedulaCliente,LocalDate fechaActual) {
         this.identificadorFactura = identificadorFactura;
         this.ISBN = ISBN;
         this.cantidad = cantidad;
@@ -53,6 +38,7 @@ public class Facturas {
         this.ubicacionFactura = ubicacionFactura;
         this.codigoSede = codigoSede;
         this.cedulaCliente = cedulaCliente;
+        this.fecha = new SimpleDateFormat("yyyy-mm-dd").format(myDate);
     }
 
     
@@ -132,10 +118,34 @@ public class Facturas {
         boolean flag = false;
         try 
         {
-
-            PreparedStatement pps1 = cn.prepareStatement("INSERT INTO V_EstadisticaFact (IDENTIFICACIONFACTURA,FECHAFACTURA,CEDULACLIENTE,CODIGOSEDE,UBICACION) VALUES (?,?,?,?,?)"); 
+            
+            PreparedStatement pps2 = cn.prepareStatement("set xact_abort on"
+                    +" begin distributed tran"
+                    +" INSERT INTO V_INFOFACTURAS (IDENTIFICACIONFACTURA,CODIGOSEDE,UBICACION) VALUES (?,?,?)"
+                    + " commit tran");
+            pps2.setString(1, this.identificadorFactura);
+            pps2.setDate(2, java.sql.Date.valueOf(codigoSede));
+            pps2.setString(3,this.ubicacionFactura);
+            pps2.executeUpdate();
+            
+            PreparedStatement pps = cn.prepareStatement("set xact_abort on"
+                    +" begin distributed tran"
+                    +" INSERT INTO V_Facturas (IDENTIFICADORFACTURA,ISBN,CANTIDAD,PRECIOTOTAL,CODIGOSEDE,UBICACION) VALUES (?,?,?,?,?,?)"
+                    + " commit tran");
+            pps.setString(1, this.identificadorFactura);
+            pps.setString(2,this.ISBN);
+            pps.setInt(3,this.cantidad);
+            pps.setDouble(4, this.precioTotal);
+            pps.setString(5, codigoSede);
+            pps.setString(6, this.ubicacionFactura);
+            pps.executeUpdate();
+            
+            PreparedStatement pps1 = cn.prepareStatement("set xact_abort on"
+                    +" begin distributed tran"
+                    +" INSERT INTO V_EstadisticaFact (IDENTIFICACIONFACTURA,FECHAFACTURA,CEDULACLIENTE,CODIGOSEDE,UBICACION) VALUES (?,?,?,?,?)"
+                    + " commit tran");
             pps1.setString(1, this.identificadorFactura);
-            pps1.setDate(2, java.sql.Date.valueOf(this.fechaActual));
+            pps1.setDate(2, java.sql.Date.valueOf(this.fecha));
             pps1.setString(3,this.cedulaCliente);
             if (this.codigoSede != null) {
                 pps1.setString(4, codigoSede);
@@ -145,15 +155,6 @@ public class Facturas {
             pps1.setString(5, this.ubicacionFactura);
             pps1.executeUpdate();
             
-            
-            PreparedStatement pps = cn.prepareStatement("INSERT INTO V_Facturas (IDENTIFICADORFACTURA,ISBN,CANTIDAD,PRECIOTOTAL,CODIGOSEDE,UBICACION) VALUES (?,?,?,?,?,?)");
-            pps.setString(1, this.identificadorFactura);
-            pps.setString(2,this.ISBN);
-            pps.setInt(3,this.cantidad);
-            pps.setDouble(4, this.precioTotal);
-            pps.setString(5, codigoSede);
-            pps.setString(6, this.ubicacionFactura);
-            pps.executeUpdate();
             flag = true;
         } 
         catch(SQLException ex) 
@@ -163,31 +164,26 @@ public class Facturas {
         return flag;
     }
     
-    public boolean añadirEstadistica(){
-        boolean flag = false;
-        try
-        {
-            PreparedStatement pps = cn.prepareStatement("INSERT INTO V_EstadisticaFact (IDENTIFICADORFACTURA,FECHAFACTURA,CEDULACLIENTE,CODIGOSEDE,UBICACION) VALUES (?,?,?,?,?)"); 
-            pps.setString(1, this.identificadorFactura);
-            pps.setString(2,this.fechaActual.toString());
-            pps.setString(3,this.cedulaCliente);
-            pps.setString(4, this.codigoSede);
-            pps.setString(5, this.ubicacionFactura);
-            pps.executeUpdate();
-        }catch(SQLException ex) 
-        {
-            Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex); 
-        }
-        return flag;
-    }
-       
     public boolean eliminarRegistro(String id)
     {
         boolean flag = false;
     try {
         PreparedStatement pps;
-        pps = cn.prepareStatement("DELETE FROM V_Facturas WHERE IDENTIFICADORFACTURA=?");
+        pps = cn.prepareStatement("set xact_abort on"
+                    +" begin distributed tran"
+                    +" DELETE FROM V_Facturas WHERE IDENTIFICADORFACTURA=?"
+                    + " commit tran");
         pps.setString(1, id);
+        pps.executeUpdate();
+        
+        PreparedStatement pps1;
+        pps1 = cn.prepareStatement("set xact_abort on"
+                    +" begin distributed tran"
+                    +" DELETE FROM V_EstadisticaFact WHERE IDENTIFICADORFACTURA=?"
+                    + " commit tran");
+        pps1.setString(1, id);
+        pps1.executeUpdate();
+        
         pps.executeUpdate();
         flag = true;
     } catch (SQLException ex) {
