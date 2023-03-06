@@ -1070,7 +1070,7 @@ public final class JFLibreria extends javax.swing.JFrame{
         });
 
         btnEliminarPrestamoLibTxt.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        btnEliminarPrestamoLibTxt.setText("Eliminar Préstamo");
+        btnEliminarPrestamoLibTxt.setText("Eliminar Factura");
 
         javax.swing.GroupLayout PPEliminarPrestamoLayout = new javax.swing.GroupLayout(PPEliminarPrestamo);
         PPEliminarPrestamo.setLayout(PPEliminarPrestamoLayout);
@@ -1196,7 +1196,7 @@ public final class JFLibreria extends javax.swing.JFrame{
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblCountMult)))
-                .addContainerGap(333, Short.MAX_VALUE))
+                .addContainerGap(347, Short.MAX_VALUE))
             .addGroup(PFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFacturasLayout.createSequentialGroup()
                     .addContainerGap(84, Short.MAX_VALUE)
