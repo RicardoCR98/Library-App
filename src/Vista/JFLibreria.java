@@ -178,8 +178,6 @@ public final class JFLibreria extends javax.swing.JFrame{
         EPanelModif = new javax.swing.JPanel();
         btnModificarEstuTxt = new javax.swing.JLabel();
         EiconoModificar = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        lblCountEstud = new javax.swing.JLabel();
         PnlLib = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -195,8 +193,6 @@ public final class JFLibreria extends javax.swing.JFrame{
         LPanelAñadirLib = new javax.swing.JPanel();
         btnAñadirLibTxt = new javax.swing.JLabel();
         LiconoAñadir = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        lblCountLib = new javax.swing.JLabel();
         PFacturas = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -212,8 +208,6 @@ public final class JFLibreria extends javax.swing.JFrame{
         JTFactuas = new javax.swing.JTable();
         PMiconoLupa = new javax.swing.JLabel();
         LtxtBusquedaFacturas = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        lblCountMult = new javax.swing.JLabel();
         PInicio = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -649,16 +643,16 @@ public final class JFLibreria extends javax.swing.JFrame{
                         .addGap(22, 22, 22)
                         .addComponent(btnAñadirEstuxt))
                     .addGroup(EPanelAñadirLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
+                        .addGap(55, 55, 55)
                         .addComponent(EiconoAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         EPanelAñadirLayout.setVerticalGroup(
             EPanelAñadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EPanelAñadirLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(EiconoAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAñadirEstuxt)
                 .addContainerGap())
         );
@@ -688,7 +682,7 @@ public final class JFLibreria extends javax.swing.JFrame{
                 .addComponent(btnModificarEstuTxt)
                 .addGap(14, 14, 14))
             .addGroup(EPanelModifLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
+                .addGap(75, 75, 75)
                 .addComponent(EiconoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -701,12 +695,6 @@ public final class JFLibreria extends javax.swing.JFrame{
                 .addComponent(btnModificarEstuTxt)
                 .addContainerGap())
         );
-
-        jLabel8.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel8.setText("Clientes Registrados: ");
-
-        lblCountEstud.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        lblCountEstud.setText("...");
 
         javax.swing.GroupLayout PClientesLayout = new javax.swing.GroupLayout(PClientes);
         PClientes.setLayout(PClientesLayout);
@@ -727,12 +715,7 @@ public final class JFLibreria extends javax.swing.JFrame{
                             .addComponent(EPanelModif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(PClientesLayout.createSequentialGroup()
                             .addGap(62, 62, 62)
-                            .addGroup(PClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(PClientesLayout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(lblCountEstud))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 771, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 771, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(77, Short.MAX_VALUE))
             .addGroup(PClientesLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
@@ -769,11 +752,7 @@ public final class JFLibreria extends javax.swing.JFrame{
                     .addComponent(EiconoLupa, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(PClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(lblCountEstud))
-                .addGap(36, 36, 36))
+                .addGap(73, 73, 73))
         );
 
         PnlLib.setPreferredSize(new java.awt.Dimension(947, 706));
@@ -939,12 +918,6 @@ public final class JFLibreria extends javax.swing.JFrame{
                 .addContainerGap())
         );
 
-        jLabel11.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel11.setText("Libros Registrados: ");
-
-        lblCountLib.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        lblCountLib.setText("...");
-
         javax.swing.GroupLayout PnlLibLayout = new javax.swing.GroupLayout(PnlLib);
         PnlLib.setLayout(PnlLibLayout);
         PnlLibLayout.setHorizontalGroup(
@@ -972,12 +945,7 @@ public final class JFLibreria extends javax.swing.JFrame{
                                 .addComponent(LtxtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(PnlLibLayout.createSequentialGroup()
                         .addGap(63, 63, 63)
-                        .addGroup(PnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PnlLibLayout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblCountLib)))))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
         PnlLibLayout.setVerticalGroup(
@@ -999,11 +967,7 @@ public final class JFLibreria extends javax.swing.JFrame{
                     .addComponent(LtxtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(PnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(lblCountLib))
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
 
         jLabel19.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
@@ -1158,12 +1122,6 @@ public final class JFLibreria extends javax.swing.JFrame{
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel12.setText("Facturas Registradas:");
-
-        lblCountMult.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        lblCountMult.setText("...");
-
         javax.swing.GroupLayout PFacturasLayout = new javax.swing.GroupLayout(PFacturas);
         PFacturas.setLayout(PFacturasLayout);
         PFacturasLayout.setHorizontalGroup(
@@ -1175,27 +1133,20 @@ public final class JFLibreria extends javax.swing.JFrame{
                 .addComponent(LtxtBusquedaFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66))
             .addGroup(PFacturasLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
                 .addGroup(PFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PFacturasLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
                         .addGroup(PFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PFacturasLayout.createSequentialGroup()
-                                .addGroup(PFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(PFacturasLayout.createSequentialGroup()
-                                        .addComponent(jLabel20)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel21)
-                                        .addGap(234, 234, 234))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFacturasLayout.createSequentialGroup()
-                                        .addComponent(PPanelPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(179, 179, 179)))
-                                .addComponent(PPEliminarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel19)))
-                    .addGroup(PFacturasLayout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblCountMult)))
+                                .addComponent(jLabel20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel21)
+                                .addGap(234, 234, 234))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFacturasLayout.createSequentialGroup()
+                                .addComponent(PPanelPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(179, 179, 179)))
+                        .addComponent(PPEliminarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel19))
                 .addContainerGap(347, Short.MAX_VALUE))
             .addGroup(PFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFacturasLayout.createSequentialGroup()
@@ -1222,11 +1173,7 @@ public final class JFLibreria extends javax.swing.JFrame{
                             .addComponent(PPEliminarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(LtxtBusquedaFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
-                .addGroup(PFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(lblCountMult))
-                .addGap(47, 47, 47))
+                .addContainerGap(357, Short.MAX_VALUE))
             .addGroup(PFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PFacturasLayout.createSequentialGroup()
                     .addContainerGap(266, Short.MAX_VALUE)
@@ -1278,7 +1225,7 @@ public final class JFLibreria extends javax.swing.JFrame{
             ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ContenidoLayout.createSequentialGroup()
                 .addComponent(PInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 53, Short.MAX_VALUE))
+                .addGap(0, 54, Short.MAX_VALUE))
             .addGroup(ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ContenidoLayout.createSequentialGroup()
                     .addComponent(PClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1822,8 +1769,6 @@ public final class JFLibreria extends javax.swing.JFrame{
     private javax.swing.JLabel iconoPrestamo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -1834,7 +1779,6 @@ public final class JFLibreria extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1843,9 +1787,6 @@ public final class JFLibreria extends javax.swing.JFrame{
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable jTClientes;
     private javax.swing.JTable jTLibros;
-    private javax.swing.JLabel lblCountEstud;
-    private javax.swing.JLabel lblCountLib;
-    private javax.swing.JLabel lblCountMult;
     private javax.swing.JLabel lblUsers;
     private javax.swing.JPanel pnlLib;
     // End of variables declaration//GEN-END:variables
