@@ -265,7 +265,7 @@ public final class JFLogin extends javax.swing.JFrame {
             
         }else{
             System.out.println("Ingreso a la plataforma: "+x);
-           JOptionPane.showMessageDialog(null, "Correo o contraseña invalida");
+           JOptionPane.showMessageDialog(null, "Nombre o contraseña invalida");
         } 
     }//GEN-LAST:event_btnLogintxtMouseClicked
 
