@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
 public class Facturas {
     private String identificadorFactura;
     private String ISBN;
@@ -38,7 +39,8 @@ public class Facturas {
         this.ubicacionFactura = ubicacionFactura;
         this.codigoSede = codigoSede;
         this.cedulaCliente = cedulaCliente;
-        this.fecha = new SimpleDateFormat("yyyy-mm-dd").format(myDate);
+        this.fecha = new SimpleDateFormat("yyyy-MM-dd").format(myDate);
+        this.myDate = new Date();
     }
 
     
@@ -119,19 +121,19 @@ public class Facturas {
         try 
         {
             
-            PreparedStatement pps2 = cn.prepareStatement("set xact_abort on"
+             PreparedStatement pps2 = cn.prepareStatement("set xact_abort on"
                     +" begin distributed tran"
                     +" INSERT INTO V_INFOFACTURAS (IDENTIFICACIONFACTURA,CODIGOSEDE,UBICACION) VALUES (?,?,?)"
-                    + " commit tran");
+                    +" commit tran");
             pps2.setString(1, this.identificadorFactura);
-            pps2.setDate(2, java.sql.Date.valueOf(codigoSede));
+            pps2.setString(2, this.codigoSede);
             pps2.setString(3,this.ubicacionFactura);
             pps2.executeUpdate();
-            
+                        
             PreparedStatement pps = cn.prepareStatement("set xact_abort on"
                     +" begin distributed tran"
                     +" INSERT INTO V_Facturas (IDENTIFICADORFACTURA,ISBN,CANTIDAD,PRECIOTOTAL,CODIGOSEDE,UBICACION) VALUES (?,?,?,?,?,?)"
-                    + " commit tran");
+                    +" commit tran");
             pps.setString(1, this.identificadorFactura);
             pps.setString(2,this.ISBN);
             pps.setInt(3,this.cantidad);
@@ -140,26 +142,22 @@ public class Facturas {
             pps.setString(6, this.ubicacionFactura);
             pps.executeUpdate();
             
-            PreparedStatement pps1 = cn.prepareStatement("set xact_abort on"
+             PreparedStatement pps1 = cn.prepareStatement("set xact_abort on"
                     +" begin distributed tran"
                     +" INSERT INTO V_EstadisticaFact (IDENTIFICACIONFACTURA,FECHAFACTURA,CEDULACLIENTE,CODIGOSEDE,UBICACION) VALUES (?,?,?,?,?)"
-                    + " commit tran");
+                    +" commit tran");
             pps1.setString(1, this.identificadorFactura);
             pps1.setDate(2, java.sql.Date.valueOf(this.fecha));
             pps1.setString(3,this.cedulaCliente);
-            if (this.codigoSede != null) {
-                pps1.setString(4, codigoSede);
-            } else {
-                JOptionPane.showMessageDialog(null, "Valor nulo detectado");
-            }
+            pps1.setString(4, this.codigoSede);
             pps1.setString(5, this.ubicacionFactura);
             pps1.executeUpdate();
-            
             flag = true;
         } 
         catch(SQLException ex) 
         {
             Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex); 
+            System.out.println(ex.toString());
         }
         return flag;
     }
@@ -179,12 +177,20 @@ public class Facturas {
         PreparedStatement pps1;
         pps1 = cn.prepareStatement("set xact_abort on"
                     +" begin distributed tran"
-                    +" DELETE FROM V_EstadisticaFact WHERE IDENTIFICADORFACTURA=?"
+                    +" DELETE FROM V_EstadisticaFact WHERE IDENTIFICACIONFACTURA=?"
                     + " commit tran");
         pps1.setString(1, id);
         pps1.executeUpdate();
         
-        pps.executeUpdate();
+        
+        PreparedStatement pps2;
+        pps2 = cn.prepareStatement("set xact_abort on"
+                    +" begin distributed tran"
+                    +" DELETE FROM V_INFOFACTURAS WHERE IDENTIFICACIONFACTURA=?"
+                    + " commit tran");
+        pps2.setString(1, id);
+        pps2.executeUpdate();
+        
         flag = true;
     } catch (SQLException ex) {
         Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
@@ -208,7 +214,7 @@ public class Facturas {
         cn.close();
         return tabla;
     }catch(SQLException ex) {
-        Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex); 
+//        Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex); 
         JOptionPane.showMessageDialog (null, "Ocurrio un error al mostrar la tabla ");     
     }
     return tabla;

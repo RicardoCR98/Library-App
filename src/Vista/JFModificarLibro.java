@@ -294,9 +294,8 @@ Libro libro;
         ArrayList<String> atributosActualizar = new ArrayList<String>();
         String consulta = "";
         atributosActualizar.add("ISBN="+jTFISBNLibroActualizar.getText());
-        if (jCPrecio.isSelected()){atributosActualizar.add("precio='"+jTFPrecioLibActu.getText()+"'");}
+        if (jCPrecio.isSelected()){atributosActualizar.add("precio="+ Double.parseDouble(jTFPrecioLibActu.getText()));}
         if (jCCantidadLibro.isSelected()){atributosActualizar.add("NUMEJEMPLAR='"+jTFCantidadActualizarLibros.getText()+"'");}
-
         Iterator<String> i = atributosActualizar.iterator();
 
         while (i.hasNext()){
