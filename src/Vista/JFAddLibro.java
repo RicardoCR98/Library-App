@@ -258,7 +258,7 @@ public class JFAddLibro extends javax.swing.JFrame {
             }
             comewth();
         }else{
-            JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");    
+            JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ","Error",0);    
         }
         
     }//GEN-LAST:event_btnAceptarLibActionPerformed

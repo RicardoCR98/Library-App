@@ -214,8 +214,7 @@ public class Facturas {
         cn.close();
         return tabla;
     }catch(SQLException ex) {
-//        Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex); 
-        JOptionPane.showMessageDialog (null, "Ocurrio un error al mostrar la tabla ");     
+        JOptionPane.showMessageDialog (null, "Ocurrio un error al mostrar la tabla ","Error",0);     
     }
     return tabla;
 }
@@ -233,7 +232,6 @@ public class Facturas {
             dfm.addRow(new Object[]{rs.getString("IDENTIFICADORFACTURA"), rs.getString("ISBN"), rs.getInt("CANTIDAD"),rs.getInt("PRECIOTOTAL"), rs.getString("UBICACION")});
         }
     }catch(SQLException ex) {
-        Logger.getLogger(Facturas.class.getName()).log(Level. SEVERE, null, ex); 
         //JOptionPane.showMessageDialog (null, "Ocurrio un error al mostrar la tabla ");     
     }
 

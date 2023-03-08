@@ -119,8 +119,7 @@ public class Cliente {
             pps.executeUpdate();
             bandera = true;
            }catch(SQLException e){
-            Logger.getLogger(Cliente.class.getName()).log(Level. SEVERE, null, e); 
-            JOptionPane.showMessageDialog (null, "Ocurrio un error al Actualizar los datos ");     
+            JOptionPane.showMessageDialog (null, "Ocurrio un error al Actualizar los datos","Error",0);     
             bandera = false;
            }
         return bandera;      
@@ -135,7 +134,7 @@ public class Cliente {
            pps.executeUpdate ();
            bandera = true;
         }catch(SQLException e){
-           JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ");  
+           JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ","Error",0);  
            bandera = false;
         }
         return bandera;
@@ -156,7 +155,7 @@ public class Cliente {
                    rs.getString("DIRECCIONCLIENTE"), rs.getString("UBICACION") });
             }
         }catch(SQLException ex) {
-            JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");  
+            JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ","Error",0);  
         }        
             return tabla;
 
@@ -179,7 +178,7 @@ public class Cliente {
                 rs.getString("TELEFONOCLIENTE"), rs.getString("DIRECCIONCLIENTE"), rs.getString("UBICACION") });
         }
         }catch(SQLException ex) {
-            JOptionPane.showMessageDialog (null, "No se encuentra");      
+            JOptionPane.showMessageDialog (null, "No se encuentra","Error",0);      
     }
    }
 }

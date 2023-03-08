@@ -294,16 +294,6 @@ Libro libro;
             }else{
                 codigoSede = "02";
             }
-//            atributosActualizar.add("UBICACION="+ubicacion);
-//            atributosActualizar.add("CODIGOSEDE="+ codigoSede);
-        
-//        if (jCCantidadLibro.isSelected()){atributosActualizar.add("NUMEJEMPLAR='"+jTFCantidadActualizarLibros.getText()+"'");}
-//        Iterator<String> i = atributosActualizar.iterator();
-
-//        while (i.hasNext()){
-//            consulta += i.next() +",";
-//        }
-//        consulta = consulta.substring (0, consulta.length()-1);
         consulta = Integer.parseInt(jTFCantidadActualizarLibros.getText());
         String condicion = "'" +jTFISBNLibroActualizar.getText () + "'";
        
@@ -313,7 +303,7 @@ Libro libro;
             JOptionPane.showMessageDialog(null, "Datos Actualizados correctamente. ");
         else{
             
-            JOptionPane.showMessageDialog (null, "Ocurrio un error al Actualizar los datos ");  
+            JOptionPane.showMessageDialog (null, "Ocurrio un error al Actualizar los datos ","Error",0);  
         }
         
         libro.actualizarTabla(jTBusquedaAct);

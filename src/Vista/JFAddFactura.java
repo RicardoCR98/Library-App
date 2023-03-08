@@ -130,7 +130,7 @@ public class JFAddFactura extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(btn_AgregarFactura)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btn_CancelarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -192,7 +192,7 @@ public class JFAddFactura extends javax.swing.JFrame {
             factura.ActualizarTablaFacturas(tabla);
             comewth();
         }else{
-            JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");    
+            JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ","Error",0);    
         }  
     }//GEN-LAST:event_btn_AgregarFacturaActionPerformed
 

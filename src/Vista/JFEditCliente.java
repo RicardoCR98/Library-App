@@ -3,18 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vista;
-import java.sql.*;
 import Logica.Cliente;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
-import java.lang.System.Logger;
 //import java.lang.System.Logger.Level;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -339,7 +336,6 @@ Cliente cliente;
         if(cliente.actualizarCliente(sql))
             JOptionPane.showMessageDialog(null, "Datos Actualizados correctamente. ");
         else{
-            JOptionPane.showMessageDialog (null, "Ocurrio un error al Actualizar los datos ");  
         }
 
         cliente.actualizarTabla(jtableClientes);      
@@ -364,7 +360,7 @@ Cliente cliente;
                 if(cliente.eliminarCliente(jTFCedulaClienteActualizar.getText())){
                     JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
                 }else{
-                    JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ");
+                    JOptionPane.showMessageDialog (null, "Ocurrio un error al eliminar los datos ","Error",0);
                 }      
             }
         }    

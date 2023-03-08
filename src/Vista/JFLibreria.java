@@ -214,7 +214,7 @@ public final class JFLibreria extends javax.swing.JFrame{
         PiconMinimal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sistema Bibliotecario");
+        setTitle("Libreria");
         setResizable(false);
 
         TolBar.setBackground(new java.awt.Color(37, 40, 80));

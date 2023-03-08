@@ -161,62 +161,6 @@ public class Libro {
         return flag;
     }
     
-    
-    public boolean LibroestaDisponible(){
-    int cantidad = 0;
-    boolean resultado=false;
-    Statement st;
-    ResultSet rs=null;    
-    try {   
-        st = cn.createStatement();
-        rs = st.executeQuery("set xact_abort on"
-                + " begin distributed tran"
-                + " SELECT cantidad FROM V_Libros WHERE ISBN = "+ this.ISBN
-                +" commit tran"); 
-        while(rs.next()){
-            cantidad = rs.getInt("cantidad");
-        }
-        if(cantidad > 0){
-            resultado = true;
-        }
-        
-    }catch(SQLException ex) {
-        JOptionPane.showMessageDialog (null, "No se sabe si esta disponible el libro ");     
-    }
-    return resultado;
-    }
-    
-    
-    public int obtenerCantidadLibro(String ISBN){
-    int cantidad = 0;
-    Statement st;
-    ResultSet rs = null;
-    try{
-        st = cn.createStatement();
-        rs = st.executeQuery("SELECT cantidad FROM V_Libros WHERE ISBN = "+ISBN);
-        while(rs.next()){
-            cantidad = rs.getInt("cantidad");
-        }
-    }catch(SQLException ex) { 
-        JOptionPane.showMessageDialog (null, "Error al obtener la cantidad de libros");     
-    }
-    return cantidad;
-}
-    
-    public void LibroDisponible(){
-        int cantidad = obtenerCantidadLibro(this.ISBN);
-        cantidad++;
-        String c = String.valueOf(cantidad);
-        System.out.println(c);
-        try {   
-            PreparedStatement pps = cn.prepareStatement("UPDATE Libro SET cantidad="+ c +" WHERE ISBN = " +this.ISBN);
-            pps.executeUpdate();
-
-        } catch(SQLException ex) {
-            JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");     
-        }
-    }
-    
     public JTable actualizarTabla(JTable tabla1){
         Statement st;
         ResultSet rs=null;
@@ -235,7 +179,7 @@ public class Libro {
         }
     }catch(SQLException ex) {
         Logger.getLogger(JFLibreria.class.getName()).log(Level. SEVERE, null, ex); 
-        JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ");     
+        JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ","Error",0);     
     }
         return tabla;
     } 
