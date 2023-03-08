@@ -3,6 +3,7 @@ package Vista;
 import ConexionBD.ConexionBD;
 import java.awt.Color;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -14,9 +15,8 @@ import javax.swing.border.LineBorder;
  * @author angel
  */
 public class JFCrearUsuario extends javax.swing.JFrame {
-
-    ConexionBD conexion = new ConexionBD();
-    Connection cn = conexion.conexion();
+    
+    Connection cn;
     public JFCrearUsuario() {
         initComponents();
         setLocationRelativeTo(this);

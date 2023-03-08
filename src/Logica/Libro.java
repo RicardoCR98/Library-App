@@ -43,6 +43,7 @@ public class Libro {
         this.ubicacion = ubicacion;
         this.codSede = codigoSede;
     }
+    
 
     public String getISBN() {
         return ISBN;
@@ -143,13 +144,19 @@ public class Libro {
         return flag;
     }
     
-    public boolean actualizarLibro(String sql){
+    public boolean actualizarLibro(int consulta, String condicion, String codigoSede){
         boolean flag = false;
         try {
+             String sql = "set xact_abort on"
+                + " begin distributed tran"
+                + " UPDATE V_Ejemplar SET NUMEJEMPLAR="+ consulta + " WHERE ISBN" + " LIKE "+condicion + " AND CODIGOSEDE='"+codigoSede+"'"
+                + " commit tran";
             PreparedStatement pps = cn.prepareStatement(sql);
             pps.executeUpdate();
             flag = true;
         } catch(SQLException ex) {   
+            Logger.getLogger(Libro.class.getName()).log(Level. SEVERE, null, ex); 
+            System.out.println(ex);
         }
         return flag;
     }

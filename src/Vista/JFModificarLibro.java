@@ -35,12 +35,12 @@ Libro libro;
     private void initComponents() {
 
         jPanel11 = new javax.swing.JPanel();
-        jCUbicacion = new javax.swing.JCheckBox();
         jTFISBNLibroActualizar = new javax.swing.JTextField();
         jTFCantidadActualizarLibros = new javax.swing.JTextField();
         jCCantidadLibro = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
         jcUbicacionActualizar = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jCBusquedaLibro = new javax.swing.JComboBox<>();
         jTFBusquedaLibro = new javax.swing.JTextField();
@@ -53,15 +53,6 @@ Libro libro;
         setTitle("Actualizar y eliminar Libros");
 
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Atributos a actualizar"));
-
-        jCUbicacion.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jCUbicacion.setText("Ubicación");
-        jCUbicacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jCUbicacion.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jCUbicacionStateChanged(evt);
-            }
-        });
 
         jTFISBNLibroActualizar.setEditable(false);
 
@@ -84,9 +75,12 @@ Libro libro;
         jLabel2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel2.setText("ISBN:");
 
+        jcUbicacionActualizar.setEditable(true);
         jcUbicacionActualizar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quito", "Cuenca" }));
         jcUbicacionActualizar.setSelectedIndex(-1);
-        jcUbicacionActualizar.setEnabled(false);
+
+        jLabel4.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel4.setText("Ubicacion");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -101,14 +95,14 @@ Libro libro;
                         .addComponent(jTFISBNLibroActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addComponent(jCCantidadLibro)
                                 .addGap(18, 18, 18)
                                 .addComponent(jTFCantidadActualizarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                                .addComponent(jCUbicacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
                                 .addComponent(jcUbicacionActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(39, Short.MAX_VALUE))))
         );
@@ -125,8 +119,8 @@ Libro libro;
                     .addComponent(jTFCantidadActualizarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCUbicacion)
-                    .addComponent(jcUbicacionActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcUbicacionActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -280,15 +274,6 @@ Libro libro;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCUbicacionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCUbicacionStateChanged
-//        Checkboxcambio(jCUbicacion, jTFPrecioLibActu);
-        if(jCUbicacion.isSelected()){
-            jcUbicacionActualizar.setEnabled(true);
-        }else{
-            jcUbicacionActualizar.setEnabled(false);
-        }
-    }//GEN-LAST:event_jCUbicacionStateChanged
-
     private void jCCantidadLibroStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCCantidadLibroStateChanged
         Checkboxcambio(jCCantidadLibro, jTFCantidadActualizarLibros);
     }//GEN-LAST:event_jCCantidadLibroStateChanged
@@ -298,37 +283,36 @@ Libro libro;
     }//GEN-LAST:event_jCCantidadLibroActionPerformed
 
     private void btnActualizarLibActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarLibActionPerformed
-        ArrayList<String> atributosActualizar = new ArrayList<String>();
-        String consulta = "";
-        atributosActualizar.add("ISBN="+jTFISBNLibroActualizar.getText());
-        if(jCUbicacion.isSelected()){
+//        ArrayList<String> atributosActualizar = new ArrayList<String>();
+        int consulta = 0;
+        String codigoSede ="";
+//        atributosActualizar.add("ISBN="+jTFISBNLibroActualizar.getText());
             String ubicacion = this.jcUbicacionActualizar.getSelectedItem().toString();
-            String codigoSede;
+            
             if (ubicacion.equalsIgnoreCase("Quito")){
                 codigoSede = "01";
             }else{
                 codigoSede = "02";
             }
-            atributosActualizar.add("UBICACION="+ubicacion);
-            atributosActualizar.add("CODIGOSEDE="+ codigoSede);
-        }
-        if (jCCantidadLibro.isSelected()){atributosActualizar.add("NUMEJEMPLAR='"+jTFCantidadActualizarLibros.getText()+"'");}
-        Iterator<String> i = atributosActualizar.iterator();
+//            atributosActualizar.add("UBICACION="+ubicacion);
+//            atributosActualizar.add("CODIGOSEDE="+ codigoSede);
+        
+//        if (jCCantidadLibro.isSelected()){atributosActualizar.add("NUMEJEMPLAR='"+jTFCantidadActualizarLibros.getText()+"'");}
+//        Iterator<String> i = atributosActualizar.iterator();
 
-        while (i.hasNext()){
-            consulta += i.next() +",";
-        }
-        consulta = consulta.substring (0, consulta.length()-1);
+//        while (i.hasNext()){
+//            consulta += i.next() +",";
+//        }
+//        consulta = consulta.substring (0, consulta.length()-1);
+        consulta = Integer.parseInt(jTFCantidadActualizarLibros.getText());
         String condicion = "'" +jTFISBNLibroActualizar.getText () + "'";
-        String sql = "set xact_abort on"
-                + " begin distributed tran"
-                + " UPDATE V_Ejemplar SET "+ consulta + " WHERE ISBN" + " LIKE "+condicion
-                 + " commit tran";
+       
 
 
-        if(libro.actualizarLibro(sql))
+        if(libro.actualizarLibro(consulta, condicion, codigoSede))
             JOptionPane.showMessageDialog(null, "Datos Actualizados correctamente. ");
         else{
+            
             JOptionPane.showMessageDialog (null, "Ocurrio un error al Actualizar los datos ");  
         }
         
@@ -420,9 +404,9 @@ Libro libro;
     private javax.swing.JButton btnCancelarLib;
     private javax.swing.JComboBox<String> jCBusquedaLibro;
     private javax.swing.JCheckBox jCCantidadLibro;
-    private javax.swing.JCheckBox jCUbicacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane3;
