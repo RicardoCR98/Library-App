@@ -153,6 +153,10 @@ public class Facturas {
             pps1.setString(5, this.ubicacionFactura);
             pps1.executeUpdate();
             flag = true;
+            
+            
+            
+            
         } 
         catch(SQLException ex) 
         {
