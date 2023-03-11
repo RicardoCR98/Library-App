@@ -153,7 +153,7 @@ public class Facturas {
 
         flag = true;
     } catch (SQLException ex) {
-        Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
+//        Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
         System.out.println(ex.toString());
     } 
 //    finally {
@@ -240,7 +240,7 @@ public class Facturas {
         
         flag = true;
     } catch (SQLException ex) {
-        Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
+//        Logger.getLogger(Facturas.class.getName()).log(Level.SEVERE, null, ex);
     }
     return flag;
     }

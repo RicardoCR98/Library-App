@@ -155,7 +155,7 @@ public class Libro {
             pps.executeUpdate();
             flag = true;
         } catch(SQLException ex) {   
-            Logger.getLogger(Libro.class.getName()).log(Level. SEVERE, null, ex); 
+//            Logger.getLogger(Libro.class.getName()).log(Level. SEVERE, null, ex); 
             System.out.println(ex);
         }
         return flag;
@@ -178,28 +178,28 @@ public class Libro {
             rs.getString("Ubicacion")});
         }
     }catch(SQLException ex) {
-        Logger.getLogger(JFLibreria.class.getName()).log(Level. SEVERE, null, ex); 
-        JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ","Error",0);     
+//        Logger.getLogger(JFLibreria.class.getName()).log(Level. SEVERE, null, ex); 
+//        JOptionPane.showMessageDialog (null, "Ocurrio un error al ingresar los datos ","Error",0);     
     }
         return tabla;
     } 
     
     public void ActualizarTablaLibrosBusqueda(JTable tabla, String consulta){
-    Statement st;
-    ResultSet rs=null;    
-    try {   
-        st = cn.createStatement();      
-        rs = st.executeQuery("SELECT * FROM V_Libros WHERE ISBN='"+consulta+"' OR NOMBREAUTOR='"+consulta
-        +"' OR GENERO='"+consulta+"'"+" OR TITULOLIBRO='"+consulta+"'"); 
-        DefaultTableModel dfm = new DefaultTableModel();
-        tabla.setModel(dfm);
-        dfm.setColumnIdentifiers(new Object[]{"ISBN","Titulo","Autor","Género","Año","Editorial",
-            "Cantidad","Precio","Ubicacion"});
-        while(rs.next()){
-            dfm.addRow(new Object[]{rs.getString("ISBN"), rs.getString("TITULOLIBRO"), rs.getString("NOMBREAUTOR"), rs.getString("Genero"),
-            rs.getString("Anio_publicacion"), rs.getString("NombreEditorial"), rs.getString("NumEjemplar"),rs.getString("Precio"),
-            rs.getString("Ubicacion")});
-        }    
+        Statement st;
+        ResultSet rs=null;    
+        try {   
+            st = cn.createStatement();      
+            rs = st.executeQuery("SELECT * FROM V_Libros WHERE ISBN='"+consulta+"' OR NOMBREAUTOR='"+consulta
+            +"' OR GENERO='"+consulta+"'"+" OR TITULOLIBRO='"+consulta+"'"); 
+            DefaultTableModel dfm = new DefaultTableModel();
+            tabla.setModel(dfm);
+            dfm.setColumnIdentifiers(new Object[]{"ISBN","Titulo","Autor","Género","Año","Editorial",
+                "Cantidad","Precio","Ubicacion"});
+            while(rs.next()){
+                dfm.addRow(new Object[]{rs.getString("ISBN"), rs.getString("TITULOLIBRO"), rs.getString("NOMBREAUTOR"), rs.getString("Genero"),
+                rs.getString("Anio_publicacion"), rs.getString("NombreEditorial"), rs.getString("NumEjemplar"),rs.getString("Precio"),
+                rs.getString("Ubicacion")});
+            }
         }catch(SQLException ex) {
             JOptionPane.showMessageDialog (null, "No se encuentra");     
         }
